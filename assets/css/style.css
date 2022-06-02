@@ -1,42 +1,4 @@
-/*----------------------------------------------------
-@File: Default Styles
-@Author: 
-@URL: 
-Author E-mail: 
 
-This file contains the styling for the actual template, this
-is the file you need to edit to change the look of the
-template.
----------------------------------------------------- */
-/*=====================================================================
-@Template Name: 
-@Author: 
-@Developed By: 
-@Developer URL: 
-Author E-mail: 
-
-@Default Styles
-
-Table of Content:
-01/ Variables
-02/ predefine
-03/ header
-04/ banner
-05/ about
-06/ portfolio
-07/ team
-08/ blog
-09/ service
-10/ blog
-11/ contact 
-12/ footer 
-
-
-=====================================================================*/
-/*----------------------------------------------------*/
-/*font Variables*/
-/*Color Variables*/
-/*=================== fonts ====================*/
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&amp;display=swap");
 @font-face {
   font-family: LatoMedium;
@@ -317,7 +279,6 @@ button:focus {
 
 .signup_form .form-group .form-control:focus {
   outline: none;
-  box-shadow: 0 10px 10px rgba(0, 123, 255, 0.09);
 }
 
 .signup_form .form-group .top_text {
@@ -941,6 +902,7 @@ button:focus {
 
 .page-25 .formify_countdown .formify_header .form_title {
   background: -webkit-linear-gradient(45deg, #f02e66, #3326f9);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 80px;
@@ -1028,6 +990,7 @@ button:focus {
 
 .page-28 .formify_countdown .formify_header .form_title {
   background: -webkit-linear-gradient(45deg, #f02e66, #3326f9);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 80px;
@@ -1366,7 +1329,7 @@ button:focus {
   content: "";
   width: 100%;
   height: 1px;
-  background: #0055fb;
+  background: #E084AC;
   bottom: -0.5px;
   position: absolute;
   left: 0;
@@ -1750,7 +1713,7 @@ button:focus {
 .red_btn {
   width: auto;
   text-transform: capitalize;
-  background: #f7345e;
+  background: #E084AC;
 }
 
 .red_btn i {
@@ -1850,12 +1813,12 @@ button:focus {
 }
 
 .formify_signup_fullwidth_two .form_tab_two .form_tab li .nav-link.active span, .formify_signup_fullwidth_two .form_tab_two .form_tab li .nav-link.complete span {
-  border-color: #0055fb;
-  color: #0055fb;
+  border-color: #E084AC;
+  color: #E084AC;
 }
 
 .formify_signup_fullwidth_two .form_tab_two .form_tab li .nav-link.complete:after {
-  background: #0055fb;
+  background: #E084AC;
 }
 
 .formify_signup_fullwidth_two .form_tab_two .formify_box {
@@ -1873,7 +1836,7 @@ button:focus {
 }
 
 .formify_signup_fullwidth_two .form_tab_two .formify_box .form_title span {
-  color: #0055fb;
+  color: #E084AC;
 }
 
 .formify_signup_fullwidth_two .form_tab_two .formify_box .signup_form .form-group {
@@ -2111,6 +2074,215 @@ button:focus {
 
 .p-24-width .formify_countdown .formify_header {
   margin-bottom: 25px;
+}
+
+.locations {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.address-box {
+  margin-top: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  border-radius: 5px;
+  border: 1px solid #C8C8C8;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+
+.address-box .shop-details h5 {
+  font-weight: 600;
+}
+
+.address-box .shop-details p {
+  margin-bottom: 0px;
+}
+
+.address-box-02 {
+  margin-left: 30px;
+  margin-top: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  border-radius: 5px;
+  border: 1px solid #C8C8C8;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+
+.address-box-02 .shop-details h5 {
+  font-weight: 600;
+}
+
+.address-box-02 .shop-details p {
+  margin-bottom: 0px;
+}
+
+.checkbox {
+  width: 20px !important;
+  height: auto;
+  margin-right: 10px !important;
+}
+
+.datepicker-control {
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+  background: rgb(240, 244, 248);
+  border-color: rgb(240, 244, 248);
+  font-size: 15px;
+  border-radius: 3px;
+  padding-left: 15px;
+  border: none;
+}
+
+.datepicker-control::placeholder {
+  color: #9a9a9a;
+}
+
+.delivery-condition {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.shipping-price {
+  font-weight: 700;
+  font-size: 20px;
+  color: #E084AC;
+}
+
+.agree-btn {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.decline-btn {
+  background-color: #FFF;
+  color: #E084AC;
+  border: 2px solid #E084AC;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.decline-btn:hover {
+  color: #E084AC;
+}
+
+.top_logo img {
+  width: 150px !important;
+  height: auto;
+}
+
+.left-banner {
+  width: 750px !important;
+}
+
+@media only screen and (max-width: 575px) {
+  .left-banner {
+    display: none;
+  }
+
+  .locations {
+    display: block !important;
+  }
+
+  .address-box-02 {
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+    margin-top: 10px !important;
+  }
+
+  .address-box {
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+  }
+
+  .two-btn {
+    padding-left: 10px !important;
+    margin-right: 10px!important;
+  }
+
+  .agree-btn {
+    padding-left: 0px !important;
+    margin-left: 0px !important;
+  }
+
+  .two-btn .decline-btn {
+    margin-right: 20px !important;
+  }
+}
+
+.address-box {
+  cursor: pointer;
+}
+
+.address-box-02 {
+  cursor: pointer;
+}
+
+.address-box.active {
+  border: 2px solid #E084AC;
+}
+
+.address-box-02.active {
+  border: 2px solid #E084AC;
+}
+
+.formify_right_fullwidth {
+  padding-top: 50px !important;
+  padding-bottom: 50px !important;
+}
+
+.checkbox-02 {
+  height: 15px;
+  width: 15px;
+  margin-right: 5px;
+}
+
+.sheet-select {
+  margin-bottom: 0px !important;
+  font-size: 15px;
+}
+
+.round-cake-select {
+  margin-bottom: 0px !important;
+  font-size: 16px;
+}
+
+.sheet-image img {
+  margin-left: 20px;
+}
+
+/* Scrollbar CSS */
+body::-webkit-scrollbar {
+  width: 5px;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #E084AC;
+  outline: 1px solid #E084AC;
+  border-radius: 10px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 /*---------------------------------------------------- */
