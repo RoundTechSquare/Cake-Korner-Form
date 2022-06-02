@@ -118,35 +118,39 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="row ml-0 pickup-toggle">
+                                        <div class="form-group col-md-6">
                                         <label class="input_title" id="orderPickupDate">Order Pickup Date</label>
                                         <input type="text" id="orderPickupDate" class="datepicker-control" placeholder="06/02/2022">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label class="input_title" id="orderPickupTime">Order Pickup Time</label>
+                                            <input type="time" id="orderPickupTime" class="form-control" style="padding-right: 10px" placeholder="11:59 PM"></input>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="input_title" id="orderPickupName">Order Pickup Person Name</label>
+                                            <input type="text" id="orderPickupName" class="form-control" placeholder="John Doe"></input>
+                                        </div>
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label class="input_title" id="orderPickupTime">Order Pickup Time</label>
-                                        <input type="time" id="orderPickupTime" class="form-control" style="padding-right: 10px" placeholder="11:59 PM"></input>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="input_title" id="orderPickupName">Order Pickup Person Name</label>
-                                        <input type="text" id="orderPickupName" class="form-control" placeholder="John Doe"></input>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="input_title" id="orderDeliveryAddress">Delivery Address</label>
-                                        <input type="text" id="orderDeliveryAddress" class="form-control" placeholder="Street Name"></input>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <input type="text" id="orderPDeliveryCity" class="form-control" placeholder="City"></input>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <input type="text" id="orderDeliveryState" class="form-control" placeholder="State"></input>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <input type="text" id="orderDeliveryZIP" class="form-control" placeholder="ZIP Code"></input>
-                                    </div>
-                                    <p class="delivery-condition">All the deliveries will be charged <span class="shipping-price">$30</span> separately having distance 20 miles away from the restaurant.</p>
-                                    <div class="d-flex two-btn" style="width: 100%;">
-                                        <button type="submit" class="btn thm_btn red_btn next_tab ml-4 agree-btn">I Agree<i class="arrow_right"></i></button>
-                                        <button type="submit" class="btn thm_btn red_btn next_tab ml-4 decline-btn">I Decline<i class="arrow_right"></i></button>
+                                    <div class="row ml-0 delivery-toggle">
+                                         <div class="form-group col-md-12">
+                                            <label class="input_title" id="orderDeliveryAddress">Delivery Address</label>
+                                            <input type="text" id="orderDeliveryAddress" class="form-control" placeholder="Street Name"></input>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="text" id="orderPDeliveryCity" class="form-control" placeholder="City"></input>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="text" id="orderDeliveryState" class="form-control" placeholder="State"></input>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="text" id="orderDeliveryZIP" class="form-control" placeholder="ZIP Code"></input>
+                                        </div>
+                                        <p class="delivery-condition">All the deliveries will be charged <span class="shipping-price">$30</span> separately having distance 20 miles away from the restaurant.</p>
+                                        <div class="d-flex two-btn" style="width: 100%;">
+                                            <button type="submit" class="btn thm_btn red_btn next_tab ml-4 agree-btn">I Agree<i class="arrow_right"></i></button>
+                                            <button type="submit" class="btn thm_btn red_btn next_tab ml-4 decline-btn">I Decline<i class="arrow_right"></i></button>
+                                        </div>
                                     </div>
                                 </form>
                                 <div class="next_button text-right">
@@ -177,205 +181,259 @@
                                             class="form-control" id="eggType3" placeholder="Special Cake"><label
                                             class="input_title" for="eggType3">Special Cake</label>
                                     </div>
-                                    <div class="col-lg-3">
-                                    </div>
-                                    <div class="col-lg-12" style="margin-top: 30px;">
-                                        <h6 class="form_title" style="font-size: 18px;">Select <span>Fresh Cream</span>
-                                        </h6>
-                                    </div>
-                                    <div id="innerCream" class="col-lg-12" style="display:block">
-                                        <div>
-                                            <h6 class="form_title" style="font-size: 16px;">Select <span>Inside Cream
-                                                    Flavor</span></h6>
+                                    <div id="vegetarian" class="row ml-0">
+                                        <div class="row ml-0">
+                                            <div class="col-lg-12" style="margin-top: 30px;">
+                                                <h6 class="form_title" style="font-size: 18px; margin-bottom: 0px;">Select <span>By Sheet</span></h6>
+                                            </div>
+                                            <div class="form-group col-lg-3">
+                                                <div class="d-flex align-items-center">
+                                                    <input type="checkbox" class="form-control checkbox-02" id="insideFlavor1" placeholder="1/4 Sheet">
+                                                    <p class="sheet-select">1/4 Sheet (4lbs)</p>
+                                                </div>
+                                                <label class="input_title sheet-image" for="insideFlavor1"><img src="./assets/img/1-4-sheet.PNG" style="width: 80px; height: auto;"></label>
+                                            </div>
+                                            <div class="form-group col-lg-3">
+                                                <div class="d-flex align-items-center">
+                                                    <input type="checkbox" class="form-control checkbox-02" id="insideFlavor1" placeholder="1/2 Sheet">
+                                                    <p class="sheet-select">1/2 Sheet (8lbs)</p>
+                                                </div>
+                                                <label class="input_title sheet-image" for="insideFlavor1"><img src="./assets/img/1-2-sheet.PNG" style="width: 80px; height: auto;"></label>
+                                            </div>
+                                            <div class="form-group col-lg-3">
+                                                <div class="d-flex align-items-center">
+                                                    <input type="checkbox" class="form-control checkbox-02" id="insideFlavor1" placeholder="3/4 Sheet">
+                                                    <p class="sheet-select">3/4 Sheet (12lbs)</p>
+                                                </div>
+                                                <label class="input_title sheet-image" for="insideFlavor1"><img src="./assets/img/3-4-sheet.PNG" style="width: 80px; height: auto;"></label>
+                                            </div>
+                                            <div class="form-group col-lg-3">
+                                                <div class="d-flex align-items-center">
+                                                    <input type="checkbox" class="form-control checkbox-02" id="insideFlavor1" placeholder="Full Sheet">
+                                                    <p class="sheet-select">Full Sheet (16lbs)</p>
+                                                </div>
+                                                <label class="input_title sheet-image" for="insideFlavor1"><img src="./assets/img/full-sheet.PNG" style="width: 90px; height: auto;"></label>
+                                            </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor1"
-                                                    placeholder="Vegetarian/ Eggless"><label class="input_title"
-                                                    for="insideFlavor1">Black Forest</label>
+                                        <div class="row ml-0">
+                                            <div class="col-lg-12" style="margin-top: 30px;">
+                                                <h6 class="form_title" style="font-size: 18px; margin-bottom: 0px;">Select <span>Round Cake</span> Size
+                                                </h6>
                                             </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor2" placeholder="Vegan"><label
-                                                    class="input_title" for="insideFlavor2">Choco Mousse</label>
+                                            <div class="form-group col-lg-4">
+                                                <div class="d-flex align-items-center">
+                                                    <input type="checkbox" class="form-control checkbox-02" id="insideFlavor1" placeholder="8'' Round">
+                                                    <p class="round-cake-select">8'' Round</p>
+                                                </div>
                                             </div>
-                                            <div class="form-group col-lg-5" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor3"
-                                                    placeholder="Special Cake"><label class="input_title"
-                                                    for="insideFlavor3">Choco Truffle ($15/LBS)</label>
+                                            <div class="form-group col-lg-4">
+                                                <div class="d-flex align-items-center">
+                                                    <input type="checkbox" class="form-control checkbox-02" id="insideFlavor1" placeholder="12'' Round">
+                                                    <p class="round-cake-select">12'' Round</p>
+                                                </div>
                                             </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor3"
-                                                    placeholder="Special Cake"><label class="input_title"
-                                                    for="insideFlavor3">Mango</label>
+                                        </div>
+                                        <div class="col-lg-12" style="margin-top: 30px;">
+                                            <h6 class="form_title" style="font-size: 18px;">Select <span>Fresh Cream</span>
+                                            </h6>
+                                        </div>
+                                        <div id="innerCream" class="col-lg-12" style="display:block">
+                                            <div>
+                                                <h6 class="form_title" style="font-size: 16px;">Select <span>Inside Cream
+                                                        Flavor</span></h6>
                                             </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor4"
-                                                    placeholder="Special Cake"><label class="input_title"
-                                                    for="insideFlavor4">Vanilla</label>
-                                            </div>
-                                            <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor4"
-                                                    placeholder="Special Cake"><label class="input_title"
-                                                    for="insideFlavor4">Tiramisu ($15/LBS)</label>
-                                            </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor1"
-                                                    placeholder="Vegetarian/ Eggless"><label class="input_title"
-                                                    for="insideFlavor1">Pista</label>
-                                            </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor2" placeholder="Vegan"><label
-                                                    class="input_title" for="insideFlavor2">White Forest</label>
-                                            </div>
-                                            <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor4"
-                                                    placeholder="Special Cake"><label class="input_title"
-                                                    for="insideFlavor4">Mixed Fruit ($15/LBS)</label>
-                                            </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor4"
-                                                    placeholder="Special Cake"><label class="input_title"
-                                                    for="insideFlavor4">Pinapple</label>
-                                            </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor4"
-                                                    placeholder="Special Cake"><label class="input_title"
-                                                    for="insideFlavor4">Butterscotch</label>
-                                            </div>
-                                            <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor4"
-                                                    placeholder="Special Cake"><label class="input_title"
-                                                    for="insideFlavor4">Orange</label>
-                                            </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor4"
-                                                    placeholder="Special Cake"><label class="input_title"
-                                                    for="insideFlavor4">Choco Mocha</label>
-                                            </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor4"
-                                                    placeholder="Special Cake"><label class="input_title"
-                                                    for="insideFlavor4">Strawberry</label>
-                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor1"
+                                                        placeholder="Vegetarian/ Eggless"><label class="input_title"
+                                                        for="insideFlavor1">Black Forest</label>
+                                                </div>
+                                                <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor2" placeholder="Vegan"><label
+                                                        class="input_title" for="insideFlavor2">Choco Mousse</label>
+                                                </div>
+                                                <div class="form-group col-lg-5" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor3"
+                                                        placeholder="Special Cake"><label class="input_title"
+                                                        for="insideFlavor3">Choco Truffle ($15/LBS)</label>
+                                                </div>
+                                                <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor3"
+                                                        placeholder="Special Cake"><label class="input_title"
+                                                        for="insideFlavor3">Mango</label>
+                                                </div>
+                                                <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor4"
+                                                        placeholder="Special Cake"><label class="input_title"
+                                                        for="insideFlavor4">Vanilla</label>
+                                                </div>
+                                                <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor4"
+                                                        placeholder="Special Cake"><label class="input_title"
+                                                        for="insideFlavor4">Tiramisu ($15/LBS)</label>
+                                                </div>
+                                                <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor1"
+                                                        placeholder="Vegetarian/ Eggless"><label class="input_title"
+                                                        for="insideFlavor1">Pista</label>
+                                                </div>
+                                                <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor2" placeholder="Vegan"><label
+                                                        class="input_title" for="insideFlavor2">White Forest</label>
+                                                </div>
+                                                <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor4"
+                                                        placeholder="Special Cake"><label class="input_title"
+                                                        for="insideFlavor4">Mixed Fruit ($15/LBS)</label>
+                                                </div>
+                                                <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor4"
+                                                        placeholder="Special Cake"><label class="input_title"
+                                                        for="insideFlavor4">Pinapple</label>
+                                                </div>
+                                                <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor4"
+                                                        placeholder="Special Cake"><label class="input_title"
+                                                        for="insideFlavor4">Butterscotch</label>
+                                                </div>
+                                                <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor4"
+                                                        placeholder="Special Cake"><label class="input_title"
+                                                        for="insideFlavor4">Orange</label>
+                                                </div>
+                                                <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor4"
+                                                        placeholder="Special Cake"><label class="input_title"
+                                                        for="insideFlavor4">Choco Mocha</label>
+                                                </div>
+                                                <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor4"
+                                                        placeholder="Special Cake"><label class="input_title"
+                                                        for="insideFlavor4">Strawberry</label>
+                                                </div>
 
-                                            <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor4"
-                                                    placeholder="Special Cake"><label class="input_title"
-                                                    for="insideFlavor4">Blueberry</label>
+                                                <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor4"
+                                                        placeholder="Special Cake"><label class="input_title"
+                                                        for="insideFlavor4">Blueberry</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="outerCream" class="col-lg-12" style="margin-top: 20px;display:block">
+                                            <div>
+                                                <h6 class="form_title" style="font-size: 16px;">Select <span>Outside Cream Flavor</span></h6>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor1"
+                                                        placeholder="Vegetarian/ Eggless"><label class="input_title"
+                                                        for="insideFlavor1">Black Forest</label>
+                                                </div>
+                                                <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor2" placeholder="Vegan"><label
+                                                        class="input_title" for="insideFlavor2">Choco Mousse</label>
+                                                </div>
+                                                <div class="form-group col-lg-5" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor3"
+                                                        placeholder="Special Cake"><label class="input_title"
+                                                        for="insideFlavor3">Choco Truffle ($15/LBS)</label>
+                                                </div>
+                                                <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor3"
+                                                        placeholder="Special Cake"><label class="input_title"
+                                                        for="insideFlavor3">Mango</label>
+                                                </div>
+                                                <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor4"
+                                                        placeholder="Special Cake"><label class="input_title"
+                                                        for="insideFlavor4">Vanilla</label>
+                                                </div>
+                                                <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor4"
+                                                        placeholder="Special Cake"><label class="input_title"
+                                                        for="insideFlavor4">Tiramisu ($15/LBS)</label>
+                                                </div>
+                                                <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor1"
+                                                        placeholder="Vegetarian/ Eggless"><label class="input_title"
+                                                        for="insideFlavor1">Pista</label>
+                                                </div>
+                                                <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor2" placeholder="Vegan"><label
+                                                        class="input_title" for="insideFlavor2">White Forest</label>
+                                                </div>
+                                                <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor4"
+                                                        placeholder="Special Cake"><label class="input_title"
+                                                        for="insideFlavor4">Mixed Fruit ($15/LBS)</label>
+                                                </div>
+                                                <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor4"
+                                                        placeholder="Special Cake"><label class="input_title"
+                                                        for="insideFlavor4">Pinapple</label>
+                                                </div>
+                                                <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor4"
+                                                        placeholder="Special Cake"><label class="input_title"
+                                                        for="insideFlavor4">Butterscotch</label>
+                                                </div>
+                                                <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor4"
+                                                        placeholder="Special Cake"><label class="input_title"
+                                                        for="insideFlavor4">Orange</label>
+                                                </div>
+                                                <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor4"
+                                                        placeholder="Special Cake"><label class="input_title"
+                                                        for="insideFlavor4">Choco Mocha</label>
+                                                </div>
+                                                <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor4"
+                                                        placeholder="Special Cake"><label class="input_title"
+                                                        for="insideFlavor4">Strawberry</label>
+                                                </div>
+                                                <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
+                                                    <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
+                                                        class="form-control" id="insideFlavor4"
+                                                        placeholder="Special Cake"><label class="input_title"
+                                                        for="insideFlavor4">Blueberry</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="outerCream" class="col-lg-12" style="margin-top: 20px;display:block">
+                                    <div id="veganCream" class="col-lg-12" style="margin-top: 20px;">
                                         <div>
-                                            <h6 class="form_title" style="font-size: 16px;">Select <span>Outside Cream Flavor</span></h6>
+                                            <h6 class="form_title" style="font-size: 16px;">Select <span>Flavor</span></h6>
                                         </div>
-                                        <div class="row">
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor1"
-                                                    placeholder="Vegetarian/ Eggless"><label class="input_title"
-                                                    for="insideFlavor1">Black Forest</label>
-                                            </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor2" placeholder="Vegan"><label
-                                                    class="input_title" for="insideFlavor2">Choco Mousse</label>
-                                            </div>
-                                            <div class="form-group col-lg-5" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor3"
-                                                    placeholder="Special Cake"><label class="input_title"
-                                                    for="insideFlavor3">Choco Truffle ($15/LBS)</label>
-                                            </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor3"
-                                                    placeholder="Special Cake"><label class="input_title"
-                                                    for="insideFlavor3">Mango</label>
-                                            </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor4"
-                                                    placeholder="Special Cake"><label class="input_title"
-                                                    for="insideFlavor4">Vanilla</label>
-                                            </div>
-                                            <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor4"
-                                                    placeholder="Special Cake"><label class="input_title"
-                                                    for="insideFlavor4">Tiramisu ($15/LBS)</label>
-                                            </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor1"
-                                                    placeholder="Vegetarian/ Eggless"><label class="input_title"
-                                                    for="insideFlavor1">Pista</label>
-                                            </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor2" placeholder="Vegan"><label
-                                                    class="input_title" for="insideFlavor2">White Forest</label>
-                                            </div>
-                                            <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor4"
-                                                    placeholder="Special Cake"><label class="input_title"
-                                                    for="insideFlavor4">Mixed Fruit ($15/LBS)</label>
-                                            </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor4"
-                                                    placeholder="Special Cake"><label class="input_title"
-                                                    for="insideFlavor4">Pinapple</label>
-                                            </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor4"
-                                                    placeholder="Special Cake"><label class="input_title"
-                                                    for="insideFlavor4">Butterscotch</label>
-                                            </div>
-                                            <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor4"
-                                                    placeholder="Special Cake"><label class="input_title"
-                                                    for="insideFlavor4">Orange</label>
-                                            </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor4"
-                                                    placeholder="Special Cake"><label class="input_title"
-                                                    for="insideFlavor4">Choco Mocha</label>
-                                            </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor4"
-                                                    placeholder="Special Cake"><label class="input_title"
-                                                    for="insideFlavor4">Strawberry</label>
-                                            </div>
-                                            <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
-                                                    class="form-control" id="insideFlavor4"
-                                                    placeholder="Special Cake"><label class="input_title"
-                                                    for="insideFlavor4">Blueberry</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="veganCream" class="col-lg-12" style="margin-top: 20px;display:none">
                                         <div class="row">
                                             <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
                                                 <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
@@ -396,7 +454,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="specialCake" class="col-lg-12" style="margin-top: 20px;display:none">
+                                    <div id="specialCake" class="col-lg-12" style="margin-top: 20px;">
+                                        <div class="col-lg-12" style="margin-top: 10px;">
+                                            <h6 class="form_title" style="font-size: 18px;">Select <span>Flavor</span>
+                                            </h6>
+                                        </div>
                                         <div class="row">
                                             <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
                                                 <input style="width:20px;height:20px;margin-right:10px" type="checkbox"
@@ -409,53 +471,6 @@
                                                     class="form-control" id="insideFlavor2" placeholder="Vegan"><label
                                                     class="input_title" for="insideFlavor2">Chocolate</label>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12" style="margin-top: 30px;">
-                                        <h6 class="form_title" style="font-size: 18px; margin-bottom: 0px;">Select <span>By Sheet</span></h6>
-                                    </div>
-                                    <div class="form-group col-lg-3">
-                                        <div class="d-flex align-items-center">
-                                            <input type="checkbox" class="form-control checkbox-02" id="insideFlavor1" placeholder="1/4 Sheet">
-                                            <p class="sheet-select">1/4 Sheet (4lbs)</p>
-                                        </div>
-                                        <label class="input_title sheet-image" for="insideFlavor1"><img src="./assets/img/1-4-sheet.PNG" style="width: 80px; height: auto;"></label>
-                                    </div>
-                                    <div class="form-group col-lg-3">
-                                        <div class="d-flex align-items-center">
-                                            <input type="checkbox" class="form-control checkbox-02" id="insideFlavor1" placeholder="1/2 Sheet">
-                                            <p class="sheet-select">1/2 Sheet (8lbs)</p>
-                                        </div>
-                                        <label class="input_title sheet-image" for="insideFlavor1"><img src="./assets/img/1-2-sheet.PNG" style="width: 80px; height: auto;"></label>
-                                    </div>
-                                    <div class="form-group col-lg-3">
-                                        <div class="d-flex align-items-center">
-                                            <input type="checkbox" class="form-control checkbox-02" id="insideFlavor1" placeholder="3/4 Sheet">
-                                            <p class="sheet-select">3/4 Sheet (12lbs)</p>
-                                        </div>
-                                        <label class="input_title sheet-image" for="insideFlavor1"><img src="./assets/img/3-4-sheet.PNG" style="width: 80px; height: auto;"></label>
-                                    </div>
-                                    <div class="form-group col-lg-3">
-                                        <div class="d-flex align-items-center">
-                                            <input type="checkbox" class="form-control checkbox-02" id="insideFlavor1" placeholder="Full Sheet">
-                                            <p class="sheet-select">Full Sheet (16lbs)</p>
-                                        </div>
-                                        <label class="input_title sheet-image" for="insideFlavor1"><img src="./assets/img/full-sheet.PNG" style="width: 90px; height: auto;"></label>
-                                    </div>
-                                    <div class="col-lg-12" style="margin-top: 30px;">
-                                        <h6 class="form_title" style="font-size: 18px; margin-bottom: 0px;">Select <span>Round Cake</span> Size
-                                        </h6>
-                                    </div>
-                                    <div class="form-group col-lg-3">
-                                        <div class="d-flex align-items-center">
-                                            <input type="checkbox" class="form-control checkbox-02" id="insideFlavor1" placeholder="8'' Round">
-                                            <p class="round-cake-select">8'' Round</p>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-lg-3">
-                                        <div class="d-flex align-items-center">
-                                            <input type="checkbox" class="form-control checkbox-02" id="insideFlavor1" placeholder="12'' Round">
-                                            <p class="round-cake-select">12'' Round</p>
                                         </div>
                                     </div>
                                 </form>
@@ -494,17 +509,6 @@
                                             </div>
                                             <div class="d-flex ml-4" style="align-items: center;">
                                                 <input type="checkbox" class="form-control checkbox" id="large">Large</input>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-lg-12">
-                                        <label class="input_title" for="inputPhone2">Select the Flavor</label>
-                                        <div class="d-flex" style="margin-top: -5px;">
-                                            <div class="d-flex" style="align-items: center;">
-                                                <input type="checkbox" class="form-control checkbox" id="cupcake-chocolate">Chocolate</input>
-                                            </div>
-                                            <div class="d-flex ml-4" style="align-items: center;">
-                                                <input type="checkbox" class="form-control checkbox" id="cupcake-vanilla">Vanilla</input>
                                             </div>
                                         </div>
                                     </div>
@@ -565,6 +569,65 @@
                 $(".address-box").removeClass("active");
             });
         });
+    </script>
+    <script>
+        $('.pickup-toggle').hide();
+        $('.delivery-toggle').hide();
+        $('#pickup').on('change', function() {
+           if ($('#pickup').is(':checked')) {
+               $('.pickup-toggle').show();
+               $('.delivery-toggle').hide();
+               $('#delivery').prop('checked', false);
+           } else {
+               $('.pickup-toggle').hide();
+           }
+        })
+        $('#delivery').on('change', function() {
+           if ($('#delivery').is(':checked')) {
+               $('.delivery-toggle').show();
+               $('.pickup-toggle').hide();
+               $('#pickup').prop('checked', false);
+           } else {
+               $('.delivery-toggle').hide();
+           }
+        })
+    </script>
+    <script>
+        $('#veganCream').hide();
+        $('#specialCake').hide();
+        $('#eggType2').on('change', function() {
+            if ($('#eggType2').is(':checked')) {
+                $('#veganCream').show();
+                $('#vegetarian').hide();
+                $('#specialCake').hide();
+                $('#eggType1').prop('checked', false);
+                $('#eggType3').prop('checked', false);
+            } else {
+                $('#veganCream').hide();
+            }
+        })
+        $('#eggType3').on('change', function() {
+            if ($('#eggType3').is(':checked')) {
+                $('#specialCake').show();
+                $('#vegetarian').hide();
+                $('#veganCream').hide();
+                $('#eggType2').prop('checked', false);
+                $('#eggType1').prop('checked', false);
+            } else {
+                $('#specialCream').hide();
+            }
+        })
+        $('#eggType1').on('change', function() {
+            if ($('#eggType1').is(':checked')) {
+                $('#vegetarian').show();
+                $('#specialCake').hide();
+                $('#veganCream').hide();
+                $('#eggType2').prop('checked', false);
+                $('#eggType3').prop('checked', false);
+            } else {
+                $('#vegetarian').hide();
+            }
+        })
     </script>
 </body>
 </html>
