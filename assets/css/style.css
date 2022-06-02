@@ -1750,6 +1750,8 @@ button:focus {
   margin-bottom: 45px;
   overflow: hidden;
   position: relative;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .formify_signup_fullwidth_two .form_tab_two .form_tab li {
