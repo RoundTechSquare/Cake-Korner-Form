@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from picmaticweb.com/html/form-demo/formify/index-20.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 Jun 2022 14:00:51 GMT -->
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="assets/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendors/nice-select/css/nice-select.css" rel="stylesheet">
+    <link href="assets/vendors/elagent-icon/style.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet">
+
+
+    <title>Formify</title>
+</head>
+
+<body>
+    <div class="body_wrapper frm-vh-md-100">
+        <div class="formify_body formify_signup_fullwidth formify_signup_fullwidth_two d-flex">
+            <div class="formify_left_fullwidth formify_left_top_logo frm-vh-md-100 d-flex align-items-center justify-content-center"
+                data-bg-color="#FFEFF9">
+                <a href="index.html" class="top_logo"><img src="assets/img/logo.png" alt=""></a>
+                <img class="img-fluid" src="assets/img/personal_img.png" alt="">
+            </div>
+            <div class="formify_right_fullwidth d-flex align-items-center justify-content-center">
+                <div class="form_tab_two">
+                    <ul class="nav nav-tabs form_tab" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active show" id="One-tab" data-toggle="tab" href="#One" role="tab"
+                                aria-controls="One" aria-selected="true">
+                                <span>1</span>
+                                Personal
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="Two-tab" data-toggle="tab" href="#Two" role="tab"
+                                aria-controls="Two" aria-selected="false">
+                                <span>2</span>
+                                Experience
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="Three-tab" data-toggle="tab" href="#Three" role="tab"
+                                aria-controls="Three" aria-selected="false">
+                                <span>3</span>
+                                Education
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="Four-tab" data-toggle="tab" href="#Four" role="tab"
+                                aria-controls="Four" aria-selected="false">
+                                <span>4</span>
+                                Confirm
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="One" role="tabpanel" aria-labelledby="One-tab">
+                            <div class="formify_box">
+                                <h4 class="form_title">Tell us about your <span>Personal Details</span></h4>
+                                <form action="#" class="signup_form row">
+                                    <div class="form-group col-md-6">
+                                        <label class="input_title" for="inputName">First Name</label>
+                                        <input type="text" class="form-control" id="inputName"
+                                            placeholder="Enter First Name" required="">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="input_title" for="inputName2">Last Name</label>
+                                        <input type="text" class="form-control" id="inputName2"
+                                            placeholder="Enter Last Name" required="">
+                                    </div>
+                                    <div class="form-group col-lg-12">
+                                        <label class="input_title" for="inputAddress">Street Address</label>
+                                        <input type="text" class="form-control" id="inputAddress"
+                                            placeholder="PO Box 16122 Collins Street West Victoria" required="">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="input_title">Gender</label>
+                                        <select class="niceselect">
+                                            <option value="1">Male</option>
+                                            <option value="2">Female</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label class="input_title">State/Province</label>
+                                        <select class="niceselect">
+                                            <option value="1">Male</option>
+                                            <option value="2">Female</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label class="input_title" for="inputzip">Zip code</label>
+                                        <input type="text" class="form-control" id="inputzip" placeholder="94102"
+                                            required="">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="input_title" for="inputPhone">Phone number</label>
+                                        <input type="text" class="form-control" id="inputPhone" placeholder="97501456"
+                                            required="">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="input_title" for="inputEmail">Email address</label>
+                                        <input type="email" class="form-control" id="inputEmail"
+                                            placeholder="Email address" required="">
+                                    </div>
+                                </form>
+                                <div class="next_button text-right">
+                                    <button type="submit" class="btn thm_btn red_btn next_tab">Next to Your
+                                        Experience <i class="arrow_right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="Two" role="tabpanel" aria-labelledby="Two-tab">
+                            <div class="formify_box">
+                                <h4 class="form_title">Tell us about your <span>Experience Details</span></h4>
+                                <form action="#" class="signup_form row">
+                                    <div class="form-group col-lg-6">
+                                        <label class="input_title" for="inputName3">Job Title</label>
+                                        <input type="text" class="form-control" id="inputName3" placeholder="Job Title">
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label class="input_title" for="inputName4">Employer</label>
+                                        <input type="text" class="form-control" id="inputName4"
+                                            placeholder="Employer Name">
+                                    </div>
+                                    <div class="form-group col-lg-3">
+                                        <label class="input_title" for="inputzip2">Start & End date</label>
+                                        <input type="text" class="form-control" id="inputzip2" placeholder="NY">
+                                    </div>
+                                    <div class="form-group col-lg-3">
+                                        <label class="input_title" for="inputzip2">Zip Code</label>
+                                        <input type="text" class="form-control" id="inputzip2" placeholder="94102">
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label class="input_title">City</label>
+                                        <select class="niceselect">
+                                            <option value="1">USA</option>
+                                            <option value="2">London</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-lg-12">
+                                        <label class="input_title" for="inputPhone2">Description</label>
+                                        <textarea name="message" id="message" cols="30" rows="10"
+                                            placeholder="Write your job experience"></textarea>
+                                    </div>
+                                </form>
+                                <div class="next_button d-flex align-items-center justify-content-between">
+                                    <a href="#" class="prev_tab"><i class="arrow_left"></i> Back</a>
+                                    <button type="submit" class="btn thm_btn red_btn next_tab">Next to Your
+                                        Education <i class="arrow_right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="Three" role="tabpanel" aria-labelledby="Three-tab">
+                            <div class="formify_box">
+                                <h4 class="form_title">Tell us about your <span>Education Details</span></h4>
+                                <form action="#" class="signup_form row">
+                                    <div class="form-group col-lg-6">
+                                        <label class="input_title" for="inputName5">School</label>
+                                        <input type="text" class="form-control" id="inputName5"
+                                            placeholder="School Name">
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label class="input_title" for="inputName6">Degree</label>
+                                        <input type="text" class="form-control" id="inputName6" placeholder="Degree">
+                                    </div>
+                                    <div class="form-group col-lg-3">
+                                        <label class="input_title" for="inputzip5">Start & End date</label>
+                                        <input type="text" class="form-control" id="inputzip5" placeholder="NY">
+                                    </div>
+                                    <div class="form-group col-lg-3">
+                                        <label class="input_title" for="inputzip6">Zip Code</label>
+                                        <input type="text" class="form-control" id="inputzip6" placeholder="94102">
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label class="input_title">City</label>
+                                        <select class="niceselect">
+                                            <option value="1">San fransisco</option>
+                                            <option value="2">London</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-lg-12">
+                                        <label class="input_title" for="inputPhone2">Description</label>
+                                        <textarea name="message" id="message" cols="30" rows="10"
+                                            placeholder="Write your job experience"></textarea>
+                                    </div>
+                                </form>
+                                <div class="next_button d-flex align-items-center justify-content-between">
+                                    <a href="#" class="prev_tab"><i class="arrow_left"></i> Back</a>
+                                    <button type="submit" class="btn thm_btn red_btn next_tab">Next to Your
+                                        Confirm <i class="arrow_right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="Four" role="tabpanel" aria-labelledby="Four-tab">
+                            <div class="formify_box">
+                                <h4 class="form_title">Tell us about your <span>Confirm Details</span></h4>
+                                <form action="#" class="signup_form row">
+                                    <div class="form-group col-lg-12">
+                                        <label class="input_title" for="inputPhone2">Description</label>
+                                        <textarea name="message" id="message" cols="30" rows="10"
+                                            placeholder="Write your job experience"></textarea>
+                                    </div>
+                                    <div class="form-group col-lg-12 d-flex align-items-center justify-content-between">
+                                        <a href="#" class="prev_tab"><i class="arrow_left"></i> Back</a>
+                                        <button type="submit" class="btn thm_btn red_btn">Submit Your
+                                            Application</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+    <script src="assets/js/jquery-3.4.1.min.js"></script>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="assets/vendors/bootstrap/js/popper.min.js"></script>
+    <script src="assets/vendors/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/vendors/nice-select/js/jquery.nice-select.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+
+<!-- Mirrored from picmaticweb.com/html/form-demo/formify/index-20.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 Jun 2022 14:00:54 GMT -->
+</html>
