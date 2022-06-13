@@ -272,7 +272,7 @@
     margin-right: auto;
   }
   .formify_signup_fullwidth_two .form_tab_two {
-    padding: 50px 0px;
+    padding: 0px 0px;
   }
   .formify_signup_fullwidth_two .form_tab_two .formify_box {
     max-width: 600px;
@@ -293,6 +293,13 @@
   .page-23 .formify_box.formify_countdown {
     max-width: 500px;
     margin-left: auto;
+  }
+
+  .extra-info {
+    font-size: 14px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    margin-top: -10px;
   }
 }
 

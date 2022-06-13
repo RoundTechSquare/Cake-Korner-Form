@@ -1759,6 +1759,10 @@ button:focus {
   width: auto;
 }
 
+.extra-info {
+  font-size: 13px;
+}
+
 .formify_signup_fullwidth_two .form_tab_two .form_tab li .nav-link {
   font-size: 15px;
   color: #b0b9c1;
