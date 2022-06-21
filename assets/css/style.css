@@ -2091,11 +2091,16 @@ button:focus {
   margin-top: 30px;
   padding-left: 15px;
   padding-right: 15px;
-  padding-top: 25px;
+  padding-top: 20px;
   padding-bottom: 25px;
   border-radius: 5px;
   border: 1px solid #C8C8C8;
   box-shadow: rgba(0, 0, 0, 0.06) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+
+.address-radio {
+  margin-bottom: 15px;
+  transform: scale(1.5);
 }
 
 .address-box .shop-details h5 {
@@ -2222,22 +2227,6 @@ button:focus {
   .two-btn .decline-btn {
     margin-right: 20px !important;
   }
-}
-
-.address-box {
-  cursor: pointer;
-}
-
-.address-box-02 {
-  cursor: pointer;
-}
-
-.address-box.active {
-  border: 2px solid #E084AC;
-}
-
-.address-box-02.active {
-  border: 2px solid #E084AC;
 }
 
 .formify_right_fullwidth {
