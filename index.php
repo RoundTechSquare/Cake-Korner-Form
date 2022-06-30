@@ -439,13 +439,13 @@
                                                     while ($row = $result->fetch_assoc()) {
                                                 ?>
                                                         <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
-                                                            <input style="width:20px; height:20px; margin-right:10px" type="radio" name="insideRegularFlavors" value="<?= $row['id'] ?>" class="form-control insideRegularFlavors" id="insideRegularFlavors-<?= $row['id'] ?>"><label class="input_title" for="insideRegularFlavors-<?= $row['id'] ?>"><?= $row['name'] ?></label>
+                                                            <input style="width:20px; height:20px; margin-right:10px" type="radio" onclick="$('#insideVegetarianFlavorsType').val('regular')" name="insideVegetarianFlavors" value="<?= $row['id'] ?>" class="form-control insideVegetarianFlavors" id="insideRegularFlavors-<?= $row['id'] ?>"><label class="input_title" for="insideRegularFlavors-<?= $row['id'] ?>"><?= $row['name'] ?></label>
                                                         </div>
                                                 <?php $i++;
                                                     }
                                                 }
                                                 ?>
-                                                <input type="hidden" id="insideRegularFlavors" />
+                                                <input type="hidden" id="insideVegetarianFlavorsType" />
                                             </div>
                                             <div>
                                                 <h6 class="form_title" style="font-size: 16px; margin-top: 15px;">Special Flavors</h6>
@@ -459,13 +459,12 @@
                                                     while ($row = $result->fetch_assoc()) {
                                                 ?>
                                                         <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
-                                                            <input style="width:20px;height:20px;margin-right:10px" type="radio" name="insideSpecialFlavors" value="<?= $row['id'] ?>" class="form-control insideSpecialFlavors" id="insideSpecialFlavors-<?= $row['id'] ?>"><label class="input_title" for="insideSpecialFlavors-<?= $row['id'] ?>"><?= $row['name'] ?></label>
+                                                            <input style="width:20px;height:20px;margin-right:10px" type="radio" name="insideVegetarianFlavors" onclick="$('#insideVegetarianFlavorsType').val('special')" value="<?= $row['id'] ?>" class="form-control insideVegetarianFlavors" id="insideSpecialFlavors-<?= $row['id'] ?>"><label class="input_title" for="insideSpecialFlavors-<?= $row['id'] ?>"><?= $row['name'] ?></label>
                                                         </div>
                                                 <?php $i++;
                                                     }
                                                 }
                                                 ?>
-                                                <input type="hidden" id="insideSpecialFlavors" />
                                             </div>
                                         </div>
                                         <div id="outerCream" class="col-lg-12" style="margin-top: 20px;display:block">
@@ -485,13 +484,13 @@
                                                     while ($row = $result->fetch_assoc()) {
                                                 ?>
                                                         <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
-                                                            <input style="width:20px;height:20px;margin-right:10px" type="radio" name="outsideRegularFlavors" value="<?= $row['id'] ?>" class="form-control outsideRegularFlavors" id="outsideRegularFlavors-<?= $row['id'] ?>"><label class="input_title" for="outsideRegularFlavors-<?= $row['id'] ?>"><?= $row['name'] ?></label>
+                                                            <input style="width:20px;height:20px;margin-right:10px" type="radio" name="outsideVegetarianFlavors" onclick="$('#outsideVegetarianFlavorsType').val('regular')" value="<?= $row['id'] ?>" class="form-control outsideVegetarianFlavors" id="outsideRegularFlavors-<?= $row['id'] ?>"><label class="input_title" for="outsideRegularFlavors-<?= $row['id'] ?>"><?= $row['name'] ?></label>
                                                         </div>
                                                 <?php $i++;
                                                     }
                                                 }
                                                 ?>
-                                                <input type="hidden" id="outsideRegularFlavors" />
+                                                <input type="hidden" id="outsideVegetarianFlavorsType" />
                                             </div>
                                             <div>
                                                 <h6 class="form_title" style="font-size: 16px; margin-top: 15px;">Special Flavors</h6>
@@ -505,13 +504,12 @@
                                                     while ($row = $result->fetch_assoc()) {
                                                 ?>
                                                         <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
-                                                            <input style="width:20px;height:20px;margin-right:10px" type="radio" name="outsideSpecialFlavors" value="<?= $row['id'] ?>" class="form-control outsideSpecialFlavors" id="outsideSpecialFlavors-<?= $row['id'] ?>"><label class="input_title" for="outsideSpecialFlavors-<?= $row['id'] ?>"><?= $row['name'] ?></label>
+                                                            <input style="width:20px;height:20px;margin-right:10px" type="radio" onclick="$('#outsideVegetarianFlavorsType').val('special')" name="outsideVegetarianFlavors" value="<?= $row['id'] ?>" class="form-control outsideVegetarianFlavors" id="outsideSpecialFlavors-<?= $row['id'] ?>"><label class="input_title" for="outsideSpecialFlavors-<?= $row['id'] ?>"><?= $row['name'] ?></label>
                                                         </div>
                                                 <?php $i++;
                                                     }
                                                 }
                                                 ?>
-                                                <input type="hidden" id="outsideSpecialFlavors" />
                                             </div>
                                         </div>
                                     </div>
@@ -535,7 +533,6 @@
                                                 }
                                             }
                                             ?>
-                                            <input type="hidden" id="veganFlavors" />
                                         </div>
                                     </div>
                                     <div id="specialCake" class="col-lg-12" style="margin-top: 20px;">
@@ -558,7 +555,6 @@
                                                 }
                                             }
                                             ?>
-                                            <input type="hidden" id="sugarFreeFlavors" />
                                         </div>
                                     </div>
                                 </div>
@@ -578,10 +574,8 @@
                                     var cakeType = "";
                                     var sheetType = "";
                                     var roundCakeSize = "";
-                                    var insideRegularFlavor = "";
-                                    var insideSpecialFlavor = "";
-                                    var outsideRegularFlavor = "";
-                                    var outsideSpecialFlavor = "";
+                                    var insideVegetarianFlavors = "";
+                                    var outsideVegetarianFlavors = "";
                                     var veganFlavor = "";
                                     var sugarFreeFlavor = "";
 
@@ -594,17 +588,11 @@
                                     if ($('input[name=cakeSize]:checked').length > 0) {
                                         roundCakeSize = document.querySelector('input[name=cakeSize]:checked').value;
                                     }
-                                    if ($('input[name=insideRegularFlavors]:checked').length > 0) {
-                                        insideRegularFlavor = document.querySelector('input[name=insideRegularFlavors]:checked').value;
+                                    if ($('input[name=insideVegetarianFlavors]:checked').length > 0) {
+                                        insideVegetarianFlavors = document.querySelector('input[name=insideVegetarianFlavors]:checked').value;
                                     }
-                                    if ($('input[name=insideSpecialFlavors]:checked').length > 0) {
-                                        insideSpecialFlavor = document.querySelector('input[name=insideSpecialFlavors]:checked').value;
-                                    }
-                                    if ($('input[name=outsideRegularFlavors]:checked').length > 0) {
-                                        outsideRegularFlavor = document.querySelector('input[name=outsideRegularFlavors]:checked').value;
-                                    }
-                                    if ($('input[name=outsideSpecialFlavors]:checked').length > 0) {
-                                        outsideSpecialFlavor = document.querySelector('input[name=outsideSpecialFlavors]:checked').value;
+                                    if ($('input[name=outsideVegetarianFlavors]:checked').length > 0) {
+                                        outsideVegetarianFlavors = document.querySelector('input[name=outsideVegetarianFlavors]:checked').value;
                                     }
                                     if ($('input[name=veganFlavors]:checked').length > 0) {
                                         veganFlavor = document.querySelector('input[name=veganFlavors]:checked').value;
@@ -619,34 +607,17 @@
                                         notyf.error('Please select the type of cake');
                                     } else if (cakeType == "Vegetarian/Eggless") {
                                         console.log(cakeType);
-                                        var insideFlavors = "";
-                                        var outsideFlavors = "";
-
-                                        if (insideRegularFlavor == "" && insideSpecialFlavor == "") {
-                                            document.querySelector('input[name=insideRegularFlavors]').focus();
-                                            insideFlavors = "";
-                                        } else {
-                                            insideFlavors = "inside";
-                                        }
-
-                                        if (outsideRegularFlavor == "" && outsideSpecialFlavor == "") {
-                                            document.querySelector('input[name=outsideRegularFlavors]').focus();
-                                            outsideFlavors = "";
-                                        } else {
-                                            outsideFlavors = "outside";
-                                        }
-
-                                        if (cakeType == "" || sheetType == "" || roundCakeSize == "" || insideFlavors == "" || outsideFlavors == "") {
+                                        if (cakeType == "" || sheetType == "" || roundCakeSize == "" || insideVegetarianFlavors == "" || outsideVegetarianFlavors == "") {
                                             if (cakeType == "") {
                                                 document.querySelector('input[name=cakeType]').focus();
                                             } else if (sheetType == "") {
                                                 document.querySelector('input[name=cakeSheet]').focus();
                                             } else if (roundCakeSize == "") {
                                                 document.querySelector('input[name=cakeSize]').focus();
-                                            } else if (insideFlavors == "") {
-                                                document.querySelector('input[name=insideRegularFlavors]').focus();
-                                            } else if (outsideFlavors == "") {
-                                                document.querySelector('input[name=outsideRegularFlavors]').focus();
+                                            } else if (insideVegetarianFlavors == "") {
+                                                document.querySelector('input[name=insideVegetarianFlavors]').focus();
+                                            } else if (outsideVegetarianFlavors == "") {
+                                                document.querySelector('input[name=outsideVegetarianFlavors]').focus();
                                             }
                                             notyf.error('Please fill all the details');
                                         } else {
@@ -1361,6 +1332,20 @@
                                         }
                                         notyf.error('Please fill all the details');
                                     } else {
+                                        if ($('#insideVegetarianFlavorsType').val() == "regular") {
+                                            var insideRegularFlavors = document.querySelector('input[name=insideVegetarianFlavors]:checked').value;
+                                            var insideSpecialFlavors = '-';
+                                        } else if ($('#insideVegetarianFlavorsType').val() == "special") {
+                                            var insideRegularFlavors = '-';
+                                            var insideSpecialFlavors = document.querySelector('input[name=insideVegetarianFlavors]:checked').value;
+                                        }
+                                        if ($('#outsideVegetarianFlavorsType').val() == "regular") {
+                                            var outsideRegularFlavors = document.querySelector('input[name=outsideVegetarianFlavors]:checked').value;
+                                            var outsideSpecialFlavors = '-';
+                                        } else if ($('#outsideVegetarianFlavorsType').val() == "special") {
+                                            var outsideRegularFlavors = '-';
+                                            var outsideSpecialFlavors = document.querySelector('input[name=outsideVegetarianFlavors]:checked').value;
+                                        }
                                         const datasend = {
                                             locationID: document.querySelector('input[name=address]:checked').value,
                                             customerFirstName: document.getElementById('fName').value,
@@ -1379,10 +1364,10 @@
                                             cakeTypeID: document.querySelector('input[name=cakeType]:checked').value,
                                             sheetTypeID: document.querySelector('input[name=cakeSheet]:checked').value,
                                             roundCakeID: document.querySelector('input[name=cakeSize]:checked').value,
-                                            insideRegularFlavors: document.querySelector('input[name=insideRegularFlavors]:checked').value,
-                                            insideSpecialFlavors: document.querySelector('input[name=insideSpecialFlavors]:checked').value,
-                                            outsideRegularFlavors: document.querySelector('input[name=outsideRegularFlavors]:checked').value,
-                                            outsideSpecialFlavors: document.querySelector('input[name=outsideSpecialFlavors]:checked').value,
+                                            insideRegularFlavors: insideRegularFlavors,
+                                            insideSpecialFlavors: insideSpecialFlavors,
+                                            outsideRegularFlavors: outsideRegularFlavors,
+                                            outsideSpecialFlavors: outsideSpecialFlavors,
                                             veganFlavors: document.querySelector('input[name=veganFlavors]:checked').value,
                                             sugarFreeFlavors: document.querySelector('input[name=sugarFreeFlavors]:checked').value,
                                             occasion: document.getElementById('occasion').value,
