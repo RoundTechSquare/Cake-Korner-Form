@@ -14,6 +14,8 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/responsive.css" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Special Cake Order | Cake Korner</title>
     <style>
         .signature-component {
@@ -92,100 +94,125 @@
                                 Other Details
                             </a>
                         </li>
-
                     </ul>
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade active show" id="Location" role="tabpanel" aria-labelledby="Location-tab">
+                        <div class="tab-pane" id="Location" role="tabpanel" aria-labelledby="Location-tab" style="display: block;">
                             <div class="formify_box" style="width: 100%">
                                 <h4 class="form_title">Select the <span>Location</span></h4>
                                 <p style="margin-bottom: 0px;">You want to order the cake at</p>
-                                <form action="#" class="signup_form row">
-                                    <div class="d-flex locations" style="justify-content: space-between;">
-                                        <?php
-                                        $query = "SELECT `streetName`, `city`, `postalCode`, `state`, `country`, `phoneNumber` FROM `locations` WHERE 1";
-                                        $result = $con->query($query);
-                                        if ($result->num_rows > 0) {
-                                            $i = 1;
-                                            while ($row = $result->fetch_assoc()) {
-                                        ?>
-                                                <div class="address-box" style="margin-left: 10px;">
-                                                    <input type="radio" class="address-radio" name="address" value="city-<?= $i ?>">
-                                                    <div class="shop-details">
-                                                        <h5>Cake Korner</h5>
-                                                        <p><?= $row['city'] ?>, <?= $row['state'] ?> <?= $row['postalCode'] ?></p>
-                                                        <p><?= $row['streetName'] ?>, <?= $row['city'] ?><br /><?= $row['state'] ?> <?= $row['postalCode'] ?>,<?= $row['country'] ?></p>
-                                                        <p>Phone: <?= $row['phoneNumber'] ?></p>
-                                                    </div>
-                                                    </input>
+                                <div class="d-flex locations" style="justify-content: space-between;">
+                                    <?php
+                                    $query = "SELECT `id`, `streetName`, `city`, `postalCode`, `state`, `country`, `phoneNumber` FROM `locations` WHERE 1";
+                                    $result = $con->query($query);
+                                    if ($result->num_rows > 0) {
+                                        $i = 1;
+                                        while ($row = $result->fetch_assoc()) {
+                                    ?>
+                                            <div class="address-box" style="margin-left: 10px;">
+                                                <input type="radio" class="address-radio" onclick="$('#phoneNumberSelected').attr('href', 'tel:<?= $row['phoneNumber'] ?>' ); $('#phoneNumberSelected').html('<?= $row['phoneNumber'] ?>');" name="address" value="<?= $row['id'] ?>">
+                                                <div class="shop-details">
+                                                    <h5>Cake Korner</h5>
+                                                    <p><?= $row['city'] ?>, <?= $row['state'] ?> <?= $row['postalCode'] ?></p>
+                                                    <p><?= $row['streetName'] ?>, <?= $row['city'] ?><br /><?= $row['state'] ?> <?= $row['postalCode'] ?>,<?= $row['country'] ?></p>
+                                                    <p>Phone: <?= $row['phoneNumber'] ?></p>
                                                 </div>
-                                            <?php $i++;
-                                            }
-                                        } else {
-                                            ?>
-                                            <p>No Locations found.</p>
-                                        <?php
+                                                </input>
+                                            </div>
+                                        <?php $i++;
                                         }
+                                    } else {
                                         ?>
-                                    </div>
-                                </form>
-                                <div class="next_button text-right">
-                                    <button type="submit" class="btn thm_btn red_btn next_tab">Next <i class="arrow_right"></i></button>
+                                        <p>No Locations found.</p>
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
+                                <div class="next_button text-right">
+                                    <!-- <input type="hidden" id="phoneNumberSelected" /> -->
+                                    <p id="error_display" style="display: none;color: red">Please fill above details</p>
+                                    <button type="button" onclick="locationSelected()" class="btn thm_btn red_btn">Next <i class="arrow_right"></i></button>
+                                </div>
+                                <script>
+                                    function locationSelected() {
+                                        const notyf = new Notyf({
+                                            duration: 2000,
+                                            position: {
+                                                x: 'right',
+                                                y: 'top',
+                                            },
+                                        });
+                                        var location = "";
+                                        if ($('input[name=address]:checked').length > 0) {
+                                            location = document.querySelector('input[name=address]:checked').value;
+                                            console.log(location);
+                                        }
+                                        if (location == "") {
+                                            notyf.error('Please select the location first');
+                                        } else {
+                                            document.getElementById('Customer').style.display = 'flex';
+                                            $('#Customer-tab').addClass('active show');
+                                            document.getElementById('Location').style.display = 'none';
+                                        }
+                                    }
+                                </script>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="Customer" role="tabpanel" aria-labelledby="Customer-tab">
+                        <div class="tab-pane" id="Customer" role="tabpanel" aria-labelledby="Customer-tab" style="display: none;">
                             <div class="formify_box">
-                                <form action="#" class="signup_form row">
+                                <div class="row">
                                     <div class="form-group col-md-6">
-                                        <label class="input_title" for="inputName">First Name</label>
-                                        <input type="text" class="form-control" id="inputName" placeholder="Enter First Name" required="">
+                                        <label class="input_title" for="fName">First Name</label>
+                                        <input type="text" class="form-control" id="fName" placeholder="Enter First Name">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label class="input_title" for="inputName2">Last Name</label>
-                                        <input type="text" class="form-control" id="inputName2" placeholder="Enter Last Name" required="">
+                                        <label class="input_title" for="lName">Last Name</label>
+                                        <input type="text" class="form-control" id="lName" placeholder="Enter Last Name">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label class="input_title" for="inputPhone">Phone number</label>
-                                        <input type="text" class="form-control" id="inputPhone" placeholder="12256128602" required="">
+                                        <label class="input_title" for="phone">Phone number</label>
+                                        <input type="text" class="form-control" id="phone" placeholder="12256128602" maxlength="13">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label class="input_title" for="inputEmail">Email address</label>
-                                        <input type="email" class="form-control" id="inputEmail" placeholder="Email address" required="">
+                                        <label class="input_title" for="cEmail">Email address</label>
+                                        <input type="email" class="form-control" required id="cEmail" placeholder="Email address">
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="input_title" for="orderType">Select Order Type</label>
                                         <div class="d-flex" style="margin-top: -5px;">
                                             <div class="d-flex" style="align-items: center;">
-                                                <input type="radio" class="form-control checkbox" id="pickup">Pickup</input>
+                                                <input type="radio" class="form-control checkbox" name="orderType" id="pickup" value="Pickup" onclick="$('#submitBtn').show();">Pickup</input>
                                             </div>
                                             <div class="d-flex ml-4" style="align-items: center;">
-                                                <input type="radio" class="form-control checkbox" id="delivery">Delivery</input>
+                                                <input type="radio" class="form-control checkbox" name="orderType" id="delivery" value="Delivery" onclick="$('#submitBtn').hide();">Delivery</input>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row ml-0 pickup-toggle" style="max-width: 100%;">
+                                    <div class="row ml-0 pickup-toggle" style="width: 100%;">
                                         <div class="form-group col-md-6">
                                             <label class="input_title" id="orderPickupDate">Order Pickup Date</label>
                                             <input type="text" id="datepicker" class="form-control datepicker-control" placeholder="06/02/2022">
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label class="input_title" id="orderPickupTime">Order Pickup Time</label>
+                                            <label class="input_title" for="orderPickupTime">Order Pickup Time</label>
                                             <input type="time" id="orderPickupTime" class="form-control" style="padding-right: 10px" placeholder="11:59 PM"></input>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label class="input_title" id="orderPickupName">Order Pickup Person
+                                            <label class="input_title" for="orderPickupName">Order Pickup Person
                                                 Name</label>
                                             <input type="text" id="orderPickupName" class="form-control" placeholder="John Doe"></input>
                                         </div>
                                     </div>
                                     <div class="row ml-0 delivery-toggle" style="max-width: 100%;">
                                         <div class="form-group col-md-12">
-                                            <label class="input_title" id="orderDeliveryAddress">Delivery
+                                            <label class="input_title" for="orderDeliveryAddress">Delivery
                                                 Address</label>
                                             <input type="text" id="orderDeliveryAddress" class="form-control" placeholder="Street Name"></input>
                                         </div>
+                                        <div class="form-group col-md-12">
+                                            <input type="text" id="orderDeliveryAppartment" class="form-control" placeholder="Appartment Number"></input>
+                                        </div>
                                         <div class="form-group col-md-4">
-                                            <input type="text" id="orderPDeliveryCity" class="form-control" placeholder="City"></input>
+                                            <input type="text" id="orderDeliveryCity" class="form-control" placeholder="City"></input>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <input type="text" id="orderDeliveryState" class="form-control" placeholder="State"></input>
@@ -193,23 +220,125 @@
                                         <div class="form-group col-md-4">
                                             <input type="text" id="orderDeliveryZIP" class="form-control" placeholder="ZIP Code"></input>
                                         </div>
-                                        <p class="delivery-condition">All the deliveries will be charged <span class="shipping-price">$30</span> separately having distance 20 miles
+                                        <p class="delivery-condition" style="margin-top: 0px;">All the deliveries will be charged <span class="shipping-price">$30</span> separately having distance 20 miles
                                             away from the restaurant.</p>
                                         <div class="d-flex two-btn" style="width: 100%;">
-                                            <button type="submit" class="btn thm_btn red_btn next_tab ml-4 agree-btn">I
-                                                Agree<i class="arrow_right"></i></button>
-                                            <button type="submit" class="btn thm_btn red_btn next_tab ml-4 decline-btn">I Decline<i class="arrow_right"></i></button>
+                                            <button type="button" class="btn thm_btn red_btn next_tab ml-4 agree-btn" onclick="$('#submitBtn').show();">I Agree<i class="arrow_right"></i></button>
+                                            <button type="button" class="btn thm_btn red_btn next_tab ml-4 decline-btn" onclick="declineOption()">I Decline<i class="arrow_right"></i></button>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
                                 <div class="next_button text-right">
-                                    <button type="submit" class="btn thm_btn red_btn next_tab">Next<i class="arrow_right"></i></button>
+                                    <button type="button" id="submitBtn" onclick="CustomerDetails()" class="btn thm_btn red_btn" style="display: none;">Next<i class="arrow_right"></i></button>
                                 </div>
                             </div>
+                            <script>
+                                function declineOption() {
+                                    const notyf = new Notyf({
+                                        duration: 1500,
+                                        position: {
+                                            x: 'right',
+                                            y: 'top',
+                                        },
+                                    });
+                                    notyf.error('You have declined the terms and conditions for the delivery of cake.');
+                                    setTimeout(redirection, 1500);
+
+                                    function redirection() {
+                                        window.location.reload();
+                                    }
+                                }
+
+                                function CustomerDetails() {
+                                    const notyf = new Notyf({
+                                        duration: 1500,
+                                        position: {
+                                            x: 'right',
+                                            y: 'top',
+                                        },
+                                    });
+                                    var fName = document.getElementById('fName').value;
+                                    var lName = document.getElementById('lName').value;
+                                    var email = document.getElementById('cEmail').value;
+                                    var phone = document.getElementById('phone').value;
+                                    var orderPickupDate = document.getElementById('datepicker').value;
+                                    var orderPickupTime = document.getElementById('orderPickupTime').value;
+                                    var orderPickupPerson = document.getElementById('orderPickupName').value;
+                                    var deliveryStreetName = document.getElementById('orderDeliveryAddress').value;
+                                    var deliveryAppartmentNumber = document.getElementById('orderDeliveryAppartment').value;
+                                    var deliveryCity = document.getElementById('orderDeliveryCity').value;
+                                    var deliveryState = document.getElementById('orderDeliveryState').value;
+                                    var deliveryZip = document.getElementById('orderDeliveryZIP').value;
+                                    var orderType = "";
+
+                                    if ($('input[name=orderType]:checked').length > 0) {
+                                        orderType = document.querySelector('input[name=orderType]:checked').value;
+                                        console.log(orderType);
+                                    }
+
+                                    /* VALIDATIONS */
+                                    if (orderType == "") {
+                                        notyf.error('Plase select the order type');
+                                        document.querySelector('input[name=orderType]').focus();
+                                    } else if (orderType == "Pickup") {
+                                        if (fName == "" || lName == "" || email == "" || phone == "" || orderPickupDate == "" || orderPickupTime == "" || orderPickupPerson == "") {
+                                            if (fName == "") {
+                                                document.getElementById('fName').focus();
+                                            } else if (lName == "") {
+                                                document.getElementById('lName').focus();
+                                            } else if (email == "") {
+                                                document.getElementById('cEmail').focus();
+                                            } else if (phone == "") {
+                                                document.getElementById('phone').focus();
+                                            } else if (orderPickupDate == "") {
+                                                document.getElementById('datepicker').focus();
+                                            } else if (orderPickupTime == "") {
+                                                document.getElementById('orderPickupTime').focus();
+                                            } else if (orderPickupPerson == "") {
+                                                document.getElementById('orderPickupName').focus();
+                                            }
+                                            notyf.error('Please fill all the details');
+                                        } else {
+                                            document.getElementById('Cakedetails').style.display = 'flex';
+                                            $('#Cakedetails-tab').addClass('active show');
+                                            document.getElementById('Customer').style.display = 'none';
+                                        }
+                                    } else if (orderType == "Delivery") {
+                                        if (fName == "" || lName == "" || email == "" || phone == "" || deliveryStreetName == "" || deliveryCity == "" || deliveryAppartmentNumber == "" || deliveryState == "" || deliveryZip == "") {
+                                            if (fName == "") {
+                                                document.getElementById('fName').focus();
+                                            } else if (lName == "") {
+                                                document.getElementById('lName').focus();
+                                            } else if (email == "") {
+                                                document.getElementById('cEmail').focus();
+                                            } else if (phone == "") {
+                                                document.getElementById('phone').focus();
+                                            } else if (deliveryStreetName == "") {
+                                                document.getElementById('orderDeliveryAddress').focus();
+                                            } else if (deliveryAppartmentNumber == "") {
+                                                document.getElementById('orderDeliveryAppartment').focus();
+                                            } else if (deliveryState == "") {
+                                                document.getElementById('orderDeliveryState').focus();
+                                            } else if (deliveryCity == "") {
+                                                document.getElementById('orderDeliveryCity').focus();
+                                            } else if (deliveryZip = "") {
+                                                document.getElementById('orderDeliveryZIP').focus();
+                                            }
+                                            notyf.error('Please fill all the details');
+                                        } else {
+                                            document.getElementById('Cakedetails').style.display = 'flex';
+                                            $('#Cakedetails-tab').addClass('active show');
+                                            document.getElementById('Customer').style.display = 'none';
+                                        }
+                                    } else {
+                                        notyf.error('Please fill all the details');
+                                    }
+                                }
+                            </script>
                         </div>
-                        <div class="tab-pane fade" id="Cakedetails" role="tabpanel" aria-labelledby="Cakedetails-tab">
+                        <div class="tab-pane" id="Cakedetails" role="tabpanel" aria-labelledby="Cakedetails-tab" style="display: none;">
                             <div class="formify_box">
-                                <form action="#" class="signup_form row">
+                                <div class="signup_form row">
                                     <div class="col-lg-12" style="margin-top: 10px;">
                                         <h6 class="form_title" style="font-size: 18px;">Select <span>Cake Type</span>
                                         </h6>
@@ -222,8 +351,8 @@
                                         while ($row = $result->fetch_assoc()) {
                                     ?>
                                             <div class="form-group col-lg-4" style="display:flex;margin-top:5px;">
-                                                <input style="width: 15px; height: 15px; margin-right: 10px; margin-top: 5px" type="radio" class="form-control" name="cakeType" value="<?= $row['typeName'] ?>">
-                                                <label class="input_title" for="eggType1"><?= $row['typeName'] ?></label>
+                                                <input style="width: 15px; height: 15px; margin-right: 10px; margin-top: 5px" type="radio" id="eggType<?= $row['id'] ?>" class=" form-control" name="cakeType" value="<?= $row['typeName'] ?>" />
+                                                <label class="input_title" for="eggType<?= $row['id'] ?>"><?= $row['typeName'] ?></label>
                                             </div>
                                     <?php $i++;
                                         }
@@ -244,12 +373,12 @@
                                         ?>
                                                 <div class="form-group col-lg-3">
                                                     <div class="d-flex align-items-center">
-                                                        <input type="radio" class="form-control checkbox-02" id="insideFlavor1" placeholder="<?= $row['size'] ?>">
+                                                        <input type="radio" class="form-control checkbox-02" name="cakeSheet" id="cakeSheet" value="<?= $row['size'] ?>">
                                                         <p class="sheet-select"><?= $row['size'] ?></p>
                                                     </div>
                                                     <p class="extra-info">( <?= $row['servings'] ?> Servings )</p>
                                                     <?php echo
-                                                    '<label class="input_title sheet-image" for="insideFlavor1"><img src="data:image/jpeg;base64,' . base64_encode($row['sheetImg']) . '" style="width: 80px; height: auto;"></label>'
+                                                    '<label class="input_title sheet-image" for="cakeSheet"><img src="data:image/jpeg;base64,' . base64_encode($row['sheetImg']) . '" style="width: 80px; height: auto;"></label>'
                                                     ?>
                                                 </div>
                                         <?php $i++;
@@ -272,12 +401,12 @@
                                         ?>
                                                 <div class="form-group col-lg-4">
                                                     <div class="d-flex align-items-center">
-                                                        <input type="radio" class="form-control checkbox-02" id="insideFlavor1" placeholder="<?= $row['cakeSize'] ?>">
+                                                        <input type="radio" class="form-control checkbox-02" name="cakeSize" id="cakeSize" value="<?= $row['cakeSize'] ?>">
                                                         <p class="round-cake-select"><?= $row['cakeSize'] ?></p>
                                                     </div>
                                                     <p class="extra-info">( <?= $row['servings'] ?> servings )</p>
                                                     <?php echo
-                                                    '<label class="input_title sheet-image" for="insideFlavor1"><img src="data:image/jpeg;base64,' . base64_encode($row['sizeImg']) . '" style="width: 100px; height: auto;"></label>'
+                                                    '<label class="input_title sheet-image" for="cakeSize"><img src="data:image/jpeg;base64,' . base64_encode($row['sizeImg']) . '" style="width: 100px; height: auto;"></label>'
                                                     ?>
                                                 </div>
                                         <?php $i++;
@@ -310,12 +439,13 @@
                                                     while ($row = $result->fetch_assoc()) {
                                                 ?>
                                                         <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
-                                                            <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor1"><label class="input_title" for="insideFlavor1"><?= $row['name'] ?></label>
+                                                            <input style="width:20px; height:20px; margin-right:10px" type="radio" name="insideRegularFlavors" value="<?= $row['id'] ?>" class="form-control insideRegularFlavors" id="insideRegularFlavors-<?= $row['id'] ?>"><label class="input_title" for="insideRegularFlavors-<?= $row['id'] ?>"><?= $row['name'] ?></label>
                                                         </div>
                                                 <?php $i++;
                                                     }
                                                 }
                                                 ?>
+                                                <input type="hidden" id="insideRegularFlavors" />
                                             </div>
                                             <div>
                                                 <h6 class="form_title" style="font-size: 16px; margin-top: 15px;">Special Flavors</h6>
@@ -329,12 +459,13 @@
                                                     while ($row = $result->fetch_assoc()) {
                                                 ?>
                                                         <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
-                                                            <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor1"><label class="input_title" for="insideFlavor1"><?= $row['name'] ?></label>
+                                                            <input style="width:20px;height:20px;margin-right:10px" type="radio" name="insideSpecialFlavors" value="<?= $row['id'] ?>" class="form-control insideSpecialFlavors" id="insideSpecialFlavors-<?= $row['id'] ?>"><label class="input_title" for="insideSpecialFlavors-<?= $row['id'] ?>"><?= $row['name'] ?></label>
                                                         </div>
                                                 <?php $i++;
                                                     }
                                                 }
                                                 ?>
+                                                <input type="hidden" id="insideSpecialFlavors" />
                                             </div>
                                         </div>
                                         <div id="outerCream" class="col-lg-12" style="margin-top: 20px;display:block">
@@ -354,12 +485,13 @@
                                                     while ($row = $result->fetch_assoc()) {
                                                 ?>
                                                         <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
-                                                            <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor1"><label class="input_title" for="insideFlavor1"><?= $row['name'] ?></label>
+                                                            <input style="width:20px;height:20px;margin-right:10px" type="radio" name="outsideRegularFlavors" value="<?= $row['id'] ?>" class="form-control outsideRegularFlavors" id="outsideRegularFlavors-<?= $row['id'] ?>"><label class="input_title" for="outsideRegularFlavors-<?= $row['id'] ?>"><?= $row['name'] ?></label>
                                                         </div>
                                                 <?php $i++;
                                                     }
                                                 }
                                                 ?>
+                                                <input type="hidden" id="outsideRegularFlavors" />
                                             </div>
                                             <div>
                                                 <h6 class="form_title" style="font-size: 16px; margin-top: 15px;">Special Flavors</h6>
@@ -373,12 +505,13 @@
                                                     while ($row = $result->fetch_assoc()) {
                                                 ?>
                                                         <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
-                                                            <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor1"><label class="input_title" for="insideFlavor1"><?= $row['name'] ?></label>
+                                                            <input style="width:20px;height:20px;margin-right:10px" type="radio" name="outsideSpecialFlavors" value="<?= $row['id'] ?>" class="form-control outsideSpecialFlavors" id="outsideSpecialFlavors-<?= $row['id'] ?>"><label class="input_title" for="outsideSpecialFlavors-<?= $row['id'] ?>"><?= $row['name'] ?></label>
                                                         </div>
                                                 <?php $i++;
                                                     }
                                                 }
                                                 ?>
+                                                <input type="hidden" id="outsideSpecialFlavors" />
                                             </div>
                                         </div>
                                     </div>
@@ -388,15 +521,21 @@
                                             </h6>
                                         </div>
                                         <div class="row">
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor1" placeholder="Vegetarian/ Eggless"><label class="input_title" for="insideFlavor1">White Forest</label>
-                                            </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor2" placeholder="Vegan"><label class="input_title" for="insideFlavor2">Choco Mocha</label>
-                                            </div>
-                                            <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor3" placeholder="Special Cake"><label class="input_title" for="insideFlavor3">Strawberry</label>
-                                            </div>
+                                            <?php
+                                            $query = "SELECT `id`, `name` FROM `veganflavors` WHERE 1";
+                                            $result = $con->query($query);
+                                            if ($result->num_rows > 0) {
+                                                $i = 1;
+                                                while ($row = $result->fetch_assoc()) {
+                                            ?>
+                                                    <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
+                                                        <input style="width:20px;height:20px;margin-right:10px" type="radio" name="veganFlavors" class="form-control veganFlavors" value="<?= $row['id'] ?>" id="veganFlavors-<?= $row['id'] ?>"><label class="input_title" for="veganFlavors-<?= $row['id'] ?>"><?= $row['name'] ?></label>
+                                                    </div>
+                                            <?php $i++;
+                                                }
+                                            }
+                                            ?>
+                                            <input type="hidden" id="veganFlavors" />
                                         </div>
                                     </div>
                                     <div id="specialCake" class="col-lg-12" style="margin-top: 20px;">
@@ -405,26 +544,161 @@
                                             </h6>
                                         </div>
                                         <div class="row" style="margin-left: 5px;">
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor1" placeholder="Vegetarian/ Eggless"><label class="input_title" for="insideFlavor1">Vanilla</label>
-                                            </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor2" placeholder="Vegan"><label class="input_title" for="insideFlavor2">Chocolate</label>
-                                            </div>
+                                            <?php
+                                            $query = "SELECT `id`, `name` FROM `sugarfreeflavors` WHERE 1";
+                                            $result = $con->query($query);
+                                            if ($result->num_rows > 0) {
+                                                $i = 1;
+                                                while ($row = $result->fetch_assoc()) {
+                                            ?>
+                                                    <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
+                                                        <input style="width:20px;height:20px;margin-right:10px" type="radio" name="sugarFreeFlavors" class="form-control sugarFreeFlavors" value="<?= $row['id'] ?>" id="sugarFreeFlavors-<?= $row['id'] ?>"><label class="input_title" for="sugarFreeFlavors-<?= $row['id'] ?>"><?= $row['name'] ?></label>
+                                                    </div>
+                                            <?php $i++;
+                                                }
+                                            }
+                                            ?>
+                                            <input type="hidden" id="sugarFreeFlavors" />
                                         </div>
                                     </div>
-                                </form>
+                                </div>
                                 <div class="next_button d-flex align-items-center justify-content-between">
-                                    <button type="submit" class="btn thm_btn red_btn next_tab">Next<i class="arrow_right"></i></button>
+                                    <button type="button" onclick="cakeDetailsSelected()" class="btn thm_btn red_btn">Next<i class="arrow_right"></i></button>
                                 </div>
                             </div>
+                            <script>
+                                function cakeDetailsSelected() {
+                                    const notyf = new Notyf({
+                                        duration: 2000,
+                                        position: {
+                                            x: 'right',
+                                            y: 'top',
+                                        },
+                                    });
+                                    var cakeType = "";
+                                    var sheetType = "";
+                                    var roundCakeSize = "";
+                                    var insideRegularFlavor = "";
+                                    var insideSpecialFlavor = "";
+                                    var outsideRegularFlavor = "";
+                                    var outsideSpecialFlavor = "";
+                                    var veganFlavor = "";
+                                    var sugarFreeFlavor = "";
+
+                                    if ($('input[name=cakeType]:checked').length > 0) {
+                                        cakeType = document.querySelector('input[name=cakeType]:checked').value;
+                                    }
+                                    if ($('input[name=cakeSheet]:checked').length > 0) {
+                                        sheetType = document.querySelector('input[name=cakeSheet]:checked').value;
+                                    }
+                                    if ($('input[name=cakeSize]:checked').length > 0) {
+                                        roundCakeSize = document.querySelector('input[name=cakeSize]:checked').value;
+                                    }
+                                    if ($('input[name=insideRegularFlavors]:checked').length > 0) {
+                                        insideRegularFlavor = document.querySelector('input[name=insideRegularFlavors]:checked').value;
+                                    }
+                                    if ($('input[name=insideSpecialFlavors]:checked').length > 0) {
+                                        insideSpecialFlavor = document.querySelector('input[name=insideSpecialFlavors]:checked').value;
+                                    }
+                                    if ($('input[name=outsideRegularFlavors]:checked').length > 0) {
+                                        outsideRegularFlavor = document.querySelector('input[name=outsideRegularFlavors]:checked').value;
+                                    }
+                                    if ($('input[name=outsideSpecialFlavors]:checked').length > 0) {
+                                        outsideSpecialFlavor = document.querySelector('input[name=outsideSpecialFlavors]:checked').value;
+                                    }
+                                    if ($('input[name=veganFlavors]:checked').length > 0) {
+                                        veganFlavor = document.querySelector('input[name=veganFlavors]:checked').value;
+                                    }
+                                    if ($('input[name=sugarFreeFlavors]:checked').length > 0) {
+                                        sugarFreeFlavor = document.querySelector('input[name=sugarFreeFlavors]:checked').value;
+                                    }
+
+                                    /* VALIDATIONS */
+                                    if (cakeType == "") {
+                                        document.querySelector('input[name=cakeType]').focus();
+                                        notyf.error('Please select the type of cake');
+                                    } else if (cakeType == "Vegetarian/Eggless") {
+                                        console.log(cakeType);
+                                        var insideFlavors = "";
+                                        var outsideFlavors = "";
+
+                                        if (insideRegularFlavor == "" && insideSpecialFlavor == "") {
+                                            document.querySelector('input[name=insideRegularFlavors]').focus();
+                                            insideFlavors = "";
+                                        } else {
+                                            insideFlavors = "inside";
+                                        }
+
+                                        if (outsideRegularFlavor == "" && outsideSpecialFlavor == "") {
+                                            document.querySelector('input[name=outsideRegularFlavors]').focus();
+                                            outsideFlavors = "";
+                                        } else {
+                                            outsideFlavors = "outside";
+                                        }
+
+                                        if (cakeType == "" || sheetType == "" || roundCakeSize == "" || insideFlavors == "" || outsideFlavors == "") {
+                                            if (cakeType == "") {
+                                                document.querySelector('input[name=cakeType]').focus();
+                                            } else if (sheetType == "") {
+                                                document.querySelector('input[name=cakeSheet]').focus();
+                                            } else if (roundCakeSize == "") {
+                                                document.querySelector('input[name=cakeSize]').focus();
+                                            } else if (insideFlavors == "") {
+                                                document.querySelector('input[name=insideRegularFlavors]').focus();
+                                            } else if (outsideFlavors == "") {
+                                                document.querySelector('input[name=outsideRegularFlavors]').focus();
+                                            }
+                                            notyf.error('Please fill all the details');
+                                        } else {
+                                            document.getElementById('Otherdetails').style.display = 'flex';
+                                            $('#Otherdetails-tab').addClass('active show');
+                                            document.getElementById('Cakedetails').style.display = 'none';
+                                        }
+                                    } else if (cakeType == "Vegan") {
+                                        if (cakeType == "" || sheetType == "" || roundCakeSize == "" || veganFlavor == "") {
+                                            if (cakeType == "") {
+                                                document.querySelector('input[name=cakeType]').focus();
+                                            } else if (sheetType == "") {
+                                                document.querySelector('input[name=cakeSheet]').focus();
+                                            } else if (roundCakeSize == "") {
+                                                document.querySelector('input[name=cakeSize]').focus();
+                                            } else if (veganFlavor == "") {
+                                                document.querySelector('input[name=veganFlavors]').focus();
+                                            }
+                                            notyf.error('Please fill all the details');
+                                        } else {
+                                            document.getElementById('Otherdetails').style.display = 'flex';
+                                            $('#Otherdetails-tab').addClass('active show');
+                                            document.getElementById('Cakedetails').style.display = 'none';
+                                        }
+                                    } else if (cakeType == "Sugar Free") {
+                                        console.log(cakeType);
+                                        if (cakeType == "" || sheetType == "" || roundCakeSize == "" || sugarFreeFlavor == "") {
+                                            if (cakeType == "") {
+                                                document.querySelector('input[name=cakeType]').focus();
+                                            } else if (sheetType == "") {
+                                                document.querySelector('input[name=cakeSheet]').focus();
+                                            } else if (roundCakeSize == "") {
+                                                document.querySelector('input[name=cakeSize]').focus();
+                                            } else if (sugarFreeFlavor == "") {
+                                                document.querySelector('input[name=sugarFreeFlavors]').focus();
+                                            }
+                                            notyf.error('Please fill all the details');
+                                        } else {
+                                            document.getElementById('Otherdetails').style.display = 'flex';
+                                            $('#Otherdetails-tab').addClass('active show');
+                                            document.getElementById('Cakedetails').style.display = 'none';
+                                        }
+                                    }
+                                }
+                            </script>
                         </div>
-                        <div class="tab-pane fade" id="Otherdetails" role="tabpanel" aria-labelledby="Otherdetails-tab">
+                        <div class="tab-pane" id="Otherdetails" role="tabpanel" aria-labelledby="Otherdetails-tab" style="display: none;">
                             <div class="formify_box" id="OtherdetailsDiv">
-                                <form action="#" class="signup_form row">
+                                <div class="signup_form row">
                                     <div class="form-group col-lg-6">
-                                        <label class="input_title" for="inputPhone2">Select Occasion</label>
-                                        <select class="form-control">
+                                        <label class="input_title" for="occasion">Select Occasion</label>
+                                        <select class="form-control" id="occasion">
                                             <option value="">Select Occasion</option>
                                             <option value="Birthday">Birthday</option>
                                             <option value="Anniversary">Anniversary</option>
@@ -434,32 +708,32 @@
                                         </select>
                                     </div>
                                     <div class="form-group col-lg-6">
-                                        <label class="input_title" for="inputPhone2">Name</label>
-                                        <input type="text" name="name" id="name" class="form-control" placeholder="Write name here" />
+                                        <label class="input_title" for="birthdayName">Name</label>
+                                        <input type="text" name="name" id="birthdayName" class="form-control" placeholder="Write name here" />
                                     </div>
                                     <div class="form-group col-lg-12">
-                                        <label class="input_title" for="inputPhone2">Custom Message</label>
-                                        <textarea name="custom-message" id="custom-message" class="form-control" style="height: 100px;" placeholder="Custome Message here..."></textarea>
+                                        <label class="input_title" for="birthdayMessage">Custom Message</label>
+                                        <textarea name="custom-message" id="birthdayMessage" class="form-control" style="height: 100px;" placeholder="Custom Message here..."></textarea>
                                     </div>
                                     <div class="form-group col-lg-12">
-                                        <label class="input_title" for="inputPhone2">Do you require cup cakes? (Minimum of 12)</label>
+                                        <label class="input_title" for="cupcakesOption">Do you require cup cakes? (Minimum of 12)</label>
                                         <div class="d-flex" style="margin-top: -5px;">
                                             <div class="d-flex" style="align-items: center;">
-                                                <input type="radio" name="cupcake" class="form-control checkbox cupcake" id="cupcake-yes" />Yes
+                                                <input type="radio" name="cupcake" class="form-control checkbox cupcake" id="cupcakesOption-Yes" value="Yes" />Yes
                                             </div>
                                             <div class="d-flex ml-4" style="align-items: center;">
-                                                <input type="radio" name="cupcake" class="form-control checkbox cupcake" id="cupcake-no" />No
+                                                <input type="radio" name="cupcake" class="form-control checkbox cupcake" id="cupcakesOption-No" value="No" />No
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-12" id="cupCakeSize">
-                                        <label class="input_title" for="inputPhone2">Cake Size</label>
+                                        <label class="input_title" for="cakeSizeOption">Cake Size</label>
                                         <div class="d-flex" style="margin-top: -5px;">
                                             <div class="d-flex" style="align-items: center;">
-                                                <input type="radio" name="cupCakeSize" class="form-control checkbox" id="mini">Mini</input>
+                                                <input type="radio" name="cupCakeSize" class="form-control checkbox" id="cakeSizeOption" value="Mini">Mini</input>
                                             </div>
                                             <div class="d-flex ml-4" style="align-items: center;">
-                                                <input type="radio" name="cupCakeSize" class="form-control checkbox" id="regular">Regular</input>
+                                                <input type="radio" name="cupCakeSize" class="form-control checkbox" id="cakeSizeOption" value="Regular">Regular</input>
                                             </div>
                                         </div>
                                     </div>
@@ -471,87 +745,55 @@
                                             <h6 class="form_title" style="font-size: 16px;">Regular Flavors</h6>
                                         </div>
                                         <div class="row">
-                                            <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor1" placeholder="Vegetarian/ Eggless"><label class="input_title" for="insideFlavor1">Black Forest</label>
-                                            </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor2" placeholder="Vegan"><label class="input_title" for="insideFlavor2">White Forest</label>
-                                            </div>
-                                            <div class="form-group col-lg-5" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor3" placeholder="Special Cake"><label class="input_title" for="insideFlavor3">Chocolate Mousse</label>
-                                            </div>
-                                            <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor3" placeholder="Special Cake"><label class="input_title" for="insideFlavor3">Chocolate Mocha</label>
-                                            </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor4" placeholder="Special Cake"><label class="input_title" for="insideFlavor4">Mango Mousse</label>
-                                            </div>
-                                            <div class="form-group col-lg-5" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor4" placeholder="Special Cake"><label class="input_title" for="insideFlavor4">Pineaaple</label>
-                                            </div>
-                                            <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor1" placeholder="Vegetarian/ Eggless"><label class="input_title" for="insideFlavor1">Strawberry Mousse</label>
-                                            </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor2" placeholder="Vegan"><label class="input_title" for="insideFlavor2">Vanilla</label>
-                                            </div>
-                                            <div class="form-group col-lg-5" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor4" placeholder="Special Cake"><label class="input_title" for="insideFlavor4">Pistachio</label>
-                                            </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor4" placeholder="Special Cake"><label class="input_title" for="insideFlavor4">Butterscotch</label>
-                                            </div>
+                                            <?php
+                                            $query = "SELECT `id`, `name` FROM `regularflavors` WHERE 1";
+                                            $result = $con->query($query);
+                                            if ($result->num_rows > 0) {
+                                                $i = 1;
+                                                while ($row = $result->fetch_assoc()) {
+                                            ?>
+                                                    <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
+                                                        <input style="width:20px; height:20px; margin-right:10px" type="radio" name="cupcakeRegularFlavors" value="<?= $row['id'] ?>" class="form-control cupcakeRegularFlavors" id="cupcakeRegularFlavor-<?= $row['id'] ?>"><label class="input_title" for="cupcakeRegularFlavor-<?= $row['id'] ?>"><?= $row['name'] ?></label>
+                                                    </div>
+                                            <?php $i++;
+                                                }
+                                            }
+                                            ?>
+                                            <input type="hidden" id="cupcakeRegularFlavors" />
                                         </div>
                                         <div>
                                             <h6 class="form_title" style="font-size: 16px; margin-top: 10px;">Special Flavors</h6>
                                         </div>
                                         <div class="row">
-                                            <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor1" placeholder="Vegetarian/ Eggless"><label class="input_title" for="insideFlavor1">Chocolate Truffle</label>
-                                            </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor2" placeholder="Vegan"><label class="input_title" for="insideFlavor2">Tiramisu</label>
-                                            </div>
-                                            <div class="form-group col-lg-5" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor3" placeholder="Special Cake"><label class="input_title" for="insideFlavor3">Biscoff</label>
-                                            </div>
-                                            <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor3" placeholder="Special Cake"><label class="input_title" for="insideFlavor3">Ferraro Rocher</label>
-                                            </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor4" placeholder="Special Cake"><label class="input_title" for="insideFlavor4">Red Velvet</label>
-                                            </div>
-                                            <div class="form-group col-lg-5" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor4" placeholder="Special Cake"><label class="input_title" for="insideFlavor4">Ras Malai</label>
-                                            </div>
-                                            <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor1" placeholder="Vegetarian/ Eggless"><label class="input_title" for="insideFlavor1">Falooda</label>
-                                            </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor2" placeholder="Vegan"><label class="input_title" for="insideFlavor2">Rasgula</label>
-                                            </div>
-                                            <div class="form-group col-lg-5" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor4" placeholder="Special Cake"><label class="input_title" for="insideFlavor4">Rajbhog</label>
-                                            </div>
-                                            <div class="form-group col-lg-3" style="display:flex;margin-top:5px">
-                                                <input style="width:20px;height:20px;margin-right:10px" type="checkbox" class="form-control" id="insideFlavor4" placeholder="Special Cake"><label class="input_title" for="insideFlavor4">Gulab Jamun</label>
-                                            </div>
+                                            <?php
+                                            $query = "SELECT `id`, `name` FROM `cupcakespecialflavors` WHERE 1";
+                                            $result = $con->query($query);
+                                            if ($result->num_rows > 0) {
+                                                $i = 1;
+                                                while ($row = $result->fetch_assoc()) {
+                                            ?>
+                                                    <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
+                                                        <input style="width:20px; height:20px;margin-right:10px" type="radio" name="cupcakeSpecialFlavors" value="<?= $row['id'] ?>" class="form-control cupcakeSpecialFlavors" id="cupcakeSpecialFlavor-<?= $row['id'] ?>"><label class="input_title" for="cupcakeSpecialFlavor-<?= $row['id'] ?>"><?= $row['name'] ?></label>
+                                                    </div>
+                                            <?php $i++;
+                                                }
+                                            }
+                                            ?>
+                                            <input type="hidden" id="cupcakeSpecialFlavors" />
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-12" id="cupCakeQuantity">
                                         <label class="input_title" for="quantity">Quantity</label>
-                                        <input type="number" id="quantity" class="form-control" placeholder="Quantity" />
+                                        <input type="number" id="quantity" name="quantity" class="form-control" placeholder="Quantity" />
                                     </div>
                                     <div class="form-group col-lg-12">
-                                        <p><strong style="color: red">Note: </strong>Please make sure the details filled in the form are correct and verified carefully. In case of any queries, feel free to contact us at <a href="tel:5628653200" style="color: #E084AC;">(562) 865-3200</a> or <a href="mailto:cakes@cakekorner.com" style="color: #E084AC;">cakes@cakekorner.com</a></p>
+                                        <p><strong style="color: red">Note: </strong>Please make sure the details filled in the form are correct and verified carefully. In case of any queries, feel free to contact us at <a id="phoneNumberSelected" href="tel:5628653200" style="color: #E084AC;">(562) 865-3200</a> or <a href="mailto:cakes@cakekorner.com" style="color: #E084AC;">cakes@cakekorner.com</a></p>
                                     </div>
                                     <section class="signature-component">
-
                                         <div class="col-sm-12 mt-3">
                                             <h4 style="text-align: start;color: #E084AC;">Draw Signature</h4>
                                             <h6 class="" style="font-weight: 500;text-align: start; ">with mouse or
                                                 touch</h6>
-
                                         </div>
                                         <div class="col-sm-12">
                                             <canvas id="signature-pad" name="signature-pad" width="372" height="200"></canvas>
@@ -563,10 +805,7 @@
                                                 <a id="clear" style="padding: 10px;border:1px solid #E084AC;padding-top:5px;padding-bottom:5px;font-size:1rem">Clear</a>
                                             </div>
                                             <img name='canvasImage' style="display: none;" id="canvasImage">
-
                                         </div>
-
-
                                     </section>
                                     <input type="text" class="form-control" style="color: #E084AC;background-color: #fbfbfb;display:none" id="canvasImageInput" name="canvasImageInput" placeholder="Last Name" aria-label="Last name">
                                     <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js'></script>
@@ -1033,24 +1272,155 @@
                                         });
                                     </script>
                                     <div class="form-group col-lg-12 d-flex align-items-center justify-content-between">
-                                        <button type="button" id="successButton" class="btn thm_btn red_btn">Submit</button>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="container my-auto py-5" id="successPage" style="display: none;">
-                                <div class="row text-center">
-                                    <div class="col-lg-9 col-xl-7 mx-auto">
-                                        <img src="./assets/img/success.gif" class="mb-3" style="width: 15%;" />
-                                        <h5 class="mb-2" style="font-weight: 500; font-size: 18px;">Your Order has been placed.
-                                        </h5>
-                                        <h4 class="mb-2" style="font-weight: 700;">Your Confirmation Code : SPY0ACI&Jf</h4>
-                                        <p>You will receive an email consisting of all the details of the cake. Contact us if you have any queries.</p>
+                                        <button type="button" onclick="formSubmit()" class="btn thm_btn red_btn">Submit</button>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
+                        <div class="container my-auto py-5" id="successPage" style="display: none;">
+                            <div class="row text-center">
+                                <div class="col-lg-9 col-xl-7 mx-auto">
+                                    <img src="./assets/img/success.gif" class="mb-3" style="width: 15%;" />
+                                    <h5 class="mb-2" style="font-weight: 800; font-size: 22px;">Your Order has been placed.
+                                    </h5>
+                                    <p>Thank you for ordering cake from Cake Korner. Contact us if you have any queries.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            function formSubmit() {
+                                const notyf = new Notyf({
+                                    duration: 2000,
+                                    position: {
+                                        x: 'right',
+                                        y: 'top',
+                                    },
+                                });
+                                var occasion = document.getElementById('occasion').value;
+                                var birthdayName = document.getElementById('birthdayName').value;
+                                var birthdayMessage = document.getElementById('birthdayMessage').value;
+                                var cupcakeQuantity = document.getElementById('quantity').value;
+                                var signature = document.getElementById('canvasImageInput').value;
+                                var cupCakes = "";
+                                var cupCakeSize = "";
+                                var cupcakeRegularFlavor = "";
+                                var cupcakeSpecialFlavor = "";
+                                if ($('input[name=cupcake]:checked').length > 0) {
+                                    cupCakes = document.querySelector('input[name=cupcake]:checked').value;
+                                }
+                                if ($('input[name=cupCakeSize]:checked').length > 0) {
+                                    cupCakeSize = document.querySelector('input[name=cupCakeSize]:checked').value;
+                                }
+                                if ($('input[name=cupcakeRegularFlavors]:checked').length > 0) {
+                                    cupcakeRegularFlavor = document.querySelector('input[name=cupcakeRegularFlavors]:checked').value;
+                                }
+                                if ($('input[name=cupcakeSpecialFlavors]:checked').length > 0) {
+                                    cupcakeSpecialFlavor = document.querySelector('input[name=cupcakeSpecialFlavors]:checked').value;
+                                }
 
+                                if (cupCakes == "No") {
+                                    if (occasion == "" || birthdayName == "" || birthdayMessage == "" || signature == "") {
+                                        if (occasion == "") {
+                                            document.getElementById('occasion').focus();
+                                        } else if (birthdayName == "") {
+                                            document.getElementById('birthdayName').focus();
+                                        } else if (birthdayMessage == "") {
+                                            document.getElementById('birthdayMessage').focus();
+                                        } else if (signature == "") {
+                                            document.getElementById('canvasImageInput').focus();
+                                        }
+                                        notyf.error('Please fill all the details');
+                                    } else {
+                                        document.getElementById('successPage').style.display = 'block';
+                                        document.getElementById('Otherdetails').style.display = 'none';
+                                    }
+                                } else if (cupCakes == "Yes") {
+                                    var flavor = "";
+                                    if (cupcakeRegularFlavor == "" && cupcakeSpecialFlavor == "") {
+                                        document.querySelector('input[name=cupcakeRegularFlavors]').focus();
+                                        flavor = "";
+                                    } else {
+                                        flavor = "flavor";
+                                    }
+
+                                    if (occasion == "" || birthdayName == "" || birthdayMessage == "" || signature == "" || cupCakeSize == "" || flavor == "" || cupcakeQuantity == "") {
+                                        if (occasion == "") {
+                                            document.getElementById('occasion').focus();
+                                        } else if (birthdayName == "") {
+                                            document.getElementById('birthdayName').focus();
+                                        } else if (birthdayMessage == "") {
+                                            document.getElementById('birthdayMessage').focus();
+                                        } else if (signature == "") {
+                                            document.getElementById('canvasImageInput').focus();
+                                        } else if (cupCakeSize == "") {
+                                            document.querySelector('input[name=cupCakeSize]').focus();
+                                        } else if (flavor == "") {
+                                            document.querySelector('input[name=cupcakeRegularFlavors]').focus();
+                                        } else if (cupcakeQuantity == "") {
+                                            document.getElementById('quantity').focus();
+                                        }
+                                        notyf.error('Please fill all the details');
+                                    } else {
+                                        const datasend = {
+                                            locationID: document.querySelector('input[name=address]:checked').value,
+                                            customerFirstName: document.getElementById('fName').value,
+                                            customerLastName: document.getElementById('lName').value,
+                                            customerPhone: document.getElementById('phone').value,
+                                            customerEmail: document.getElementById('cEmail').value,
+                                            orderType: document.querySelector('input[name=orderType]:checked').value,
+                                            orderPickupDate: document.getElementById('datepicker').value,
+                                            orderPickupTime: document.getElementById('orderPickupTime').value,
+                                            orderPickupPerson: document.getElementById('orderPickupName').value,
+                                            deliveryAddress1: document.getElementById('orderDeliveryAddress').value,
+                                            deliveryAppartmentNumber: document.getElementById('orderDeliveryAppartment').value,
+                                            deliveryCity: document.getElementById('orderDeliveryCity').value,
+                                            deliveryState: document.getElementById('orderDeliveryState').value,
+                                            deliveryZIP: document.getElementById('orderDeliveryZIP').value,
+                                            cakeTypeID: document.querySelector('input[name=cakeType]:checked').value,
+                                            sheetTypeID: document.querySelector('input[name=cakeSheet]:checked').value,
+                                            roundCakeID: document.querySelector('input[name=cakeSize]:checked').value,
+                                            insideRegularFlavors: document.querySelector('input[name=insideRegularFlavors]:checked').value,
+                                            insideSpecialFlavors: document.querySelector('input[name=insideSpecialFlavors]:checked').value,
+                                            outsideRegularFlavors: document.querySelector('input[name=outsideRegularFlavors]:checked').value,
+                                            outsideSpecialFlavors: document.querySelector('input[name=outsideSpecialFlavors]:checked').value,
+                                            veganFlavors: document.querySelector('input[name=veganFlavors]:checked').value,
+                                            sugarFreeFlavors: document.querySelector('input[name=sugarFreeFlavors]:checked').value,
+                                            occasion: document.getElementById('occasion').value,
+                                            name: document.getElementById('birthdayName').value,
+                                            customMessage: document.getElementById('birthdayMessage').value,
+                                            cupcakesRequired: document.querySelector('input[name=cupcake]:checked').value,
+                                            cupcakeSize: document.querySelector('input[name=cupCakeSize]:checked').value,
+                                            cupcakeRegularFlavors: document.querySelector('input[name=cupcakeRegularFlavors]:checked').value,
+                                            cupcakeSpecialFlavors: document.querySelector('input[name=cupcakeSpecialFlavors]:checked').value,
+                                            cupcakeQuantity: document.getElementById('quantity').value,
+                                            signature: document.getElementById('canvasImageInput').value,
+                                        }
+                                        const jsonString = JSON.stringify(datasend);
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "submit-form.php",
+                                            data: jsonString,
+                                            contentType: 'application/json',
+                                            success: function(response) {
+                                                if (response == 'success') {
+                                                    document.getElementById('successPage').style.display = 'block';
+                                                    document.getElementById('Otherdetails').style.display = 'none';
+                                                } else {
+                                                    notyf.error('Something went wrong. Please try again later.');
+                                                }
+                                            },
+                                            complete: function() {},
+                                            error: function(xhr, textStatus, errorThrown) {
+                                                notyf.error('Something went wrong. Please try again later.')
+                                                return false;
+                                            }
+                                        });
+                                        document.getElementById('successPage').style.display = 'block';
+                                        document.getElementById('Otherdetails').style.display = 'none';
+                                    }
+                                }
+                            }
+                        </script>
                     </div>
                 </div>
             </div>
@@ -1064,6 +1434,7 @@
     <script src="assets/vendors/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/vendors/nice-select/js/jquery.nice-select.min.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <script>
@@ -1093,7 +1464,7 @@
     <script>
         $('.pickup-toggle').hide();
         $('.delivery-toggle').hide();
-        $('#cupcake-no').prop('checked', true);
+        $('#cupcakesOption-No').prop('checked', true);
         $('#pickup').on('change', function() {
             if ($('#pickup').is(':checked')) {
                 $('.pickup-toggle').show();
@@ -1113,18 +1484,18 @@
             }
         })
         $(document).ready(function() {
-            if ($('#cupcake-no').is(':checked')) {
+            if ($('#cupcakesOption-No').is(':checked')) {
                 $('#cupCakeFlavor').hide();
                 $('#cupCakeSize').hide();
                 $('#cupCakeQuantity').hide();
             }
         })
         $('.cupcake').on('change', function() {
-            if ($('#cupcake-no').is(':checked')) {
+            if ($('#cupcakesOption-No').is(':checked')) {
                 $('#cupCakeFlavor').hide();
                 $('#cupCakeSize').hide();
                 $('#cupCakeQuantity').hide();
-            } else if ($('#cupcake-yes').is(':checked')) {
+            } else if ($('#cupcakesOption-Yes').is(':checked')) {
                 $('#cupCakeFlavor').show();
                 $('#cupCakeSize').show();
                 $('#cupCakeQuantity').show();
@@ -1134,6 +1505,7 @@
     <script>
         $('#veganCream').hide();
         $('#specialCake').hide();
+        $('#eggType1').is(':checked');
         $('#eggType2').on('change', function() {
             if ($('#eggType2').is(':checked')) {
                 $('#veganCream').show();
