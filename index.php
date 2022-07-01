@@ -304,7 +304,7 @@
                                             document.getElementById('Customer').style.display = 'none';
                                         }
                                     } else if (orderType == "Delivery") {
-                                        if (fName == "" || lName == "" || email == "" || phone == "" || deliveryStreetName == "" || deliveryCity == "" || deliveryAppartmentNumber == "" || deliveryState == "" || deliveryZip == "") {
+                                        if (fName == "" || lName == "" || email == "" || phone == "" || deliveryStreetName == "" || deliveryCity == "" || deliveryState == "" || deliveryZip == "") {
                                             if (fName == "") {
                                                 document.getElementById('fName').focus();
                                             } else if (lName == "") {
@@ -315,8 +315,6 @@
                                                 document.getElementById('phone').focus();
                                             } else if (deliveryStreetName == "") {
                                                 document.getElementById('orderDeliveryAddress').focus();
-                                            } else if (deliveryAppartmentNumber == "") {
-                                                document.getElementById('orderDeliveryAppartment').focus();
                                             } else if (deliveryState == "") {
                                                 document.getElementById('orderDeliveryState').focus();
                                             } else if (deliveryCity == "") {
@@ -351,7 +349,7 @@
                                         while ($row = $result->fetch_assoc()) {
                                     ?>
                                             <div class="form-group col-lg-4" style="display:flex;margin-top:5px;">
-                                                <input style="width: 15px; height: 15px; margin-right: 10px; margin-top: 5px" type="radio" id="eggType<?= $row['id'] ?>" class=" form-control" name="cakeType" value="<?= $row['typeName'] ?>" />
+                                                <input style="width: 15px; height: 15px; margin-right: 10px; margin-top: 5px" type="radio" id="eggType<?= $row['id'] ?>" class=" form-control" name="cakeType" value="<?= $row['id'] ?>" />
                                                 <label class="input_title" for="eggType<?= $row['id'] ?>"><?= $row['typeName'] ?></label>
                                             </div>
                                     <?php $i++;
@@ -373,7 +371,7 @@
                                         ?>
                                                 <div class="form-group col-lg-3">
                                                     <div class="d-flex align-items-center">
-                                                        <input type="radio" class="form-control checkbox-02" name="cakeSheet" id="cakeSheet" value="<?= $row['size'] ?>">
+                                                        <input type="radio" class="form-control checkbox-02" name="cakeSheet" id="cakeSheet" value="<?= $row['id'] ?>">
                                                         <p class="sheet-select"><?= $row['size'] ?></p>
                                                     </div>
                                                     <p class="extra-info">( <?= $row['servings'] ?> Servings )</p>
@@ -401,7 +399,7 @@
                                         ?>
                                                 <div class="form-group col-lg-4">
                                                     <div class="d-flex align-items-center">
-                                                        <input type="radio" class="form-control checkbox-02" name="cakeSize" id="cakeSize" value="<?= $row['cakeSize'] ?>">
+                                                        <input type="radio" class="form-control checkbox-02" name="cakeSize" id="cakeSize" value="<?= $row['id'] ?>">
                                                         <p class="round-cake-select"><?= $row['cakeSize'] ?></p>
                                                     </div>
                                                     <p class="extra-info">( <?= $row['servings'] ?> servings )</p>
@@ -605,7 +603,7 @@
                                     if (cakeType == "") {
                                         document.querySelector('input[name=cakeType]').focus();
                                         notyf.error('Please select the type of cake');
-                                    } else if (cakeType == "Vegetarian/Eggless") {
+                                    } else if (cakeType == "1") {
                                         console.log(cakeType);
                                         if (cakeType == "" || sheetType == "" || roundCakeSize == "" || insideVegetarianFlavors == "" || outsideVegetarianFlavors == "") {
                                             if (cakeType == "") {
@@ -625,7 +623,7 @@
                                             $('#Otherdetails-tab').addClass('active show');
                                             document.getElementById('Cakedetails').style.display = 'none';
                                         }
-                                    } else if (cakeType == "Vegan") {
+                                    } else if (cakeType == "2") {
                                         if (cakeType == "" || sheetType == "" || roundCakeSize == "" || veganFlavor == "") {
                                             if (cakeType == "") {
                                                 document.querySelector('input[name=cakeType]').focus();
@@ -642,7 +640,7 @@
                                             $('#Otherdetails-tab').addClass('active show');
                                             document.getElementById('Cakedetails').style.display = 'none';
                                         }
-                                    } else if (cakeType == "Sugar Free") {
+                                    } else if (cakeType == "3") {
                                         console.log(cakeType);
                                         if (cakeType == "" || sheetType == "" || roundCakeSize == "" || sugarFreeFlavor == "") {
                                             if (cakeType == "") {
@@ -724,13 +722,13 @@
                                                 while ($row = $result->fetch_assoc()) {
                                             ?>
                                                     <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
-                                                        <input style="width:20px; height:20px; margin-right:10px" type="radio" name="cupcakeRegularFlavors" value="<?= $row['id'] ?>" class="form-control cupcakeRegularFlavors" id="cupcakeRegularFlavor-<?= $row['id'] ?>"><label class="input_title" for="cupcakeRegularFlavor-<?= $row['id'] ?>"><?= $row['name'] ?></label>
+                                                        <input style="width:20px; height:20px; margin-right:10px" type="radio" onclick="$('#cupCakeType').val('regular');" name="cupCakeFlavors" value="<?= $row['id'] ?>" class="form-control cupcakeRegularFlavors" id="cupcakeRegularFlavor-<?= $row['id'] ?>"><label class="input_title" for="cupcakeRegularFlavor-<?= $row['id'] ?>"><?= $row['name'] ?></label>
                                                     </div>
                                             <?php $i++;
                                                 }
                                             }
                                             ?>
-                                            <input type="hidden" id="cupcakeRegularFlavors" />
+                                            <input type="hidden" id="cupCakeType" />
                                         </div>
                                         <div>
                                             <h6 class="form_title" style="font-size: 16px; margin-top: 10px;">Special Flavors</h6>
@@ -744,18 +742,18 @@
                                                 while ($row = $result->fetch_assoc()) {
                                             ?>
                                                     <div class="form-group col-lg-4" style="display:flex;margin-top:5px">
-                                                        <input style="width:20px; height:20px;margin-right:10px" type="radio" name="cupcakeSpecialFlavors" value="<?= $row['id'] ?>" class="form-control cupcakeSpecialFlavors" id="cupcakeSpecialFlavor-<?= $row['id'] ?>"><label class="input_title" for="cupcakeSpecialFlavor-<?= $row['id'] ?>"><?= $row['name'] ?></label>
+                                                        <input style="width:20px; height:20px;margin-right:10px" onclick="$('#cupCakeType').val('special');" type="radio" name="cupCakeFlavors" value="<?= $row['id'] ?>" class="form-control cupcakeSpecialFlavors" id="cupcakeSpecialFlavor-<?= $row['id'] ?>"><label class="input_title" for="cupcakeSpecialFlavor-<?= $row['id'] ?>"><?= $row['name'] ?></label>
                                                     </div>
                                             <?php $i++;
                                                 }
                                             }
                                             ?>
-                                            <input type="hidden" id="cupcakeSpecialFlavors" />
+
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-12" id="cupCakeQuantity">
                                         <label class="input_title" for="quantity">Quantity</label>
-                                        <input type="number" id="quantity" name="quantity" class="form-control" placeholder="Quantity" />
+                                        <input type="number" id="cupCakeQuantityFinal" name="quantity" class="form-control" placeholder="Quantity" />
                                     </div>
                                     <div class="form-group col-lg-12">
                                         <p><strong style="color: red">Note: </strong>Please make sure the details filled in the form are correct and verified carefully. In case of any queries, feel free to contact us at <a id="phoneNumberSelected" href="tel:5628653200" style="color: #E084AC;">(562) 865-3200</a> or <a href="mailto:cakes@cakekorner.com" style="color: #E084AC;">cakes@cakekorner.com</a></p>
@@ -1270,7 +1268,7 @@
                                 var occasion = document.getElementById('occasion').value;
                                 var birthdayName = document.getElementById('birthdayName').value;
                                 var birthdayMessage = document.getElementById('birthdayMessage').value;
-                                var cupcakeQuantity = document.getElementById('quantity').value;
+                                var cupcakeQuantity = document.getElementById('cupCakeQuantityFinal').value;
                                 var signature = document.getElementById('canvasImageInput').value;
                                 var cupCakes = "";
                                 var cupCakeSize = "";
@@ -1279,16 +1277,10 @@
                                 if ($('input[name=cupcake]:checked').length > 0) {
                                     cupCakes = document.querySelector('input[name=cupcake]:checked').value;
                                 }
-                                if ($('input[name=cupCakeSize]:checked').length > 0) {
-                                    cupCakeSize = document.querySelector('input[name=cupCakeSize]:checked').value;
-                                }
-                                if ($('input[name=cupcakeRegularFlavors]:checked').length > 0) {
-                                    cupcakeRegularFlavor = document.querySelector('input[name=cupcakeRegularFlavors]:checked').value;
-                                }
-                                if ($('input[name=cupcakeSpecialFlavors]:checked').length > 0) {
-                                    cupcakeSpecialFlavor = document.querySelector('input[name=cupcakeSpecialFlavors]:checked').value;
-                                }
 
+
+
+                                var formSubmitApproval = '';
                                 if (cupCakes == "No") {
                                     if (occasion == "" || birthdayName == "" || birthdayMessage == "" || signature == "") {
                                         if (occasion == "") {
@@ -1302,16 +1294,29 @@
                                         }
                                         notyf.error('Please fill all the details');
                                     } else {
-                                        document.getElementById('successPage').style.display = 'block';
-                                        document.getElementById('Otherdetails').style.display = 'none';
+                                        formSubmitApproval = 'Approved';
+                                        console.log(formSubmitApproval);
                                     }
                                 } else if (cupCakes == "Yes") {
                                     var flavor = "";
-                                    if (cupcakeRegularFlavor == "" && cupcakeSpecialFlavor == "") {
-                                        document.querySelector('input[name=cupcakeRegularFlavors]').focus();
-                                        flavor = "";
-                                    } else {
-                                        flavor = "flavor";
+
+                                    var cupCakeType = $('#cupCakeType').val();
+
+                                    if ($('input[name=cupCakeSize]:checked').length > 0) {
+                                        cupCakeSize = document.querySelector('input[name=cupCakeSize]:checked').value;
+                                    }
+                                  
+
+                                    var cupCakeType = $('#cupCakeType').val();
+
+                                    if (cupCakeType == 'regular') {
+                                        var cupCakeRegularFlavorsFinal = document.querySelector('input[name=cupCakeFlavors]:checked').value;
+                                        var cupCakeSpecialFlavorsFinal = '-';
+                                        var flavor = "flavor";
+                                    } else if (cupCakeType == 'special') {
+                                        var flavor = "flavor";
+                                        var cupCakeRegularFlavorsFinal = '-';
+                                        var cupCakeSpecialFlavorsFinal = document.querySelector('input[name=cupCakeFlavors]:checked').value;
                                     }
 
                                     if (occasion == "" || birthdayName == "" || birthdayMessage == "" || signature == "" || cupCakeSize == "" || flavor == "" || cupcakeQuantity == "") {
@@ -1326,83 +1331,133 @@
                                         } else if (cupCakeSize == "") {
                                             document.querySelector('input[name=cupCakeSize]').focus();
                                         } else if (flavor == "") {
-                                            document.querySelector('input[name=cupcakeRegularFlavors]').focus();
+                                            document.querySelector('input[name=cupCakeFlavors]').focus();
                                         } else if (cupcakeQuantity == "") {
                                             document.getElementById('quantity').focus();
                                         }
                                         notyf.error('Please fill all the details');
                                     } else {
+                                        formSubmitApproval = 'Approved';
+
+                                    }
+
+                                }
+                                if (formSubmitApproval == 'Approved') {
+                                    var cakeType = document.querySelector('input[name=cakeType]:checked').value;
+
+                                    if (cakeType == "1") {
                                         if ($('#insideVegetarianFlavorsType').val() == "regular") {
-                                            var insideRegularFlavors = document.querySelector('input[name=insideVegetarianFlavors]:checked').value;
-                                            var insideSpecialFlavors = '-';
+                                            var insideRegularFlavorsEggLess = document.querySelector('input[name=insideVegetarianFlavors]:checked').value;
+                                            var insideSpecialFlavorsEggLess = '-';
                                         } else if ($('#insideVegetarianFlavorsType').val() == "special") {
-                                            var insideRegularFlavors = '-';
-                                            var insideSpecialFlavors = document.querySelector('input[name=insideVegetarianFlavors]:checked').value;
+                                            var insideRegularFlavorsEggLess = '-';
+                                            var insideSpecialFlavorsEggLess = document.querySelector('input[name=insideVegetarianFlavors]:checked').value;
                                         }
                                         if ($('#outsideVegetarianFlavorsType').val() == "regular") {
-                                            var outsideRegularFlavors = document.querySelector('input[name=outsideVegetarianFlavors]:checked').value;
-                                            var outsideSpecialFlavors = '-';
+                                            var outsideRegularFlavorsEggLess = document.querySelector('input[name=outsideVegetarianFlavors]:checked').value;
+                                            var outsideSpecialFlavorsEggLess = '-';
                                         } else if ($('#outsideVegetarianFlavorsType').val() == "special") {
-                                            var outsideRegularFlavors = '-';
-                                            var outsideSpecialFlavors = document.querySelector('input[name=outsideVegetarianFlavors]:checked').value;
+                                            var outsideRegularFlavorsEggLess = '-';
+                                            var outsideSpecialFlavorsEggLess = document.querySelector('input[name=outsideVegetarianFlavors]:checked').value;
                                         }
-                                        const datasend = {
-                                            locationID: document.querySelector('input[name=address]:checked').value,
-                                            customerFirstName: document.getElementById('fName').value,
-                                            customerLastName: document.getElementById('lName').value,
-                                            customerPhone: document.getElementById('phone').value,
-                                            customerEmail: document.getElementById('cEmail').value,
-                                            orderType: document.querySelector('input[name=orderType]:checked').value,
-                                            orderPickupDate: document.getElementById('datepicker').value,
-                                            orderPickupTime: document.getElementById('orderPickupTime').value,
-                                            orderPickupPerson: document.getElementById('orderPickupName').value,
-                                            deliveryAddress1: document.getElementById('orderDeliveryAddress').value,
-                                            deliveryAppartmentNumber: document.getElementById('orderDeliveryAppartment').value,
-                                            deliveryCity: document.getElementById('orderDeliveryCity').value,
-                                            deliveryState: document.getElementById('orderDeliveryState').value,
-                                            deliveryZIP: document.getElementById('orderDeliveryZIP').value,
-                                            cakeTypeID: document.querySelector('input[name=cakeType]:checked').value,
-                                            sheetTypeID: document.querySelector('input[name=cakeSheet]:checked').value,
-                                            roundCakeID: document.querySelector('input[name=cakeSize]:checked').value,
-                                            insideRegularFlavors: insideRegularFlavors,
-                                            insideSpecialFlavors: insideSpecialFlavors,
-                                            outsideRegularFlavors: outsideRegularFlavors,
-                                            outsideSpecialFlavors: outsideSpecialFlavors,
-                                            veganFlavors: document.querySelector('input[name=veganFlavors]:checked').value,
-                                            sugarFreeFlavors: document.querySelector('input[name=sugarFreeFlavors]:checked').value,
-                                            occasion: document.getElementById('occasion').value,
-                                            name: document.getElementById('birthdayName').value,
-                                            customMessage: document.getElementById('birthdayMessage').value,
-                                            cupcakesRequired: document.querySelector('input[name=cupcake]:checked').value,
-                                            cupcakeSize: document.querySelector('input[name=cupCakeSize]:checked').value,
-                                            cupcakeRegularFlavors: document.querySelector('input[name=cupcakeRegularFlavors]:checked').value,
-                                            cupcakeSpecialFlavors: document.querySelector('input[name=cupcakeSpecialFlavors]:checked').value,
-                                            cupcakeQuantity: document.getElementById('quantity').value,
-                                            signature: document.getElementById('canvasImageInput').value,
-                                        }
-                                        const jsonString = JSON.stringify(datasend);
-                                        $.ajax({
-                                            type: "POST",
-                                            url: "submit-form.php",
-                                            data: jsonString,
-                                            contentType: 'application/json',
-                                            success: function(response) {
-                                                if (response == 'success') {
-                                                    document.getElementById('successPage').style.display = 'block';
-                                                    document.getElementById('Otherdetails').style.display = 'none';
-                                                } else {
-                                                    notyf.error('Something went wrong. Please try again later.');
-                                                }
-                                            },
-                                            complete: function() {},
-                                            error: function(xhr, textStatus, errorThrown) {
-                                                notyf.error('Something went wrong. Please try again later.')
-                                                return false;
-                                            }
-                                        });
-                                        document.getElementById('successPage').style.display = 'block';
-                                        document.getElementById('Otherdetails').style.display = 'none';
+
+                                        var veganFlavors = '-';
+                                        var sugarFreeFlavors = '-';
+                                    } else if (cakeType == "2") {
+                                        var insideRegularFlavorsEggLess = '-';
+                                        var insideSpecialFlavorsEggLess = '-';
+                                        var outsideRegularFlavorsEggLess = '-';
+                                        var outsideSpecialFlavorsEggLess = '-';
+
+                                        var veganFlavors = document.querySelector('input[name=veganFlavors]:checked').value;
+                                        var sugarFreeFlavors = '-';
+                                    } else if (cakeType == "3") {
+                                        var insideRegularFlavorsEggLess = '-';
+                                        var insideSpecialFlavorsEggLess = '-';
+                                        var outsideRegularFlavorsEggLess = '-';
+                                        var outsideSpecialFlavorsEggLess = '-';
+
+                                        var veganFlavors = '-';
+                                        var sugarFreeFlavors = document.querySelector('input[name=sugarFreeFlavors]:checked').value;
                                     }
+
+                                    if (cupCakes == "Yes") {
+                                        var cupCakeSizeFinal = document.querySelector('input[name=cupCakeSize]:checked').value;
+
+                                        var cupCakeType = $('#cupCakeType').val();
+
+                                        if (cupCakeType == 'regular') {
+                                            var cupCakeRegularFlavorsFinal = document.querySelector('input[name=cupCakeFlavors]:checked').value;
+                                            var cupCakeSpecialFlavorsFinal = '-';
+                                        } else if (cupCakeType == 'special') {
+                                            var cupCakeRegularFlavorsFinal = '-';
+                                            var cupCakeSpecialFlavorsFinal = document.querySelector('input[name=cupCakeFlavors]:checked').value;
+                                        }
+
+                                        var cupCakeQuantityFinal = cupcakeQuantity;
+                                    } else if (cupCakes == "No") {
+                                        var cupCakeSizeFinal = '-';
+                                        var cupCakeQuantityFinal = '-';
+                                        var cupCakeRegularFlavorsFinal = '-';
+                                        var cupCakeSpecialFlavorsFinal = '-';
+
+                                    }
+
+
+                                    const datasend = {
+                                        locationID: document.querySelector('input[name=address]:checked').value,
+                                        customerFirstName: document.getElementById('fName').value,
+                                        customerLastName: document.getElementById('lName').value,
+                                        customerPhone: document.getElementById('phone').value,
+                                        customerEmail: document.getElementById('cEmail').value,
+                                        orderType: document.querySelector('input[name=orderType]:checked').value,
+                                        orderPickupDate: document.getElementById('datepicker').value,
+                                        orderPickupTime: document.getElementById('orderPickupTime').value,
+                                        orderPickupPerson: document.getElementById('orderPickupName').value,
+                                        deliveryAddress1: document.getElementById('orderDeliveryAddress').value,
+                                        deliveryAppartmentNumber: document.getElementById('orderDeliveryAppartment').value,
+                                        deliveryCity: document.getElementById('orderDeliveryCity').value,
+                                        deliveryState: document.getElementById('orderDeliveryState').value,
+                                        deliveryZIP: document.getElementById('orderDeliveryZIP').value,
+                                        cakeTypeID: document.querySelector('input[name=cakeType]:checked').value,
+                                        sheetTypeID: document.querySelector('input[name=cakeSheet]:checked').value,
+                                        roundCakeID: document.querySelector('input[name=cakeSize]:checked').value,
+                                        insideRegularFlavors: insideRegularFlavorsEggLess,
+                                        insideSpecialFlavors: insideSpecialFlavorsEggLess,
+                                        outsideRegularFlavors: outsideRegularFlavorsEggLess,
+                                        outsideSpecialFlavors: outsideSpecialFlavorsEggLess,
+                                        veganFlavors: veganFlavors,
+                                        sugarFreeFlavors: sugarFreeFlavors,
+                                        occasion: document.getElementById('occasion').value,
+                                        name: document.getElementById('birthdayName').value,
+                                        customMessage: document.getElementById('birthdayMessage').value,
+                                        cupcakesRequired: document.querySelector('input[name=cupcake]:checked').value,
+                                        cupcakeSize: cupCakeSizeFinal,
+                                        cupcakeRegularFlavors: cupCakeRegularFlavorsFinal,
+                                        cupcakeSpecialFlavors: cupCakeSpecialFlavorsFinal,
+                                        cupcakeQuantity: cupCakeQuantityFinal,
+                                        signature: document.getElementById('canvasImageInput').value,
+                                    }
+                                    const jsonString = JSON.stringify(datasend);
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "submit-form.php",
+                                        data: jsonString,
+                                        contentType: 'application/json',
+                                        success: function(response) {
+                                            if (response == 'success') {
+                                                document.getElementById('successPage').style.display = 'block';
+                                                document.getElementById('Otherdetails').style.display = 'none';
+                                            } else {
+                                                notyf.error('Something went wrong. Please try again later.');
+                                            }
+                                        },
+                                        complete: function() {},
+                                        error: function(xhr, textStatus, errorThrown) {
+                                            notyf.error('Something went wrong. Please try again later.')
+                                            return false;
+                                        }
+                                    });
                                 }
                             }
                         </script>
@@ -1412,8 +1467,7 @@
         </div>
     </div>
 
-    <!-- Optional JavaScript; choose one of the two! -->
-    <script src="assets/js/jquery-3.4.1.min.js"></script>
+
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="assets/vendors/bootstrap/js/popper.min.js"></script>
     <script src="assets/vendors/bootstrap/js/bootstrap.min.js"></script>
