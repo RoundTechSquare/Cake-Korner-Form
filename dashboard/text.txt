@@ -1,0 +1,394 @@
+<?php
+require './default.php';
+if (isset($_SESSION['admin'])) {
+} else {
+    header("location: ./logout.php");
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags  -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+    <title>Dashboard | Cake Korner</title>
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+
+    <!--Core CSS -->
+    <link rel="stylesheet" href="assets/css/app.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Source Sans Pro:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" rel="stylesheet" />
+    <style>
+        .datatableElements {
+            display: flex;
+        }
+
+        .datatableInformation {
+            padding-top: 10px;
+            padding-left: 10px;
+            padding: 10px;
+        }
+
+        .datatablePagination {
+            align-items: flex-end;
+            float: right;
+        }
+
+        .datatablePagination {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 10px;
+        }
+
+        .datatableSearch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 10px;
+        }
+
+        input[type=search] {
+            margin-left: 10px;
+        }
+    </style>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <style>
+        table.dataTable {
+            width: 100%;
+            margin: 0 auto;
+            clear: both;
+            border-collapse: separate;
+            border-spacing: 0;
+            /** Header and footer styles */
+            /** Body styles*/
+        }
+
+        table.dataTable tbody tr.selected {
+            background-color: #b0bed9;
+        }
+
+        .paginate_button {
+            margin-right: 10px
+        }
+
+        .dataTables_wrapper {
+            position: relative;
+            clear: both;
+            *zoom: 1;
+            zoom: 1;
+        }
+    </style>
+    <!-- END: Custom CSS-->
+
+    <!-- BEGIN: Custom Scripts-->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+</head>
+
+<body>
+    <div id="huro-app" class="app-wrapper">
+        <div class="app-overlay"></div>
+        <!--Pageloader-->
+        <!-- Pageloader -->
+        <div class="pageloader is-full"></div>
+        <div class="infraloader is-full is-active"></div>
+
+        <!-- SIDEBAR -->
+        <?php require('./sidebar.php') ?>
+
+        <!-- Content Wrapper -->
+        <div id="app-projects" class="view-wrapper view-wrapper-full" data-naver-offset="214" data-menu-item="#layouts-sidebar-menu" data-mobile-item="#home-sidebar-menu-mobile" data-sidebar-open>
+
+            <div class="page-content-wrapper">
+                <div class="page-content is-relative">
+
+                    <div class="page-title has-text-centered">
+                        <!-- Sidebar Trigger -->
+                        <div class="huro-hamburger nav-trigger push-resize" data-sidebar="home-sidebar">
+                            <span class="menu-toggle has-chevron">
+                                <span class="icon-box-toggle">
+                                    <span class="rotate">
+                                        <i class="icon-line-top"></i>
+                                        <i class="icon-line-center"></i>
+                                        <i class="icon-line-bottom"></i>
+                                    </span>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="title-wrap">
+                            <h1 class="title is-4">Contact Us Forms</h1>
+                        </div>
+                        <div class="toolbar ml-auto">
+                            <div class="toolbar-link">
+                                <label class="dark-mode ml-auto">
+                                    <input type="checkbox" checked>
+                                    <span></span>
+                                </label>
+                            </div>
+                            <a class="toolbar-link right-panel-trigger" href="./logout.php">
+                                <i data-feather="log-out"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="page-content-inner">
+
+                        <!-- Datatable -->
+                        <div class="table-wrapper" data-simplebar>
+                            <table id="example" class="table is-datatable is-hoverable table-is-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Sr.No</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Message</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $query = "SELECT `name`, `email`, `phone`, `message`FROM `contact_form` WHERE 1 ORDER BY `contactID` DESC";
+                                    $result = $con->query($query);
+                                    if ($result->num_rows > 0) {
+                                        $i = 1;
+                                        while ($row = $result->fetch_assoc()) {
+                                    ?>
+                                            <tr class="datatable-info">
+                                                <td style="white-space: nowrap;"><span class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><?= $i ?></span></td>
+                                                <td style="white-space: nowrap;"><span class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><?= $row['name'] ?></span></td>
+                                                <td style="white-space: nowrap;"><span class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><?= $row['email'] ?></span></td>
+                                                <td style="white-space: nowrap;"><span class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><?= $row['phone'] ?></span></td>
+                                                <td style="white-space: nowrap;"><span class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><?= $row['message'] ?></span></td>
+                                            </tr>
+                                        <?php $i++;
+                                        }
+                                    } else {
+                                        ?>
+                                        <tr>
+                                            <td colspan="2">No Record Found</td>
+                                        </tr>
+                                    <?php
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="paging-first-datatable" class="pagination datatable-pagination">
+                            <div class="datatable-info">
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Concatenated plugins -->
+        <script src="assets/js/app.js"></script>
+        <!-- Huro js -->
+        <script src="assets/js/functions.js"></script>
+        <script src="assets/js/main.js" async></script>
+        <script src="assets/js/components.js" async></script>
+        <script src="assets/js/popover.js" async></script>
+        <script src="assets/js/widgets.js" async></script>
+        <!-- Additional Features -->
+        <script src="assets/js/datatables.js" async></script>
+        <script src="assets/js/touch.js" async></script>
+        <script src="assets/js/syntax.js" async></script>
+        <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdn.datatables.net/colreorder/1.5.2/js/dataTables.colReorder.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdn.datatables.net/colreorder/1.5.2/js/dataTables.colReorder.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+        <sccript src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></sccript>
+        <script>
+            $(window).ready(function() {
+                $('#example thead tr')
+                    .clone(true)
+                    .addClass('filters')
+                    .appendTo('#example thead');
+
+                var table = $('#example').DataTable({
+                    orderCellsTop: true,
+                    fixedHeader: true,
+                    scrollY: true,
+                    scrollX: true,
+                    scroller: true,
+                    language: {
+                        paginate: {
+                            // remove previous & next text from pagination
+                            previous: '<span class="text-primary"><i data-feather="chevrons-left"></i> Previous </span>',
+                            next: '<span class="text-primary">  Next <i data-feather="chevrons-right"></i></span>'
+                        }
+                    },
+                    "bFilter": false,
+                    "bInfo": false,
+                    "searching": false,
+                    "dom": "' ' <'row'<'col-sm-6'i><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-2'l><'col-sm-6'><'col-sm-4'p>> ",
+                    filterText: "Type to Filter... ",
+                    filterInputClass: "input",
+                    counterText: function(s, n, a, t, i) {
+                        return "Showing " + a + " to " + t + " of " + i + " items.";
+                    },
+                    counterDivSelector: ".datatable-info span",
+                    pagingDivSelector: "#paging-first-datatable",
+                    firstPage: !1,
+                    lastPage: !1,
+                    nextPage: '<i class="fas fa-angle-right"></i>',
+                    prevPage: '<i class="fas fa-angle-left"></i>',
+                    afterRefresh: function() {
+                        "development" === env && changeDemoImages(), initDropdowns();
+                    },
+                    initComplete: function() {
+                        var api = this.api();
+                        console.log(api.columns().eq(0));
+                        // For each column
+                        api
+                            .columns()
+                            .eq(0)
+                            .each(function(colIdx) {
+                                if (colIdx == 1 || colIdx == 2 || colIdx == 3) {
+                                    var cell = $('.filters th').eq(
+                                        $(api.column(colIdx).header()).index()
+                                    );
+                                    var title = $(cell).text();
+                                    $(cell).html('<input type="text" class="form-control text-nowrap" placeholder="' + title + '" />');
+
+                                    // On every keypress in this input
+                                    $(
+                                            'input',
+                                            $('.filters th').eq($(api.column(colIdx).header()).index())
+                                        )
+                                        .off('keyup change')
+                                        .on('keyup change', function(e) {
+                                            e.stopPropagation();
+
+                                            // Get the search value
+                                            $(this).attr('title', $(this).val());
+                                            var regexr = '({search})'; //$(this).parents('th').find('select').val();
+
+                                            var cursorPosition = this.selectionStart;
+                                            // Search the column for that value
+                                            api
+                                                .column(colIdx)
+                                                .search(
+                                                    this.value != '' ?
+                                                    regexr.replace('{search}', '(((' + this.value + ')))') :
+                                                    '',
+                                                    this.value != '',
+                                                    this.value == ''
+                                                )
+                                                .draw();
+
+                                            $(this)
+                                                .focus()[0]
+                                                .setSelectionRange(cursorPosition, cursorPosition);
+                                        });
+                                } else {
+                                    var cell = $('.filters th').eq(
+                                        $(api.column(colIdx).header()).index()
+                                    );
+                                    var title = $(cell).text();
+                                    $(cell).html('-');
+
+                                    // On every keypress in this input
+                                    $(
+                                            'input',
+                                            $('.filters th').eq($(api.column(colIdx).header()).index())
+                                        )
+                                        .off('keyup change')
+                                        .on('keyup change', function(e) {
+                                            e.stopPropagation();
+
+                                            // Get the search value
+                                            $(this).attr('title', $(this).val());
+                                            var regexr = '({search})'; //$(this).parents('th').find('select').val();
+
+                                            var cursorPosition = this.selectionStart;
+                                            // Search the column for that value
+                                            api
+                                                .column(colIdx)
+                                                .search(
+                                                    this.value != '' ?
+                                                    regexr.replace('{search}', '(((' + this.value + ')))') :
+                                                    '',
+                                                    this.value != '',
+                                                    this.value == ''
+                                                )
+                                                .draw();
+
+                                            $(this)
+                                                .focus()[0]
+                                                .setSelectionRange(cursorPosition, cursorPosition);
+                                        });
+
+                                }
+                                // Set the header cell to contain the input element
+
+                            });
+                    },
+
+
+                });
+
+                // function loadTable() {
+                //     new DataTable(document.querySelector("#example"), {
+                //         pageSize: 10,
+                //         filterText: "Type to Filter... ",
+                //         filterInputClass: "input",
+                //         counterText: function(s, n, a, t, i) {
+                //             return "Showing " + a + " to " + t + " of " + i + " items.";
+                //         },
+                //         counterDivSelector: ".datatable-info span",
+                //         pagingDivSelector: "#paging-first-datatable",
+                //         firstPage: !1,
+                //         lastPage: !1,
+                //         nextPage: '<i class="fas fa-angle-right"></i>',
+                //         prevPage: '<i class="fas fa-angle-left"></i>',
+                //         language: {
+                //             paginate: {
+                //                 // remove previous & next text from pagination
+                //                 previous: '<span class="text-primary"><i class="fas fa-angle-left"></i> Previous </span>',
+                //                 next: '<span class="text-primary">  Next <i class="fas fa-angle-right"></i></span>'
+                //             }
+                //         },
+
+                //         dom: "<'row datatableElements datatableInformation'<'col-sm-6'i><'col-sm-6 datatableSearch'f>>" +
+                //             "<'row'<'col-sm-12'tr>>" +
+                //             "<'row datatableElements datatableInformation'<'col-sm-5'l><'col-sm-7 datatablePagination'p>>",
+
+
+
+
+
+
+
+
+                //     });
+
+                // }
+                // loadTable();
+                var table = $('#example').DataTable();
+                table.draw();
+            });
+        </script>
+    </div>
+</body>
+
+</html>
