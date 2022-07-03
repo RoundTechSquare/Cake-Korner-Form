@@ -170,7 +170,7 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label class="input_title" for="phone">Phone number</label>
-                                        <input type="text" class="form-control" id="phone" placeholder="12256128602" maxlength="13">
+                                        <input type="text" class="form-control" required id="phone" placeholder="12256128602" maxlength="13">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label class="input_title" for="cEmail">Email address</label>
@@ -194,7 +194,7 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label class="input_title" for="orderPickupTime">Order Pickup Time</label>
-                                            <input type="time" id="orderPickupTime" class="form-control" style="padding-right: 10px" placeholder="11:59 PM"></input>
+                                            <input type="time" id="orderPickupTime" class="form-control" style="padding-right: 10px" min="9:00" max="18:00" placeholder="11:59 PM"></input>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label class="input_title" for="orderPickupName">Order Pickup Person
@@ -269,7 +269,7 @@
                                     var deliveryCity = document.getElementById('orderDeliveryCity').value;
                                     var deliveryState = document.getElementById('orderDeliveryState').value;
                                     var deliveryZip = document.getElementById('orderDeliveryZIP').value;
-                                    var orderType = "";
+                                    var orderType = ""
 
                                     if ($('input[name=orderType]:checked').length > 0) {
                                         orderType = document.querySelector('input[name=orderType]:checked').value;
@@ -278,7 +278,7 @@
 
                                     /* VALIDATIONS */
                                     if (orderType == "") {
-                                        notyf.error('Plase select the order type');
+                                        notyf.error('Please select the order type');
                                         document.querySelector('input[name=orderType]').focus();
                                     } else if (orderType == "Pickup") {
                                         if (fName == "" || lName == "" || email == "" || phone == "" || orderPickupDate == "" || orderPickupTime == "" || orderPickupPerson == "") {
@@ -349,7 +349,7 @@
                                         while ($row = $result->fetch_assoc()) {
                                     ?>
                                             <div class="form-group col-lg-4" style="display:flex;margin-top:5px;">
-                                                <input style="width: 15px; height: 15px; margin-right: 10px; margin-top: 5px" type="radio" id="eggType<?= $row['id'] ?>" class=" form-control" name="cakeType" value="<?= $row['id'] ?>" />
+                                                <input style="width: 15px; height: 15px; margin-right: 10px; margin-top: 5px" <?php echo ($row['id'] == 1) ? 'checked="checked"' : '' ?> type="radio" id="eggType<?= $row['id'] ?>" class=" form-control" name="cakeType" value="<?= $row['id'] ?>" />
                                                 <label class="input_title" for="eggType<?= $row['id'] ?>"><?= $row['typeName'] ?></label>
                                             </div>
                                     <?php $i++;
@@ -1305,7 +1305,7 @@
                                     if ($('input[name=cupCakeSize]:checked').length > 0) {
                                         cupCakeSize = document.querySelector('input[name=cupCakeSize]:checked').value;
                                     }
-                                  
+
 
                                     var cupCakeType = $('#cupCakeType').val();
 
@@ -1480,7 +1480,8 @@
         $(function() {
             $("#datepicker").datepicker({
                 showOtherMonths: true,
-                selectOtherMonths: true
+                selectOtherMonths: true,
+                minDate: 0
             });
         });
     </script>
