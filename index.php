@@ -195,6 +195,7 @@
                                         <div class="form-group col-md-6">
                                             <label class="input_title" for="orderPickupTime">Order Pickup Time</label>
                                             <input type="time" id="orderPickupTime" class="form-control" style="padding-right: 10px" min="9:00" max="18:00" placeholder="11:59 PM"></input>
+                                            <p style="margin-top: 5px">Working hours : 9:00 AM to 18:00 PM</p>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label class="input_title" for="orderPickupName">Order Pickup Person
