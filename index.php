@@ -8,11 +8,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
-    <link href="assets/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendors/nice-select/css/nice-select.css" rel="stylesheet">
-    <link href="assets/vendors/elagent-icon/style.css" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/responsive.css" rel="stylesheet">
+    <link href="./assets/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/vendors/nice-select/css/nice-select.css" rel="stylesheet">
+    <link href="./assets/vendors/elagent-icon/style.css" rel="stylesheet">
+    <link href="./assets/css/style.css" rel="stylesheet">
+    <link href="./assets/css/responsive.css" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

@@ -16,8 +16,9 @@ if (isset($_SESSION['admin'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
-    <title>Dashboard | Cake Korner</title>
+    <title>Artesia Orders | Cake Korner</title>
     <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
 
     <!--Core CSS -->
     <link rel="stylesheet" href="assets/css/app.css" />
@@ -25,7 +26,7 @@ if (isset($_SESSION['admin'])) {
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Source Sans Pro:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Source Sans Pro:300,400,500,600,700" rel="stylesheet" />
 
 </head>
 
@@ -60,7 +61,7 @@ if (isset($_SESSION['admin'])) {
                             </span>
                         </div>
                         <div class="title-wrap">
-                            <h1 class="title is-4">Contact Us Forms</h1>
+                            <h1 class="title is-4">Artesia Orders</h1>
                         </div>
                         <div class="toolbar ml-auto">
                             <div class="toolbar-link">
@@ -82,7 +83,7 @@ if (isset($_SESSION['admin'])) {
                             <table id="contactform-table" class="table is-datatable is-hoverable table-is-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Sr.No</th>
+                                        <th>Order.No</th>
                                         <th>Customer Details</th>
                                         <th>Order Details</th>
                                         <th>Cake Details</th>
@@ -91,7 +92,7 @@ if (isset($_SESSION['admin'])) {
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $query = "SELECT * FROM `orders`  WHERE `orders`.`isActive` = 'yes'";
+                                    $query = "SELECT * FROM `orders`  WHERE `orders`.`isActive` = 'yes' AND `orders`.`locationID` = '1'";
                                     $result = $con->query($query);
                                     if ($result->num_rows > 0) {
                                         $i = 1;
@@ -119,48 +120,63 @@ if (isset($_SESSION['admin'])) {
 
                                                 </td>
                                                 <td style="white-space: nowrap;">
-                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Cake Type : </strong><?php
-                                                                                                                                                                                        $cakeTypeQuery = "SELECT * FROM `caketype` WHERE `id`='$row[cakeTypeID]'";
-                                                                                                                                                                                        $cakeTypeResult = $con->query($cakeTypeQuery);
+                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Cake Type : </strong>
+                                                        <?php
+                                                        $cakeTypeQuery = "SELECT * FROM `caketype` WHERE `id`='$row[cakeTypeID]'";
+                                                        $cakeTypeResult = $con->query($cakeTypeQuery);
 
-                                                                                                                                                                                        if ($cakeTypeResult->num_rows > 0) {
-                                                                                                                                                                                            // output data of each row
-                                                                                                                                                                                            while ($cakeTypeRow = $cakeTypeResult->fetch_assoc()) {
-                                                                                                                                                                                                echo $cakeTypeRow["typeName"];
-                                                                                                                                                                                            }
-                                                                                                                                                                                        } else {
-                                                                                                                                                                                            echo "Cake Type not found!";
-                                                                                                                                                                                        }
-                                                                                                                                                                                        ?></p>
-                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Sheet Type : </strong><?php
-                                                                                                                                                                                        $sheetTypeQuery = "SELECT * FROM `cakesheet` WHERE `id`='$row[sheetTypeID]'";
-                                                                                                                                                                                        $sheetTypeResult = $con->query($sheetTypeQuery);
+                                                        if ($cakeTypeResult->num_rows > 0) {
+                                                            // output data of each row
+                                                            while ($cakeTypeRow = $cakeTypeResult->fetch_assoc()) {
+                                                                echo $cakeTypeRow["typeName"];
+                                                            }
+                                                        } else {
+                                                            echo "Cake Type not found!";
+                                                        }
+                                                        ?></p>
+                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Sheet Type : </strong>
+                                                        <?php
+                                                        $sheetTypeQuery = "SELECT * FROM `cakesheet` WHERE `id`='$row[sheetTypeID]'";
+                                                        $sheetTypeResult = $con->query($sheetTypeQuery);
 
-                                                                                                                                                                                        if ($sheetTypeResult->num_rows > 0) {
-                                                                                                                                                                                            // output data of each row
-                                                                                                                                                                                            while ($sheetTypeRow = $sheetTypeResult->fetch_assoc()) {
-                                                                                                                                                                                                echo $sheetTypeRow["size"];
-                                                                                                                                                                                            }
-                                                                                                                                                                                        } else {
-                                                                                                                                                                                            echo "Sheet Type not found!";
-                                                                                                                                                                                        }
-                                                                                                                                                                                        ?></p>
-                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Round Cake Type : </strong><?php
-                                                                                                                                                                                            $cakeSizeQuery = "SELECT * FROM `cakesize` WHERE `id`='$row[roundCakeID]'";
-                                                                                                                                                                                            $cakeSizeResult = $con->query($cakeSizeQuery);
+                                                        if ($sheetTypeResult->num_rows > 0) {
+                                                            // output data of each row
+                                                            while ($sheetTypeRow = $sheetTypeResult->fetch_assoc()) {
+                                                                echo $sheetTypeRow["size"];
+                                                            }
+                                                        } else {
+                                                            echo "Sheet Type not found!";
+                                                        }
+                                                        ?></p>
+                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Round Cake Type : </strong>
+                                                        <?php
+                                                        $cakeSizeQuery = "SELECT * FROM `cakesize` WHERE `id`='$row[roundCakeID]'";
+                                                        $cakeSizeResult = $con->query($cakeSizeQuery);
 
-                                                                                                                                                                                            if ($cakeSizeResult->num_rows > 0) {
-                                                                                                                                                                                                // output data of each row
-                                                                                                                                                                                                while ($cakeSizeRow = $cakeSizeResult->fetch_assoc()) {
-                                                                                                                                                                                                    echo $cakeSizeRow["cakeSize"];
-                                                                                                                                                                                                }
-                                                                                                                                                                                            } else {
-                                                                                                                                                                                                echo "Cake Size not found!";
-                                                                                                                                                                                            }
-                                                                                                                                                                                            ?></p>
-
+                                                        if ($cakeSizeResult->num_rows > 0) {
+                                                            // output data of each row
+                                                            while ($cakeSizeRow = $cakeSizeResult->fetch_assoc()) {
+                                                                echo $cakeSizeRow["cakeSize"];
+                                                            }
+                                                        } else {
+                                                            echo "Cake Size not found!";
+                                                        }
+                                                        ?></p>
                                                 </td>
-                                                <td style="white-space: nowrap;"><span class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><?= $row['customerLastName'] ?></span></td>
+                                                <td style="white-space: nowrap;">
+                                                    <div class="d-flex" style="justify-content: space-between;">
+                                                        <a target="_blank" href="./order-detail.php?orderID=<?= $row['orderID'] ?>&locationID=<?= $row['locationID'] ?>" class="button is-primary is-circle is-elevated">
+                                                            <span class="icon is-small">
+                                                                <i class="fas fa-eye"></i>
+                                                            </span>
+                                                        </a>
+                                                        <a href="./delete-order.php?orderID=<?= $row['orderID'] ?>&locationID=<?= $row['locationID'] ?>" class="button is-circle is-elevated" style="margin-left: 10px;">
+                                                            <span class="icon is-small">
+                                                                <i class="fas fa-trash" style="color: red;"></i>
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </td>
                                             </tr>
                                         <?php $i++;
                                         }
@@ -227,6 +243,36 @@ if (isset($_SESSION['admin'])) {
                 });
             }
         </script>
+        <?php
+        if (isset($_REQUEST['message']) == "Success") {
+        ?>
+            <script>
+                const notyf = new Notyf({
+                    duration: 2500,
+                    position: {
+                        x: 'right',
+                        y: 'top',
+                    },
+                });
+                notyf.success('The record is deleted successfully');
+            </script>
+        <?php
+        } else if (isset($_REQUEST['message']) == "Error") {
+        ?>
+            <script>
+                const notyf = new Notyf({
+                    duration: 2500,
+                    position: {
+                        x: 'right',
+                        y: 'top',
+                    },
+                });
+                notyf.error('Failed to delete the record. Please try again');
+            </script>
+        <?php
+        }
+        ?>
+        <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
     </div>
 </body>
 
