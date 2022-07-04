@@ -83,15 +83,15 @@ if (isset($_SESSION['admin'])) {
                                 <thead>
                                     <tr>
                                         <th>Sr.No</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>Message</th>
+                                        <th>Customer Details</th>
+                                        <th>Order Details</th>
+                                        <th>Cake Details</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $query = "SELECT `orders`.`orderID`, `orders`.`locationID`, `orders`.`customerFirstName`, `orders`.`customerLastName` FROM `orders` LEFT JOIN `locations` ON `orders`.`locationID` = `locations`.`id`";
+                                    $query = "SELECT * FROM `orders`  WHERE `orders`.`isActive` = 'yes'";
                                     $result = $con->query($query);
                                     if ($result->num_rows > 0) {
                                         $i = 1;
@@ -99,9 +99,67 @@ if (isset($_SESSION['admin'])) {
                                     ?>
                                             <tr class="datatable-info">
                                                 <td style="white-space: nowrap;"><span class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><?= $i ?></span></td>
-                                                <td style="white-space: nowrap;"><span class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><?= $row['orderID'] ?></span></td>
-                                                <td style="white-space: nowrap;"><span class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><?= $row['locationID'] ?></span></td>
-                                                <td style="white-space: nowrap;"><span class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><?= $row['customerFirstName']. ' ' .$row['customerLastName'] ?></span></td>
+                                                <td style="white-space: nowrap;">
+                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Name : </strong><?= $row['customerFirstName'] . ' ' . $row['customerLastName'] ?></p>
+                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Phone Number : </strong><?= $row['customerPhone']  ?></p>
+                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Email Address : </strong><?= $row['customerEmail'] ?></p>
+                                                </td>
+                                                <td style="white-space: nowrap;">
+                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Order Type : </strong><?= $row['orderType'] ?></p>
+                                                    <?php
+                                                    if ($row['orderType'] == 'Pickup') { ?>
+                                                        <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Pickup Details : </strong><?= $row['orderPickupDate'] . ', ' . $row['orderPickupTime']  ?></p>
+                                                        <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Pickup Person : </strong><?= $row['orderPickupPerson'] ?></p>
+                                                    <?php } else if ($row['orderType'] == 'Delivery') { ?>
+                                                        <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Delivery Address : </strong><br><?= $row['deliveryAddress1'] . ', ' . $row['deliveryAppartmentNumber']  ?></p>
+                                                        <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><?= $row['deliveryCity'] . ', ' . $row['deliveryState'] . ', ' . $row['deliveryZIP']  ?></p>
+                                                    <?php }
+
+                                                    ?>
+
+                                                </td>
+                                                <td style="white-space: nowrap;">
+                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Cake Type : </strong><?php
+                                                                                                                                                                                        $cakeTypeQuery = "SELECT * FROM `caketype` WHERE `id`='$row[cakeTypeID]'";
+                                                                                                                                                                                        $cakeTypeResult = $con->query($cakeTypeQuery);
+
+                                                                                                                                                                                        if ($cakeTypeResult->num_rows > 0) {
+                                                                                                                                                                                            // output data of each row
+                                                                                                                                                                                            while ($cakeTypeRow = $cakeTypeResult->fetch_assoc()) {
+                                                                                                                                                                                                echo $cakeTypeRow["typeName"];
+                                                                                                                                                                                            }
+                                                                                                                                                                                        } else {
+                                                                                                                                                                                            echo "Cake Type not found!";
+                                                                                                                                                                                        }
+                                                                                                                                                                                        ?></p>
+                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Sheet Type : </strong><?php
+                                                                                                                                                                                        $sheetTypeQuery = "SELECT * FROM `cakesheet` WHERE `id`='$row[sheetTypeID]'";
+                                                                                                                                                                                        $sheetTypeResult = $con->query($sheetTypeQuery);
+
+                                                                                                                                                                                        if ($sheetTypeResult->num_rows > 0) {
+                                                                                                                                                                                            // output data of each row
+                                                                                                                                                                                            while ($sheetTypeRow = $sheetTypeResult->fetch_assoc()) {
+                                                                                                                                                                                                echo $sheetTypeRow["size"];
+                                                                                                                                                                                            }
+                                                                                                                                                                                        } else {
+                                                                                                                                                                                            echo "Sheet Type not found!";
+                                                                                                                                                                                        }
+                                                                                                                                                                                        ?></p>
+                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Round Cake Type : </strong><?php
+                                                                                                                                                                                            $cakeSizeQuery = "SELECT * FROM `cakesize` WHERE `id`='$row[roundCakeID]'";
+                                                                                                                                                                                            $cakeSizeResult = $con->query($cakeSizeQuery);
+
+                                                                                                                                                                                            if ($cakeSizeResult->num_rows > 0) {
+                                                                                                                                                                                                // output data of each row
+                                                                                                                                                                                                while ($cakeSizeRow = $cakeSizeResult->fetch_assoc()) {
+                                                                                                                                                                                                    echo $cakeSizeRow["cakeSize"];
+                                                                                                                                                                                                }
+                                                                                                                                                                                            } else {
+                                                                                                                                                                                                echo "Cake Size not found!";
+                                                                                                                                                                                            }
+                                                                                                                                                                                            ?></p>
+
+                                                </td>
                                                 <td style="white-space: nowrap;"><span class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><?= $row['customerLastName'] ?></span></td>
                                             </tr>
                                         <?php $i++;

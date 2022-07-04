@@ -10,7 +10,7 @@ $dbname = "rounavza_cakekornerwebsite"; */
 $server = "localhost";
 $username = "root";
 $password = "";
-$dbname = "rounavza_cakekornerwebsite";
+$dbname = "rounavza_cakekorner";
 
 $con = new mysqli($server, $username, $password, $dbname);
 
