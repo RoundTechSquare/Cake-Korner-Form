@@ -194,7 +194,7 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label class="input_title" for="orderPickupTime">Order Pickup Time</label>
-                                            <input type="time" id="orderPickupTime" class="form-control" style="padding-right: 10px" min="9:00" max="18:00" placeholder="11:59 PM"></input>
+                                            <input type="time" id="orderPickupTime" class="form-control" style="padding-right: 10px" onchange="console.log(this.value)" placeholder="11:59 PM"></input>
                                             <p style="margin-top: 5px">Working hours : 9:00 AM to 18:00 PM</p>
                                         </div>
                                         <div class="form-group col-md-12">
@@ -260,8 +260,14 @@
                                     });
                                     var fName = document.getElementById('fName').value;
                                     var lName = document.getElementById('lName').value;
-                                    var email = document.getElementById('cEmail').value;
-                                    var phone = document.getElementById('phone').value;
+                                    var email = document.getElementById('cEmail');
+                                    var phone = document.getElementById('phone');
+
+                                    var phonePatternValue = phone.value;
+                                    var emailPatternValue = email.value;
+                                    var phonePattern = new RegExp("^((\\(\\d{3}\\))|\\d{3})[- .]?\\d{3}[- .]?\\d{4}$");
+                                    var emailPattern = new RegExp("^[a-z A-Z 0-9]{4,20}@+[a-z A-z]{2,6}[\.]{1}[c C]{1}[A-Z a-z]{1,6}([\.]{1}[A-Z a-z]{2,6})?$");
+
                                     var orderPickupDate = document.getElementById('datepicker').value;
                                     var orderPickupTime = document.getElementById('orderPickupTime').value;
                                     var orderPickupPerson = document.getElementById('orderPickupName').value;
@@ -282,27 +288,41 @@
                                         notyf.error('Please select the order type');
                                         document.querySelector('input[name=orderType]').focus();
                                     } else if (orderType == "Pickup") {
-                                        if (fName == "" || lName == "" || email == "" || phone == "" || orderPickupDate == "" || orderPickupTime == "" || orderPickupPerson == "") {
-                                            if (fName == "") {
-                                                document.getElementById('fName').focus();
-                                            } else if (lName == "") {
-                                                document.getElementById('lName').focus();
-                                            } else if (email == "") {
-                                                document.getElementById('cEmail').focus();
-                                            } else if (phone == "") {
-                                                document.getElementById('phone').focus();
-                                            } else if (orderPickupDate == "") {
-                                                document.getElementById('datepicker').focus();
-                                            } else if (orderPickupTime == "") {
-                                                document.getElementById('orderPickupTime').focus();
-                                            } else if (orderPickupPerson == "") {
-                                                document.getElementById('orderPickupName').focus();
+                                        if ((emailPattern.test(emailPatternValue) != true) || (phonePattern.test(phonePatternValue) != true) || fName == "" || lName == "" || email == "" || phone == "" || orderPickupDate == "" || orderPickupTime == "" || orderPickupPerson == "") {
+                                            if (emailPattern.test(emailPatternValue) != true) {
+                                                notyf.error('Please enter valid email address');
+                                                email.value = "";
+                                                email.focus();
+                                            } else if (phonePattern.test(phonePatternValue) != true) {
+                                                notyf.error('Please enter valid mobile number');
+                                                phone.value = "";
+                                                phone.focus();
+                                            } else {
+                                                if (fName == "") {
+                                                    document.getElementById('fName').focus();
+                                                } else if (lName == "") {
+                                                    document.getElementById('lName').focus();
+                                                } else if (email == "") {
+                                                    document.getElementById('cEmail').focus();
+                                                } else if (phone == "") {
+                                                    document.getElementById('phone').focus();
+                                                } else if (orderPickupDate == "") {
+                                                    document.getElementById('datepicker').focus();
+                                                } else if (orderPickupTime == "") {
+                                                    document.getElementById('orderPickupTime').focus();
+                                                } else if (orderPickupPerson == "") {
+                                                    document.getElementById('orderPickupName').focus();
+                                                }
+                                                notyf.error('Please fill all the details');
                                             }
-                                            notyf.error('Please fill all the details');
                                         } else {
-                                            document.getElementById('Cakedetails').style.display = 'flex';
-                                            $('#Cakedetails-tab').addClass('active show');
-                                            document.getElementById('Customer').style.display = 'none';
+                                            if (orderPickupTime < "18:00" && orderPickupTime > "09:00") {
+                                                document.getElementById('Cakedetails').style.display = 'flex';
+                                                $('#Cakedetails-tab').addClass('active show');
+                                                document.getElementById('Customer').style.display = 'none';
+                                            } else {
+                                                notyf.error('Please select time within working hours');
+                                            }
                                         }
                                     } else if (orderType == "Delivery") {
                                         if (fName == "" || lName == "" || email == "" || phone == "" || deliveryStreetName == "" || deliveryCity == "" || deliveryState == "" || deliveryZip == "") {
