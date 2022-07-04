@@ -229,7 +229,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="next_button text-right">
+                                <div class="next_button text-right" style="justify-content: space-between; display: flex; align-items: center">
+                                    <button type="button" onclick="$('#Location').show();$('#Customer').hide();" class="btn thm_btn red_btn"><i class="arrow_left"></i> Previous</button>
                                     <button type="button" id="submitBtn" onclick="CustomerDetails()" class="btn thm_btn red_btn" style="display: none;">Next<i class="arrow_right"></i></button>
                                 </div>
                             </div>
@@ -578,6 +579,7 @@
                                     </div>
                                 </div>
                                 <div class="next_button d-flex align-items-center justify-content-between">
+                                    <button type="button" onclick="$('#Customer').show();$('#Cakedetails').hide();" class="btn thm_btn red_btn"><i class="arrow_left"></i> Previous</button>
                                     <button type="button" onclick="cakeDetailsSelected()" class="btn thm_btn red_btn">Next<i class="arrow_right"></i></button>
                                 </div>
                             </div>
@@ -1262,6 +1264,7 @@
                                         });
                                     </script>
                                     <div class="form-group col-lg-12 d-flex align-items-center justify-content-between">
+                                        <button type="button" onclick="$('#Cakedetails').show();$('#Otherdetails').hide();" class="btn thm_btn red_btn"><i class="arrow_left"></i> Previous</button>
                                         <button type="button" onclick="formSubmit()" class="btn thm_btn red_btn">Submit</button>
                                     </div>
                                 </div>
