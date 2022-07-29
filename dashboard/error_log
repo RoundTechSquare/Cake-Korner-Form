@@ -1,0 +1,95 @@
+[28-Jul-2022 10:09:31 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'rounavza_cakekorner_testing.themeCake' doesn't exist in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php:361
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php(361): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 361
+[28-Jul-2022 12:10:25 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'rounavza_cakekorner_testing.themeCake' doesn't exist in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php:361
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php(361): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 361
+[28-Jul-2022 12:11:14 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'rounavza_cakekorner_testing.themeCake' doesn't exist in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php:361
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php(361): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 361
+[28-Jul-2022 12:13:57 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'rounavza_cakekorner_testing.themeCake' doesn't exist in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/edit-detail.php:524
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/edit-detail.php(524): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/edit-detail.php on line 524
+[28-Jul-2022 12:14:04 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'rounavza_cakekorner_testing.themeCake' doesn't exist in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php:361
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php(361): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 361
+[28-Jul-2022 12:16:37 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'rounavza_cakekorner_testing.themeCake' doesn't exist in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/edit-detail.php:524
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/edit-detail.php(524): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/edit-detail.php on line 524
+[28-Jul-2022 12:16:46 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'rounavza_cakekorner_testing.themeCake' doesn't exist in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php:361
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php(361): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 361
+[28-Jul-2022 12:17:05 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'rounavza_cakekorner_testing.themeCake' doesn't exist in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php:361
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php(361): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 361
+[28-Jul-2022 12:17:42 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'rounavza_cakekorner_testing.themeCake' doesn't exist in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php:361
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php(361): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 361
+[28-Jul-2022 12:17:45 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'rounavza_cakekorner_testing.themeCake' doesn't exist in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php:361
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php(361): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 361
+[28-Jul-2022 12:18:03 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'rounavza_cakekorner_testing.themeCake' doesn't exist in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php:361
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php(361): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 361
+[28-Jul-2022 12:19:06 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'rounavza_cakekorner_testing.themeCake' doesn't exist in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php:361
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php(361): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 361
+[28-Jul-2022 12:19:08 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'rounavza_cakekorner_testing.themeCake' doesn't exist in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php:361
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php(361): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 361
+[28-Jul-2022 12:19:37 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'rounavza_cakekorner_testing.themeCake' doesn't exist in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php:361
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php(361): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 361
+[28-Jul-2022 12:20:22 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'rounavza_cakekorner_testing.themeCake' doesn't exist in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php:361
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php(361): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 361
+[28-Jul-2022 12:29:50 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'rounavza_cakekorner_testing.themeCake' doesn't exist in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/edit-detail.php:524
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/edit-detail.php(524): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/edit-detail.php on line 524
+[28-Jul-2022 12:29:55 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'rounavza_cakekorner_testing.themeCake' doesn't exist in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php:361
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php(361): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 361
+[28-Jul-2022 12:48:41 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'rounavza_cakekorner_testing.themeCake' doesn't exist in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/edit-detail.php:524
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/edit-detail.php(524): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/edit-detail.php on line 524
+[28-Jul-2022 12:48:45 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'rounavza_cakekorner_testing.themeCake' doesn't exist in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php:361
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php(361): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 361

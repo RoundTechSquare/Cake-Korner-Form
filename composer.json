@@ -1,0 +1,18 @@
+{
+    "name": "hittarth/cake-korner-form",
+    "require": {
+        "twilio/sdk": "^6.40",
+        "sendgrid/sendgrid": "~7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hittarth\\CakeKornerForm\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Hittarth Solanki",
+            "email": "47528091+Hvs911@users.noreply.github.com"
+        }
+    ]
+}
