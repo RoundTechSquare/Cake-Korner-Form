@@ -1,6 +1,6 @@
 <?php
-require './connection.php';
-session_start();
+require './default.php';
+
 if (isset($_SESSION['admin'])) {
 } else {
     header("location: ./logout.php");
@@ -164,12 +164,41 @@ if (isset($_SESSION['admin'])) {
                             </div>
                             <div class="title mt-0 pt-0">
                                 <button onclick="setDate()" class="button  h-button is-primary">Apply</button>
-                                <button class="button  h-button is-primary">Clear Filter</button>
+                                <button onclick="clearFilters()" class="button  h-button is-primary">Clear Filter</button>
                             </div>
 
 
                         </div>
                     </div>
+                    <script>
+                        function clearFilters() {
+                            var formData = new FormData();
+                            formData.append("locationID", "1");
+                            formData.append("filterOption", "clearFilters");
+                            $.ajax({
+                                url: "./set-date.php",
+                                type: 'POST',
+                                data: formData,
+                                contentType: false,
+                                processData: false,
+                                success: function(data) {
+                                    if (data == "success") {
+                                        notyf.success("Filter applied");
+                                        setTimeout(reloadPage, 1500);
+
+                                        function reloadPage() {
+                                            window.location.reload();
+                                        }
+
+                                    } else if (data == "error") {
+                                        notyf.error("Failed to apply filter");
+                                    } else {
+                                        notyf.error("Something went wrong!");
+                                    }
+                                }
+                            });
+                        }
+                    </script>
 
                     <?php
                     if (isset($_SESSION['locationOneEndDate'])) {
@@ -184,37 +213,37 @@ if (isset($_SESSION['admin'])) {
                         $(function() {
 
                             var start = <?php if (isset($_SESSION['locationOneStartDate'])) { ?>
-                                moment('<?= $explodedStartDate[0] ?>-<?= $explodedStartDate[1] ?>-<?= $explodedStartDate[2] ?>', 'MM-DD-YYYY')
-                        <?php } else { ?>moment() <?php } ?>;
+                            moment('<?= $explodedStartDate[0] ?>-<?= $explodedStartDate[1] ?>-<?= $explodedStartDate[2] ?>', 'MM-DD-YYYY')
+                            <?php } else { ?>moment() <?php } ?>;
 
-                        var end = <?php  if (isset($_SESSION['locationOneEndDate'])) { ?>
-                        moment('<?= $explodedEndDate[0] ?>-<?= $explodedEndDate[1] ?>-<?= $explodedEndDate[2] ?>', 'MM-DD-YYYY')
+                            var end = <?php if (isset($_SESSION['locationOneEndDate'])) { ?>
+                            moment('<?= $explodedEndDate[0] ?>-<?= $explodedEndDate[1] ?>-<?= $explodedEndDate[2] ?>', 'MM-DD-YYYY')
                         <?php } else { ?> moment() <?php } ?>;
 
 
-                        function cb(start, end) {
+                            function cb(start, end) {
 
-                            $('#reportrange span').html(start.format('MM-DD-YYYY') + ' to ' + end.format('MM-DD-YYYY'));
-                            $("#filterDatePicker").val(start.format('MM-DD-YYYY') + ' to ' + end.format('MM-DD-YYYY'));
-                            $("#startDate").val(start.format('MM-DD-YYYY'));
-                            $("#endDate").val(end.format('MM-DD-YYYY'));
-                        }
-
-                        $('#reportrange').daterangepicker({
-                            startDate: start,
-                            endDate: end,
-
-                            ranges: {
-                                'Today': [moment(), moment()],
-                                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                                'This Month': [moment().startOf('month'), moment().endOf('month')],
-                                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                                $('#reportrange span').html(start.format('MM-DD-YYYY') + ' to ' + end.format('MM-DD-YYYY'));
+                                $("#filterDatePicker").val(start.format('MM-DD-YYYY') + ' to ' + end.format('MM-DD-YYYY'));
+                                $("#startDate").val(start.format('MM-DD-YYYY'));
+                                $("#endDate").val(end.format('MM-DD-YYYY'));
                             }
-                        }, cb);
 
-                        cb(start, end);
+                            $('#reportrange').daterangepicker({
+                                startDate: start,
+                                endDate: end,
+
+                                ranges: {
+                                    'Today': [moment(), moment()],
+                                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                                    'This Month': [moment().startOf('month'), moment().endOf('month')],
+                                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                                }
+                            }, cb);
+
+                            cb(start, end);
 
                         });
                     </script>
@@ -239,7 +268,7 @@ if (isset($_SESSION['admin'])) {
                                     formData.append("filterDatePicker", filterDatePicker);
                                     formData.append("startDate", startDate);
                                     formData.append("endDate", endDate);
-
+                                    formData.append("filterOption", "updateFilters");
                                     formData.append("locationID", "1");
 
                                     $.ajax({
@@ -266,14 +295,6 @@ if (isset($_SESSION['admin'])) {
                                     });
                                 }
                             }
-                            var picker = new Pikaday({
-                                field: document.getElementById('pickaday-datepicker'),
-                                format: 'MM DD YYYY',
-                                onSelect: function() {
-                                    //Do your stuff
-
-                                }
-                            });
                         </script>
 
 
@@ -291,15 +312,13 @@ if (isset($_SESSION['admin'])) {
                                 </thead>
                                 <tbody>
                                     <?php
-                                    echo  $_SESSION['locationOneQuery'];
+
 
                                     if (isset($_SESSION['locationOneQuery'])) {
                                         $query = $_SESSION['locationOneQuery'];
                                     } else {
-                                        $query = "SELECT * FROM `orders`  WHERE `orders`.`isActive` = 'yes' AND `orders`.`locationID` = '1'";
+                                        $query = "SELECT * FROM `orders`  WHERE `orders`.`isActive` = 'yes' AND `orders`.`locationID` = '1' AND `dateCreated`='$dateCreated'";
                                     }
-
-
                                     $result = $con->query($query);
                                     if ($result->num_rows > 0) {
                                         $i = 1;
