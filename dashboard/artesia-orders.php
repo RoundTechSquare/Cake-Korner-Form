@@ -32,22 +32,40 @@ if (isset($_SESSION['admin'])) {
         .datatableElements {
             display: flex;
             border: none !important;
+            color: #DE85AD !important;
         }
 
+        #table_id_info{
+            color: #DE85AD !important;
+        }
+        select{
+            color: #DE85AD !important;
+        }
+
+        #table_id_filter{
+            color: #DE85AD !important;
+        }
+
+        #table_id_length{
+            color: #DE85AD !important;
+        }
         .datatableDiv {
             border: none !important;
+            color: #DE85AD !important;
         }
 
         .datatableInformation {
             padding-top: 10px;
             padding-left: 10px;
             padding: 10px;
+            color: #DE85AD !important;
             border: none !important;
         }
 
         .datatablePagination {
             align-items: flex-end;
             float: right;
+            color: #DE85AD !important;
         }
 
         #table_id_paginate .current {
@@ -76,12 +94,14 @@ if (isset($_SESSION['admin'])) {
             bottom: 0;
             right: 0;
             padding: 10px;
+            color: #DE85AD !important;
         }
 
         .datatableSearch {
             position: absolute;
             top: 0;
             right: 0;
+            color: #DE85AD !important;
             padding: 10px;
         }
     </style>
@@ -327,12 +347,12 @@ if (isset($_SESSION['admin'])) {
                                             <tr class="datatable-info">
                                                 <td style="font-size: 10px;padding:10px"><span class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><?= $i ?></span></td>
                                                 <td style="white-space: nowrap;">
-                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Name : </strong><?= $row['customerFirstName'] . ' ' . $row['customerLastName'] ?></p>
-                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Phone Number : </strong><?= $row['customerPhone']  ?></p>
-                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Email Address : </strong><?= $row['customerEmail'] ?></p>
-                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Order Date : </strong><?= $row['dateCreated'] ?></p>
+                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Name : </strong><?= $row['customerFirstName'] . ' ' . $row['customerLastName'] ?></p>
+                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Phone Number : </strong><?= $row['customerPhone']  ?></p>
+                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Email Address : </strong><?= $row['customerEmail'] ?></p>
+                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Order Date : </strong><?= $row['dateCreated'] ?></p>
 
-                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Payment Status : </strong>
+                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Payment Status : </strong>
 
                                                         <?php
                                                         if ($row['paymentStatus'] == "Paid") {
@@ -349,26 +369,26 @@ if (isset($_SESSION['admin'])) {
 
                                                 </td>
                                                 <td style="white-space: nowrap;">
-                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Order Type : </strong><?= $row['orderType'] ?></p>
+                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Order Type : </strong><?= $row['orderType'] ?></p>
                                                     <?php
                                                     if ($row['orderType'] == 'Pickup') { ?>
-                                                        <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Pickup Details : </strong><?= $row['orderPickupDate'] . ', ' . $row['orderPickupTime']  ?></p>
-                                                        <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Pickup Person : </strong><?= $row['orderPickupPerson'] ?></p>
+                                                        <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Pickup Details : </strong><?= $row['orderPickupDate'] . ', ' . $row['orderPickupTime']  ?></p>
+                                                        <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Pickup Person : </strong><?= $row['orderPickupPerson'] ?></p>
                                                     <?php } else if ($row['orderType'] == 'Delivery') { ?>
-                                                        <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Delivery Address : </strong><br><?= $row['deliveryAddress1'] . ', ' . $row['deliveryAppartmentNumber']  ?></p>
+                                                        <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Delivery Address : </strong><br><?= $row['deliveryAddress1'] . ', ' . $row['deliveryAppartmentNumber']  ?></p>
                                                         <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><?= $row['deliveryCity'] . ', ' . $row['deliveryState'] . ', ' . $row['deliveryZIP']  ?></p>
                                                     <?php }
 
                                                     ?>
 
-                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Pickup/Delivery Date : </strong> <?php if ($row['orderType'] == 'Pickup') {
+                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Pickup/Delivery Date : </strong> <?php if ($row['orderType'] == 'Pickup') {
                                                                                                                                                                                                         echo $row['orderPickupDate'];
                                                                                                                                                                                                     } else if ($row['orderType'] == 'Delivery') {
                                                                                                                                                                                                         echo $row['dateCreated'];
                                                                                                                                                                                                     } ?></p>
                                                 </td>
                                                 <td style="white-space: nowrap;">
-                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Cake Type : </strong>
+                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Cake Type : </strong>
                                                         <?php
                                                         $cakeTypeQuery = "SELECT * FROM `caketype` WHERE `id`='$row[cakeType]'";
                                                         $cakeTypeResult = $con->query($cakeTypeQuery);
@@ -386,7 +406,7 @@ if (isset($_SESSION['admin'])) {
                                                     if ($row['cakeSizeType'] == 'squareCake') {
 
                                                     ?>
-                                                        <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Square Cake Type : </strong>
+                                                        <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Square Cake Type : </strong>
                                                             <?php
                                                             $sheetTypeQuery = "SELECT * FROM `cakesheet` WHERE `id`='$row[cakeShape]'";
                                                             $sheetTypeResult = $con->query($sheetTypeQuery);
@@ -403,7 +423,7 @@ if (isset($_SESSION['admin'])) {
                                                     <?php
                                                     } else if ($row['cakeSizeType'] == 'roundCake') {
                                                     ?>
-                                                        <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Round Cake Type : </strong>
+                                                        <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Round Cake Type : </strong>
                                                             <?php
                                                             $cakeSizeQuery = "SELECT * FROM `cakesize` WHERE `id`='$row[cakeShape]'";
                                                             $cakeSizeResult = $con->query($cakeSizeQuery);
@@ -418,10 +438,10 @@ if (isset($_SESSION['admin'])) {
                                                             }
                                                             ?></p>
                                                     <?php } else   if ($row['cakeSizeType'] == 'other') { ?>
-                                                        <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Custom Cake Type : </strong>
+                                                        <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Custom Cake Type : </strong>
                                                             <?php echo $row['cakeShape']; ?></p>
                                                     <?php } ?>
-                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Cake Flavor : </strong>
+                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Cake Flavor : </strong>
                                                         <?php
 
                                                         if ($row['cakeType'] == 2) {

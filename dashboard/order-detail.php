@@ -153,7 +153,7 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                             <div class="profile-body">
                                 <div class="section-wrap   px-2 printAdd" style="position: relative;bottom:0px">
 
-                                    <img class="" src="./assets/img/cake-korner-logo.webp" style="width:auto;height:70px" alt="">
+                                    <img class="" src="./assets/img/cake-korner-logo.png" style="width:auto;height:70px" alt="">
                                     <h2 class="has-dark-text dark-inverted " style="font-weight: 700;float:right">Store Name : <?php
                                                                                                                                 $sql = "SELECT * FROM `locations` WHERE `id`='$_REQUEST[locationID]'";
                                                                                                                                 $result = $con->query($sql);

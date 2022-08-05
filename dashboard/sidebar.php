@@ -13,8 +13,8 @@
                </div>
 
                <a class="navbar-item is-brand" href="index.html">
-                   <img class="light-image" src="assets/img/cake-korner-logo.webp" style="height: 70px; width: auto" alt="">
-                   <img class="dark-image" src="assets/img/cake-korner-logo.webp" style="height: 70px; width: auto" alt="">
+                   <img class="light-image" src="assets/img/cake-korner-logo.png" style="height: 70px; width: auto" alt="">
+                   <img class="dark-image" src="assets/img/cake-korner-logo.png" style="height: 70px; width: auto" alt="">
                </a>
 
                <div class="brand-end">
@@ -99,8 +99,8 @@
    <div id="sidebar-block" class="sidebar-block">
        <div class="sidebar-block-header">
            <a class="sidebar-block-logo " style="width:100%;height:auto;padding-top:30px" href="/">
-               <img class="light-image" src="assets/img/cake-korner-logo.webp" style="height: 70px; width: auto" alt="">
-               <img class="dark-image" src="assets/img/cake-korner-logo.webp" style="height: 70px; width: auto" alt="">
+               <img class="light-image" src="assets/img/cake-korner-logo.png" style="height: 70px; width: auto" alt="">
+               <img class="dark-image" src="assets/img/cake-korner-logo.png" style="height: 70px; width: auto" alt="">
            </a>
        </div>
        <div class="sidebar-block-inner" data-simplebar>
