@@ -11,11 +11,10 @@ use Twilio\Rest\Client;
 // $twilio_number = "<Twilio number>";
 
 
+$account_sid = "asd";
+$auth_token = "asd";
 
-$account_sid = "ACab64633b8f0b45f90552c36f102a992a";
-$auth_token = "703a1295506957afb217badb4c3acfc1";
-
-$twilio_number = "+12525011243";
+$twilio_number = "+asd";
 
 $orderID =   $_SESSION['orderIDRandom'];
 $client = new Client($account_sid, $auth_token);

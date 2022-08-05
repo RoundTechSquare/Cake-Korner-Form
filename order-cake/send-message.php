@@ -6,10 +6,10 @@ require_once '../vendor/autoload.php';
 
 use Twilio\Rest\Client;
 
-$account_sid = "ACab64633b8f0b45f90552c36f102a992a";
-$auth_token = "703a1295506957afb217badb4c3acfc1";
+$account_sid = "asd";
+$auth_token = "asd";
 
-$twilio_number = "+12525011243";
+$twilio_number = "+asd";
 
 
 
