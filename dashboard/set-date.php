@@ -1,25 +1,36 @@
 <?php require './default.php';
 $locationID = $con->real_escape_string($_REQUEST['locationID']);
-$datePicked = $con->real_escape_string($_REQUEST['datePicked']);
-if ($datePicked == '' || $datePicked == ' ' || $datePicked == 'undefined' || $locationID == '' || $locationID == ' ' || $locationID == 'undefined') {
+$filterDatePicker = $con->real_escape_string($_REQUEST['filterDatePicker']);
+
+$startDate = $con->real_escape_string($_REQUEST['startDate']);
+$endDate = $con->real_escape_string($_REQUEST['endDate']);
+if ($filterDatePicker == '' || $filterDatePicker == ' ' || $filterDatePicker == 'undefined' || $locationID == '' || $locationID == ' ' || $locationID == 'undefined') {
     echo "error";
 } else {
     if ($locationID == '1') {
-        $_SESSION['DateLocationOne'] = $locationID;
-        if (isset($_SESSION['dateFilterDateLocationOne'])) {
-            if ($datePicked == '' || $datePicked == ' ' || $datePicked == 'undefined') {
+        if (isset($_SESSION['filterDatePickerLocationOne'])) {
+            if ($filterDatePicker == '' || $filterDatePicker == ' ' || $filterDatePicker == 'undefined') {
 
-                unset($_SESSION['dateFilterDateLocationOne']);
+                unset($_SESSION['filterDatePickerLocationOne']);
+                unset($_SESSION['locationOneQuery']);
+                unset($_SESSION['locationOneStartDate']);
+                unset($_SESSION['locationOneEndDate']);
                 echo "error";
             } else {
-                $_SESSION['dateFilterDateLocationOne'] = $datePicked;
+                $_SESSION['filterDatePickerLocationOne'] = $filterDatePicker;
+                $_SESSION['locationOneStartDate'] = $startDate;
+                $_SESSION['locationOneEndDate'] = $endDate;
+                $_SESSION['locationOneQuery'] = "SELECT * FROM `orders`  WHERE `orders`.`isActive` = 'yes' AND `dateCreated` BETWEEN '$startDate' AND '$endDate' AND `orders`.`locationID` = '1'";
                 echo "success";
             }
         } else {
-            if ($datePicked == '' || $datePicked == ' ' || $datePicked == 'undefined') {
+            if ($filterDatePicker == '' || $filterDatePicker == ' ' || $filterDatePicker == 'undefined') {
                 echo "error";
             } else {
-                $_SESSION['dateFilterDateLocationOne'] = $datePicked;
+                $_SESSION['filterDatePickerLocationOne'] = $filterDatePicker;
+                $_SESSION['locationOneStartDate'] = $startDate;
+                $_SESSION['locationOneEndDate'] = $endDate;
+                $_SESSION['locationOneQuery'] = "SELECT * FROM `orders`  WHERE `orders`.`isActive` = 'yes' AND `dateCreated` BETWEEN '$startDate' AND '$endDate' AND `orders`.`locationID` = '1'";
                 echo "success";
             }
         }

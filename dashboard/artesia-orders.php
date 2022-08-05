@@ -85,7 +85,10 @@ if (isset($_SESSION['admin'])) {
             padding: 10px;
         }
     </style>
-
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 </head>
 
 <body>
@@ -139,44 +142,89 @@ if (isset($_SESSION['admin'])) {
                         <div class="toolbar ml-auto">
                             <div class="field">
 
-                                <div class="title-wrap  mt-2 pt-1">
-                                    <div class="control has-icon">
-                                        <input id="pickaday-datepicker" value="<?php
-                                                                                if (isset($_SESSION['dateFilterDateLocationOne'])) {
-                                                                                    echo $_SESSION['dateFilterDateLocationOne'];
-                                                                                } else {
-                                                                                    echo 'Select a Date';
-                                                                                }
-                                                                                ?>" class="input">
-                                        <div class="form-icon">
-                                            <i data-feather="calendar"></i>
-                                        </div>
 
+
+
+                                <div class="title-wrap  mt-2 pt-1">
+                                    <div id="reportrange" style="cursor:pointer ;" class="control has-icon">
+
+                                        <div class="input">
+                                            <div class="form-icon">
+                                                <i data-feather="calendar"></i>
+                                            </div>&nbsp;
+                                            <span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-caret-down"></i>
+
+                                        </div>
                                     </div>
 
                                 </div>
+                                <input type='hidden' id="filterDatePicker">
+                                <input type='hidden' id="startDate">
+                                <input type='hidden' id="endDate">
                             </div>
                             <div class="title mt-0 pt-0">
                                 <button onclick="setDate()" class="button  h-button is-primary">Apply</button>
+                                <button class="button  h-button is-primary">Clear Filter</button>
                             </div>
 
 
                         </div>
                     </div>
 
+                    <?php
+                    if (isset($_SESSION['locationOneEndDate'])) {
+                        $explodedEndDate = explode("-", $_SESSION['locationOneEndDate']);
+                    }
+
+                    if (isset($_SESSION['locationOneStartDate'])) {
+                        $explodedStartDate = explode("-", $_SESSION['locationOneStartDate']);
+                    }
+                    ?>
+                    <script type="text/javascript">
+                        $(function() {
+
+                            var start = <?php if (isset($_SESSION['locationOneStartDate'])) { ?>
+                                moment('<?= $explodedStartDate[0] ?>-<?= $explodedStartDate[1] ?>-<?= $explodedStartDate[2] ?>', 'MM-DD-YYYY')
+                        <?php } else { ?>moment() <?php } ?>;
+
+                        var end = <?php  if (isset($_SESSION['locationOneEndDate'])) { ?>
+                        moment('<?= $explodedEndDate[0] ?>-<?= $explodedEndDate[1] ?>-<?= $explodedEndDate[2] ?>', 'MM-DD-YYYY')
+                        <?php } else { ?> moment() <?php } ?>;
+
+
+                        function cb(start, end) {
+
+                            $('#reportrange span').html(start.format('MM-DD-YYYY') + ' to ' + end.format('MM-DD-YYYY'));
+                            $("#filterDatePicker").val(start.format('MM-DD-YYYY') + ' to ' + end.format('MM-DD-YYYY'));
+                            $("#startDate").val(start.format('MM-DD-YYYY'));
+                            $("#endDate").val(end.format('MM-DD-YYYY'));
+                        }
+
+                        $('#reportrange').daterangepicker({
+                            startDate: start,
+                            endDate: end,
+
+                            ranges: {
+                                'Today': [moment(), moment()],
+                                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                            }
+                        }, cb);
+
+                        cb(start, end);
+
+                        });
+                    </script>
                     <div class="page-content-inner" id="bodyPage">
 
                         <script>
-                            setTimeout(reloadPage, 1000);
-
-                            function reloadPage() {
-                                document.getElementById("bodyPage").click();
-                                document.getElementById("bodyPage").click();
-                                document.getElementById("bodyPage").click();
-                            }
-
                             function setDate() {
-                                var datePicked = $("#pickaday-datepicker").val();
+                                var filterDatePicker = $("#filterDatePicker").val();
+                                var startDate = $("#startDate").val();
+                                var endDate = $("#endDate").val();
                                 const notyf = new Notyf({
                                     duration: 1500,
                                     position: {
@@ -184,11 +232,14 @@ if (isset($_SESSION['admin'])) {
                                         y: 'top',
                                     },
                                 });
-                                if (datePicked == '' || datePicked == undefined) {
+                                if (filterDatePicker == '' || filterDatePicker == undefined) {
                                     notyf.error("Please select date first");
                                 } else {
                                     var formData = new FormData();
-                                    formData.append("datePicked", datePicked);
+                                    formData.append("filterDatePicker", filterDatePicker);
+                                    formData.append("startDate", startDate);
+                                    formData.append("endDate", endDate);
+
                                     formData.append("locationID", "1");
 
                                     $.ajax({
@@ -231,20 +282,19 @@ if (isset($_SESSION['admin'])) {
                             <table id="table_id" class="table is-datatable is-hoverable table-is-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Order.No</th>
+                                        <th style="font-size: 10px;padding:10px">ID</th>
                                         <th>Customer Details</th>
                                         <th>Order Details</th>
                                         <th>Cake Details</th>
-                                        <th>Order Date</th>
-                                        <th>Pickup/Delivery Date</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    if (isset($_SESSION['dateFilterDateLocationOne'])) {
-                                        $filteredDate = $_SESSION['dateFilterDateLocationOne'];
-                                        $query = "SELECT * FROM `orders`  WHERE `orders`.`isActive` = 'yes' AND `dateCreated`='$filteredDate' AND `orders`.`locationID` = '1'";
+                                    echo  $_SESSION['locationOneQuery'];
+
+                                    if (isset($_SESSION['locationOneQuery'])) {
+                                        $query = $_SESSION['locationOneQuery'];
                                     } else {
                                         $query = "SELECT * FROM `orders`  WHERE `orders`.`isActive` = 'yes' AND `orders`.`locationID` = '1'";
                                     }
@@ -256,12 +306,15 @@ if (isset($_SESSION['admin'])) {
                                         while ($row = $result->fetch_assoc()) {
                                     ?>
                                             <tr class="datatable-info">
-                                                <td style="white-space: nowrap;"><span class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><?= $i ?></span></td>
+                                                <td style="font-size: 10px;padding:10px"><span class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><?= $i ?></span></td>
                                                 <td style="white-space: nowrap;">
                                                     <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Name : </strong><?= $row['customerFirstName'] . ' ' . $row['customerLastName'] ?></p>
                                                     <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Phone Number : </strong><?= $row['customerPhone']  ?></p>
                                                     <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Email Address : </strong><?= $row['customerEmail'] ?></p>
+                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Order Date : </strong><?= $row['dateCreated'] ?></p>
+
                                                     <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Payment Status : </strong>
+
                                                         <?php
                                                         if ($row['paymentStatus'] == "Paid") {
                                                             echo '<span class="tag is-rounded is-success  mx-2 is-light">Paid</span>';
@@ -289,6 +342,11 @@ if (isset($_SESSION['admin'])) {
 
                                                     ?>
 
+                                                    <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Pickup/Delivery Date : </strong> <?php if ($row['orderType'] == 'Pickup') {
+                                                                                                                                                                                                        echo $row['orderPickupDate'];
+                                                                                                                                                                                                    } else if ($row['orderType'] == 'Delivery') {
+                                                                                                                                                                                                        echo $row['dateCreated'];
+                                                                                                                                                                                                    } ?></p>
                                                 </td>
                                                 <td style="white-space: nowrap;">
                                                     <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Cake Type : </strong>
@@ -423,17 +481,7 @@ if (isset($_SESSION['admin'])) {
                                                         }
                                                         ?>
                                                 </td>
-                                                     <td style="white-space: nowrap;">
-                                                    <?= $row['dateCreated'] ?>
-                                                </td>
-                                                <td style="white-space: nowrap;">
-                                                    <?php if ($row['orderType'] == 'Pickup') {
-                                                        echo $row['orderPickupDate'];
-                                                    } else if ($row['orderType'] == 'Delivery') {
-                                                        echo $row['dateCreated'];
-                                                    } ?>
 
-                                                </td>
                                                 <td style="white-space: nowrap;">
                                                     <div class="d-flex" style="justify-content: space-between;">
                                                         <a target="_blank" href="./edit-detail.php?orderID=<?= $row['orderID'] ?>&locationID=<?= $row['locationID'] ?>" style="border: none;background:transparent" class="button is-elevated">
@@ -554,6 +602,11 @@ if (isset($_SESSION['admin'])) {
         <script src="assets/js/touch.js" async></script>
 
         <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
         <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     </div>
 </body>

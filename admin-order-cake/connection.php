@@ -1,14 +1,14 @@
 <?php 
 
-$servername = "localhost";
-$username = "rounavza_cakekorner_testing";
-$password = "rounavza_cakekorner_testing";
-$dbname = "rounavza_cakekorner_testing"; 
+// $servername = "localhost";
+// $username = "rounavza_cakekorner_testing";
+// $password = "rounavza_cakekorner_testing";
+// $dbname = "rounavza_cakekorner_testing"; 
 
-//  $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "rounavza_cakekorner"; 
+ $servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "rounavza_cakekorner"; 
 
 // Create connection
 $con = new mysqli($servername, $username, $password, $dbname);
