@@ -138,9 +138,8 @@
                                                 $('#workingHourTiming').html(' Working hours : '+locationStartTime+' to '+ locationEndTime);
                                                " name="address" value="<?= $row['id'] ?>">
                                                 <div class="shop-details">
-                                                    <h5>Cake Korner</h5>
-                                                    <p><?= $row['city'] ?>, <?= $row['state'] ?> <?= $row['postalCode'] ?></p>
-                                                    <p><?= $row['streetName'] ?>, <?= $row['city'] ?><br /><?= $row['state'] ?> <?= $row['postalCode'] ?>,<?= $row['country'] ?></p>
+                                                    <h5><?= $row['city'] ?></h5>
+                                                    <p><?= $row['streetName'] ?><br /><?= $row['city'] ?>, <?= $row['state'] ?> <?= $row['postalCode'] ?></p>
                                                     <p>Phone: <?= $row['phoneNumber'] ?></p>
                                                 </div>
                                                 </input>
@@ -190,15 +189,15 @@
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label class="input_title" for="fName">First Name</label>
-                                        <input type="text" class="form-control" id="fName" placeholder="Enter First Name">
+                                        <input type="text" class="form-control" id="fName" placeholder="First Name">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label class="input_title" for="lName">Last Name</label>
-                                        <input type="text" class="form-control" id="lName" placeholder="Enter Last Name">
+                                        <input type="text" class="form-control" id="lName" placeholder="Last Name">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label class="input_title" for="phone">Phone number</label>
-                                        <input type="text" class="form-control" required id="phone" placeholder="12256128602" maxlength="13">
+                                        <input type="text" class="form-control" required id="phone" placeholder="+1" maxlength="13">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label class="input_title" for="cEmail">Email address</label>
@@ -218,11 +217,53 @@
                                     <div class="row ml-0 pickup-toggle" style="width: 100%;">
                                         <div class="form-group col-md-6">
                                             <label class="input_title" for="datepicker">Order Pickup Date</label>
-                                            <input type="text" id="datepicker" class="form-control datepicker-control" placeholder="06/02/2022">
+                                            <input type="text" id="datepicker" class="form-control datepicker-control" placeholder="Pick Date">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label class="input_title" for="orderPickupTime">Order Pickup Time</label>
-                                            <input type="time" id="orderPickupTime" class="form-control" style="padding-right: 10px" onchange="console.log(this.value)" placeholder="11:59 PM"></input>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <select id="hours" class="form-control">
+                                                        <option>HH</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <select id="minutes" class="form-control">
+                                                        <option>MM</option>
+                                                        <option value="5">5</option>
+                                                        <option value="10">10</option>
+                                                        <option value="15">15</option>
+                                                        <option value="20">20</option>
+                                                        <option value="25">25</option>
+                                                        <option value="30">30</option>
+                                                        <option value="35">35</option>
+                                                        <option value="40">40</option>
+                                                        <option value="45">45</option>
+                                                        <option value="50">50</option>
+                                                        <option value="55">55</option>
+                                                        <option value="60">60</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <select id="minutes" class="form-control">
+                                                        <option value="PM">AM</option>
+                                                        <option value="AM">PM</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <!-- <input type="time" id="orderPickupTime" class="form-control" style="padding-right: 10px" onchange="console.log(this.value)" placeholder="11:59 PM"></input> -->
                                             <p id="workingHourTiming" style="margin-top: 5px"></p>
                                         </div>
                                         <!-- <div class="form-group col-md-12">
@@ -295,7 +336,7 @@
                                     var phonePatternValue = phone.value;
                                     var emailPatternValue = email.value;
                                     var phonePattern = new RegExp("^((\\(\\d{3}\\))|\\d{3})[- .]?\\d{3}[- .]?\\d{4}$");
-                                   
+
 
                                     var orderPickupDate = document.getElementById('datepicker').value;
                                     var orderPickupTime = document.getElementById('orderPickupTime').value;
@@ -1536,7 +1577,7 @@
             $("#datepicker").datepicker({
                 showOtherMonths: true,
                 selectOtherMonths: true,
-                   minDate: 0,
+                minDate: 0,
                 dateFormat: "mm-dd-yy"
             });
         });
