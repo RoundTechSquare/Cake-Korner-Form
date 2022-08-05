@@ -13,6 +13,7 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
             $customerPhone = $row['customerPhone'];
             $customerEmail = $row['customerEmail'];
             $paymentStatus = $row['paymentStatus'];
+            $orderAmount = $row['orderAmount'];
             $orderType = $row['orderType'];
             $orderPickupDate = $row['orderPickupDate'];
             $orderPickupTime = $row['orderPickupTime'];
@@ -182,7 +183,7 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                     <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Name: </strong><?= $customerName ?></p>
                                                     <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Phone Number: </strong><?= $customerPhone ?></p>
                                                     <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Email Address: </strong><?= $customerEmail ?></p>
-                                                    <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Payment Status: </strong><?= $paymentStatus ?></p>
+                                                    <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Payment Status: </strong><?php if($paymentStatus == '-'){echo "Not Paid";}else{echo $paymentStatus;} ?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><span class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Order Amount: </strong>$<?php if($orderAmount == '-'){echo "0";}else{echo $orderAmount;} ?></span></span></p>
                                                 </div>
                                             </div>
                                             <!-- CUSTOMER DETAILS END -->
@@ -328,14 +329,14 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                         <?php } else {
                                                         if ($cakeType == 1) {
                                                             if ($cakeFlavorsType == 'regular') {
-                                                                $query = "SELECT * FROM `regularflavors` WHERE `id`=$cakeType";
+                                                                $query = "SELECT * FROM `regularflavors` WHERE `id`=$cakeFlavors";
                                                             } else if ($cakeFlavorsType == 'special') {
-                                                                $query = "SELECT * FROM `specialflavors` WHERE `id`=$cakeType";
+                                                                $query = "SELECT * FROM `specialflavors` WHERE `id`=$cakeFlavors";
                                                             }
                                                         } else if ($cakeType == 2) {
-                                                            $query = "SELECT * FROM `veganflavors` WHERE `id`=$cakeType";
+                                                            $query = "SELECT * FROM `veganflavors` WHERE `id`=$cakeFlavors";
                                                         } else if ($cakeType == 3) {
-                                                            $query = "SELECT * FROM `sugarfreeflavors` WHERE `id`=$cakeType";
+                                                            $query = "SELECT * FROM `sugarfreeflavors` WHERE `id`=$cakeFlavors";
                                                         }
 
                                                         $result = $con->query($query);
@@ -356,8 +357,8 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
 
                                                     ?>
                                                     <?php
-                                                    if ($themeCake != '') {
-                                                        $query = "SELECT * FROM `themeCake` WHERE `themeCakeID`=$themeCake";
+                                                    if ($themeCake != '-') {
+                                                        $query = "SELECT * FROM `themecake` WHERE `themeCakeID`=$themeCake";
                                                         $result = $con->query($query);
                                                         if ($result->num_rows > 0) {
                                                             $i = 1;
@@ -369,8 +370,13 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                     <?php
                                                             }
                                                         }
-                                                    }
+                                                    }else{ ?>
+                                                        <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90">
+                                                        <strong class="has-dark-text dark-inverted " style="padding-right: 5px">Theme Cake Type: </strong>No Theme Cake Selected
+                                                    </p>
+                                                    <?php }
                                                     ?>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -447,7 +453,7 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                                                     echo "<p>No Image Uploaded</p>";
                                                                                 } else { ?>
                                                         <img src=".<?php echo $inspirationUploadDesign; ?>" style="height: 150px; width: auto" alt="Signature" />
-                                                        ?>
+                                                        
 
                                                     <?php }
                                                     ?>

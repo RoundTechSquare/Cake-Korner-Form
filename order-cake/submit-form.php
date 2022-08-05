@@ -61,6 +61,7 @@ $query = "INSERT INTO `orders`(`locationID`,`cakeSizeType`, `customerFirstName`,
 
 $generate_order_id = random_int(100000, 999999);
 $_SESSION['orderIDRandom'] = $generate_order_id;
+
 if ($con->query($query) === TRUE) {
 
     $last_id = $con->insert_id;
@@ -74,19 +75,24 @@ if ($con->query($query) === TRUE) {
             $img = str_replace('data:image/' . $extension . ';base64,', '', $img);
             $img = str_replace(' ', '+', $img);
             $data = base64_decode($img);
-            file_put_contents("../assets/images/inspiration-upload/" . "inspiration-upload-" . "$last_id" . "-" . "$fileIndex" . "." . $extension . "", $data);
-            if ($index == 0) {
-                $imageFilePath = "./assets/images/inspiration-upload/" . "inspiration-upload-" . "$last_id" . "-" . "$fileIndex" . "." . $extension . "";
+            if (file_put_contents("../assets/images/inspiration-upload/" . "inspiration-upload-" . "$last_id" . "-" . "$fileIndex" . "." . $extension . "", $data)) {
+                $uploadStatus = 1;
             } else {
-                $imageFilePath = $imageFilePath . ',' . "./assets/images/inspiration-upload/" . "inspiration-upload-" . "$last_id" . "-" . "$fileIndex" . "." . $extension . "";
+                $uploadStatus = -1;
             }
+
+            $imageFilePath = "./assets/images/inspiration-upload/" . "inspiration-upload-" . "$last_id" . "-" . "$fileIndex" . "." . $extension . "";
         }
 
+        if ($uploadStatus == 1) {
+            $sql = "UPDATE `orders` SET `inspirationUploadDesign`='$imageFilePath',`orderConfirmationCode`='$generate_order_id' WHERE `orderID`=$last_id";
 
-        $sql = "UPDATE `orders` SET `inspirationUploadDesign`='$imageFilePath',`orderConfirmationCode`='$generate_order_id' WHERE `orderID`=$last_id";
-
-        if ($con->query($sql) === true) {
-            require './send-message.php';
+            if ($con->query($sql) === true) {
+                   $status = 1;
+            // require './send-message.php';
+            } else {
+                $status = -1;
+            }
         } else {
             $status = -1;
         }
@@ -95,7 +101,8 @@ if ($con->query($query) === TRUE) {
         $sql = "UPDATE `orders` SET `orderConfirmationCode`='$generate_order_id' WHERE `orderID`=$last_id";
 
         if ($con->query($sql) === true) {
-            require './send-message.php';
+            $status = 1;
+            // require './send-message.php';
         } else {
             $status = -1;
         }

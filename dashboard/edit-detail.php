@@ -15,6 +15,7 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
             $customerPhone = $row['customerPhone'];
             $customerEmail = $row['customerEmail'];
             $paymentStatus = $row['paymentStatus'];
+            $orderAmount = $row['orderAmount'];
             $orderType = $row['orderType'];
             $orderPickupDate = $row['orderPickupDate'];
             $orderPickupTime = $row['orderPickupTime'];
@@ -239,8 +240,8 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                         <h2 class="has-dark-text dark-inverted " style="font-weight: 700;">ORDER TYPE DETAILS</h2>
                                                     </div>
                                                     <div class="section-content">
-                                                
-                                                    <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Confirmation Code: </strong>    #<?= $orderConfirmationCode?></p>
+
+                                                        <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Confirmation Code: </strong> #<?= $orderConfirmationCode ?></p>
                                                         <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Order Type: </strong><?= $orderType ?></p>
                                                         <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Pickup Date: </strong><?= $orderPickupDate ?></p>
                                                         <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Pickup Time: </strong><?= $orderPickupTime  ?></p>
@@ -255,7 +256,7 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                         <h2 class="has-dark-text dark-inverted " style="font-weight: 700;">ORDER TYPE DETAILS</h2>
                                                     </div>
                                                     <div class="section-content">
-                                                    <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Confirmation Code: </strong>    #<?= $orderConfirmationCode?></p>
+                                                        <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Confirmation Code: </strong> #<?= $orderConfirmationCode ?></p>
                                                         <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Order Type: </strong><?= $orderType ?></p>
                                                         <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Delivery Address: </strong><?= $deliveryAddress1 . ', ' . $deliveryAppartmentNumber . ', ' . $deliveryCity . ', ' . $deliveryState . ', ' . $deliveryZIP ?></p>
                                                     </div>
@@ -272,7 +273,7 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                 </div>
                                                 <div class="section-content">
                                                     <div class="columns">
-                                                        <div class="column is-4">
+                                                        <div class="column is-3">
 
                                                             <div class="field">
                                                                 <label class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Occasion: </strong>
@@ -348,7 +349,7 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                             </div>
 
                                                         </div>
-                                                        <div class="column is-8">
+                                                        <div class="column is-4">
 
                                                             <div class="field">
                                                                 <div class="control">
@@ -357,6 +358,15 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                                 </div>
                                                             </div>
                                                             </p>
+                                                        </div>
+                                                        <div class="column is-5">
+                                                            <div class="field">
+                                                                <div class="control">
+                                                                    <label class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Order Amount: </strong></label>
+                                                                    <input type="text" class="input" id="orderAmount" value="<?= $orderAmount ?>" placeholder="Enter Order Amount">
+                                                                </div>
+                                                            </div>
+
                                                         </div>
                                                     </div>
                                                     <div class="columns">
@@ -479,7 +489,7 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                             <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90">No records found</p>
                                                         <?php
                                                         }
-                                                    } else   if ($cupCcakeSizeTypeakeType == 'other') { ?>
+                                                    } else   if ($cakeShape == 'other') { ?>
                                                         <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Custom Cake Type : </strong>
                                                             <?php echo $cakeShape; ?></p>
                                                     <?php } ?>
@@ -491,14 +501,14 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                         <?php } else {
                                                         if ($cakeType == 1) {
                                                             if ($cakeFlavorsType == 'regular') {
-                                                                $query = "SELECT * FROM `regularflavors` WHERE `id`=$cakeType";
+                                                                $query = "SELECT * FROM `regularflavors` WHERE `id`=$cakeFlavors";
                                                             } else if ($cakeFlavorsType == 'special') {
-                                                                $query = "SELECT * FROM `specialflavors` WHERE `id`=$cakeType";
+                                                                $query = "SELECT * FROM `specialflavors` WHERE `id`=$cakeFlavors";
                                                             }
                                                         } else if ($cakeType == 2) {
-                                                            $query = "SELECT * FROM `veganflavors` WHERE `id`=$cakeType";
+                                                            $query = "SELECT * FROM `veganflavors` WHERE `id`=$cakeFlavors";
                                                         } else if ($cakeType == 3) {
-                                                            $query = "SELECT * FROM `sugarfreeflavors` WHERE `id`=$cakeType";
+                                                            $query = "SELECT * FROM `sugarfreeflavors` WHERE `id`=$cakeFlavors";
                                                         }
 
                                                         $result = $con->query($query);
@@ -519,8 +529,9 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
 
                                                     ?>
                                                     <?php
-                                                    if ($themeCake != '') {
-                                                        $query = "SELECT * FROM `themeCake` WHERE `themeCakeID`=$themeCake";
+
+                                                    if ($themeCake != '-') {
+                                                        $query = "SELECT * FROM `themecake` WHERE `themeCakeID`=$themeCake";
                                                         $result = $con->query($query);
                                                         if ($result->num_rows > 0) {
                                                             $i = 1;
@@ -529,10 +540,14 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                                 <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90">
                                                                     <strong class="has-dark-text dark-inverted " style="padding-right: 5px">Theme Cake Type: </strong><?= $rowTheme['themeName'] ?> (#<?= $themeCake ?>)
                                                                 </p>
-                                                    <?php
+                                                        <?php
                                                             }
                                                         }
-                                                    }
+                                                    } else { ?>
+                                                        <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90">
+                                                            <strong class="has-dark-text dark-inverted " style="padding-right: 5px">Theme Cake Type: </strong>No Theme Cake Selected
+                                                        </p>
+                                                    <?php }
                                                     ?>
                                                 </div>
                                             </div>
@@ -540,7 +555,7 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
 
 
 
-                                            <!-- CUPCAKE DETAILS START -->.
+                                            <!-- CUPCAKE DETAILS START -->
                                             <?php
                                             if ($cupcake == "Yes") {
                                             ?>
@@ -589,7 +604,6 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                 </div>
                                             <?php
                                             } else {
-                                                echo "<p style='padding-top:0px;margin-top:-30px'></p>";
                                             }
                                             ?>
                                             <!-- CUPCAKE DETAILS END -->
@@ -633,7 +647,7 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                                                     echo "<p>No Image Uploaded</p>";
                                                                                 } else { ?>
                                                         <img src=".<?php echo $inspirationUploadDesign; ?>" style="height: 150px; width: auto" alt="Signature" />
-                                                        ?>
+
 
                                                     <?php }
                                                     ?>
@@ -670,6 +684,8 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                         var occasion = $('#occasion').val();
                                         var customMessage = $('#customMessage').val();
                                         var specialInstructions = $('#specialInstructions').val();
+
+                                        var orderAmount = $('#orderAmount').val();
                                         var orderID = $('#orderID').val();
                                         if (customerFirstName == '' || customerFirstName == ' ' || customerLastName == '' || customerLastName == ' ' || phoneNumber == '' || phoneNumber == ' ' || email == '' || email == ' ' || paymentStatus == '' || paymentStatus == ' ' ||
                                             occasion == '' || occasion == ' ' || customMessage == '' || customMessage == ' ' || orderID == '' || orderID == ' ') {
@@ -683,6 +699,7 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
 
                                             formData.append("email", email);
                                             formData.append("paymentStatus", paymentStatus);
+                                            formData.append("orderAmount", orderAmount);
 
                                             formData.append("occasion", occasion);
                                             formData.append("customMessage", customMessage);

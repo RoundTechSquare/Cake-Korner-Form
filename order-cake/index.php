@@ -295,7 +295,7 @@
                                     var phonePatternValue = phone.value;
                                     var emailPatternValue = email.value;
                                     var phonePattern = new RegExp("^((\\(\\d{3}\\))|\\d{3})[- .]?\\d{3}[- .]?\\d{4}$");
-                                    var emailPattern = new RegExp("^[a-z A-Z 0-9]{4,20}@+[a-z A-z]{2,6}[\.]{1}[c C]{1}[A-Z a-z]{1,6}([\.]{1}[A-Z a-z]{2,6})?$");
+                                   
 
                                     var orderPickupDate = document.getElementById('datepicker').value;
                                     var orderPickupTime = document.getElementById('orderPickupTime').value;
@@ -313,11 +313,7 @@
                                     }
                                     var emailPatternConfirmation = 'valid';
 
-                                    if (emailPattern.test(emailPatternValue) == true) {
-                                        emailPatternConfirmation = 'valid';
-                                    } else {
-                                        emailPatternConfirmation = 'notValid';
-                                    }
+
                                     if (email.value == '' || email.value == ' ') {
                                         emailPatternConfirmation = 'valid';
                                     }
@@ -1540,7 +1536,8 @@
             $("#datepicker").datepicker({
                 showOtherMonths: true,
                 selectOtherMonths: true,
-                minDate: 0
+                   minDate: 0,
+                dateFormat: "mm-dd-yy"
             });
         });
     </script>

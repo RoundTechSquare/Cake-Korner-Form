@@ -93,3 +93,99 @@ Stack trace:
 #0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php(361): mysqli->query()
 #1 {main}
   thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 361
+[01-Aug-2022 00:26:40 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'rounavza_cakekorner_testing.themeCake' doesn't exist in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php:362
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php(362): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 362
+[01-Aug-2022 00:26:45 America/New_York] PHP Warning:  Undefined variable $cupCcakeSizeTypeakeType in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/edit-detail.php on line 492
+[01-Aug-2022 00:26:45 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'rounavza_cakekorner_testing.themeCake' doesn't exist in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/edit-detail.php:535
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/edit-detail.php(535): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/edit-detail.php on line 535
+[01-Aug-2022 00:28:56 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'rounavza_cakekorner_testing.themeCake' doesn't exist in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php:362
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php(362): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 362
+[01-Aug-2022 00:30:56 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'rounavza_cakekorner_testing.themeCake' doesn't exist in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php:362
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php(362): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 362
+[01-Aug-2022 00:32:35 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'rounavza_cakekorner_testing.themeCake' doesn't exist in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/edit-detail.php:535
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/edit-detail.php(535): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/edit-detail.php on line 535
+[01-Aug-2022 00:32:39 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'rounavza_cakekorner_testing.themeCake' doesn't exist in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/edit-detail.php:535
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/edit-detail.php(535): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/edit-detail.php on line 535
+[01-Aug-2022 00:32:50 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'rounavza_cakekorner_testing.themeCake' doesn't exist in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/edit-detail.php:535
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/edit-detail.php(535): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/edit-detail.php on line 535
+[02-Aug-2022 17:11:05 America/New_York] PHP Warning:  Undefined variable $orderConfirmationCode in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 169
+[02-Aug-2022 17:11:05 America/New_York] PHP Warning:  Undefined variable $customerName in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 183
+[02-Aug-2022 17:11:05 America/New_York] PHP Warning:  Undefined variable $customerPhone in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 184
+[02-Aug-2022 17:11:05 America/New_York] PHP Warning:  Undefined variable $customerEmail in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 185
+[02-Aug-2022 17:11:05 America/New_York] PHP Warning:  Undefined variable $paymentStatus in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 186
+[02-Aug-2022 17:11:05 America/New_York] PHP Warning:  Undefined variable $paymentStatus in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 186
+[02-Aug-2022 17:11:05 America/New_York] PHP Warning:  Undefined variable $orderAmount in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 186
+[02-Aug-2022 17:11:05 America/New_York] PHP Warning:  Undefined variable $orderAmount in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 186
+[02-Aug-2022 17:11:05 America/New_York] PHP Warning:  Undefined variable $orderType in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 193
+[02-Aug-2022 17:11:05 America/New_York] PHP Warning:  Undefined variable $orderType in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 208
+[02-Aug-2022 17:11:05 America/New_York] PHP Warning:  Undefined variable $occasion in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 230
+[02-Aug-2022 17:11:05 America/New_York] PHP Warning:  Undefined variable $customMessage in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 231
+[02-Aug-2022 17:11:05 America/New_York] PHP Warning:  Undefined variable $specialInstructions in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 232
+[02-Aug-2022 17:11:05 America/New_York] PHP Warning:  Undefined variable $signature in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 245
+[02-Aug-2022 17:11:05 America/New_York] PHP Warning:  Undefined variable $cakeType in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 268
+[02-Aug-2022 17:11:05 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php:269
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php(269): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 269
+[02-Aug-2022 18:35:58 America/New_York] PHP Warning:  Undefined variable $orderConfirmationCode in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 169
+[02-Aug-2022 18:35:58 America/New_York] PHP Warning:  Undefined variable $customerName in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 183
+[02-Aug-2022 18:35:58 America/New_York] PHP Warning:  Undefined variable $customerPhone in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 184
+[02-Aug-2022 18:35:58 America/New_York] PHP Warning:  Undefined variable $customerEmail in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 185
+[02-Aug-2022 18:35:58 America/New_York] PHP Warning:  Undefined variable $paymentStatus in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 186
+[02-Aug-2022 18:35:58 America/New_York] PHP Warning:  Undefined variable $paymentStatus in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 186
+[02-Aug-2022 18:35:58 America/New_York] PHP Warning:  Undefined variable $orderAmount in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 186
+[02-Aug-2022 18:35:58 America/New_York] PHP Warning:  Undefined variable $orderAmount in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 186
+[02-Aug-2022 18:35:58 America/New_York] PHP Warning:  Undefined variable $orderType in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 193
+[02-Aug-2022 18:35:58 America/New_York] PHP Warning:  Undefined variable $orderType in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 208
+[02-Aug-2022 18:35:58 America/New_York] PHP Warning:  Undefined variable $occasion in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 230
+[02-Aug-2022 18:35:58 America/New_York] PHP Warning:  Undefined variable $customMessage in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 231
+[02-Aug-2022 18:35:58 America/New_York] PHP Warning:  Undefined variable $specialInstructions in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 232
+[02-Aug-2022 18:35:58 America/New_York] PHP Warning:  Undefined variable $signature in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 245
+[02-Aug-2022 18:35:58 America/New_York] PHP Warning:  Undefined variable $cakeType in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 268
+[02-Aug-2022 18:35:58 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php:269
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php(269): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 269
+[02-Aug-2022 22:30:21 America/New_York] PHP Warning:  Undefined variable $orderConfirmationCode in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 169
+[02-Aug-2022 22:30:21 America/New_York] PHP Warning:  Undefined variable $customerName in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 183
+[02-Aug-2022 22:30:21 America/New_York] PHP Warning:  Undefined variable $customerPhone in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 184
+[02-Aug-2022 22:30:21 America/New_York] PHP Warning:  Undefined variable $customerEmail in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 185
+[02-Aug-2022 22:30:21 America/New_York] PHP Warning:  Undefined variable $paymentStatus in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 186
+[02-Aug-2022 22:30:21 America/New_York] PHP Warning:  Undefined variable $paymentStatus in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 186
+[02-Aug-2022 22:30:21 America/New_York] PHP Warning:  Undefined variable $orderAmount in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 186
+[02-Aug-2022 22:30:21 America/New_York] PHP Warning:  Undefined variable $orderAmount in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 186
+[02-Aug-2022 22:30:21 America/New_York] PHP Warning:  Undefined variable $orderType in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 193
+[02-Aug-2022 22:30:21 America/New_York] PHP Warning:  Undefined variable $orderType in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 208
+[02-Aug-2022 22:30:21 America/New_York] PHP Warning:  Undefined variable $occasion in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 230
+[02-Aug-2022 22:30:21 America/New_York] PHP Warning:  Undefined variable $customMessage in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 231
+[02-Aug-2022 22:30:21 America/New_York] PHP Warning:  Undefined variable $specialInstructions in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 232
+[02-Aug-2022 22:30:21 America/New_York] PHP Warning:  Undefined variable $signature in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 245
+[02-Aug-2022 22:30:21 America/New_York] PHP Warning:  Undefined variable $cakeType in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 268
+[02-Aug-2022 22:30:21 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php:269
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php(269): mysqli->query()
+#1 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/dashboard/order-detail.php on line 269

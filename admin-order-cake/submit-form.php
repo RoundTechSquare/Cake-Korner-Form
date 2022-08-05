@@ -30,6 +30,8 @@ $orderType = $con->real_escape_string($object['orderType']);
 $orderPickupDate = $con->real_escape_string($object['orderPickupDate']);
 $orderPickupTime = $con->real_escape_string($object['orderPickupTime']);
 // $orderPickupPerson = $con->real_escape_string($object['orderPickupPerson']);
+$paymentStatus = $con->real_escape_string($object['paymentStatus']);
+
 $deliveryAddress1 = $con->real_escape_string($object['deliveryAddress1']);
 $deliveryAppartmentNumber = $con->real_escape_string($object['deliveryAppartmentNumber']);
 $deliveryCity = $con->real_escape_string($object['deliveryCity']);
@@ -47,6 +49,7 @@ $otherOccasion = $con->real_escape_string($object['otherOccasion']);
 $customMessage = $con->real_escape_string($object['customMessage']);
 $specialInstructions = $con->real_escape_string($object['specialInstructions']);
 $inspirationUploadDesign = $object['inspirationUploadDesign'];
+$orderAmount = $con->real_escape_string($object['orderAmount']);
 $imagesUploadStatus = $con->real_escape_string($object['imagesUploadStatus']);
 $cupcake = $con->real_escape_string($object['cupcake']);
 $cupCakeSizeOption = $con->real_escape_string($object['cupCakeSizeOption']);
@@ -56,14 +59,14 @@ $cupCakeFlavors = $con->real_escape_string($object['cupCakeFlavors']);
 $cupCakeQuantity = $con->real_escape_string($object['cupCakeQuantity']);
 $signature = $con->real_escape_string($object['signature']);
 
-$query = "INSERT INTO `orders`(`locationID`,`cakeSizeType`,`themeCake`, `customerFirstName`, `customerLastName`, `customerPhone`, `customerEmail`, `orderType`, `orderPickupDate`, `orderPickupTime`,  `deliveryAddress1`, `deliveryAppartmentNumber`, `deliveryCity`, `deliveryState`, `deliveryZIP`, `cakeType`, `cakeShape`, `cakeFlavors`, `cakeFlavorsType`, `occasion`, `otherOccasion`,  `customMessage`, `specialInstructions`,  `cupcake`, `cupCakeSizeOption`, `cupCakeType`, `cupCakeFlavors`, `cupCakeQuantity`, `signature`, `isActive`, `dateCreated`, `timestamp`)
-                       VALUES ('$locationID','$cakeSizeType','$themeCake', '$customerFirstName', '$customerLastName', '$customerPhone', '$customerEmail', '$orderType', '$orderPickupDate', '$orderPickupTime', '$deliveryAddress1', '$deliveryAppartmentNumber', '$deliveryCity', '$deliveryState', '$deliveryZIP', '$cakeType', '$cakeShape', '$cakeFlavors', '$cakeFlavorsType', '$occasion', '$otherOccasion', '$customMessage', '$specialInstructions',  '$cupcake', '$cupCakeSizeOption', '$cupCakeType', '$cupCakeFlavors', '$cupCakeQuantity', '$signature', 'Yes', '$dateCreated', '$timestampCreated')  ";
+$query = "INSERT INTO `orders`(`locationID`,`paymentStatus`,`orderAmount`,`cakeSizeType`,`themeCake`, `customerFirstName`, `customerLastName`, `customerPhone`, `customerEmail`, `orderType`, `orderPickupDate`, `orderPickupTime`,  `deliveryAddress1`, `deliveryAppartmentNumber`, `deliveryCity`, `deliveryState`, `deliveryZIP`, `cakeType`, `cakeShape`, `cakeFlavors`, `cakeFlavorsType`, `occasion`, `otherOccasion`,  `customMessage`, `specialInstructions`,  `cupcake`, `cupCakeSizeOption`, `cupCakeType`, `cupCakeFlavors`, `cupCakeQuantity`, `signature`, `isActive`, `dateCreated`, `timestamp`)
+                       VALUES ('$locationID','$paymentStatus','$orderAmount','$cakeSizeType','$themeCake', '$customerFirstName', '$customerLastName', '$customerPhone', '$customerEmail', '$orderType', '$orderPickupDate', '$orderPickupTime', '$deliveryAddress1', '$deliveryAppartmentNumber', '$deliveryCity', '$deliveryState', '$deliveryZIP', '$cakeType', '$cakeShape', '$cakeFlavors', '$cakeFlavorsType', '$occasion', '$otherOccasion', '$customMessage', '$specialInstructions',  '$cupcake', '$cupCakeSizeOption', '$cupCakeType', '$cupCakeFlavors', '$cupCakeQuantity', '$signature', 'Yes', '$dateCreated', '$timestampCreated')  ";
 
 $generate_order_id = random_int(100000, 999999);
 $_SESSION['orderIDRandom'] = $generate_order_id;
 if ($con->query($query) === TRUE) {
 
-    
+
     $last_id = $con->insert_id;
     if ($imagesUploadStatus == "Yes") {
         $imageFilePath = "";
@@ -87,7 +90,8 @@ if ($con->query($query) === TRUE) {
         $sql = "UPDATE `orders` SET `inspirationUploadDesign`='$imageFilePath',`orderConfirmationCode`='$generate_order_id' WHERE `orderID`=$last_id";
 
         if ($con->query($sql) === true) {
-            require './send-message.php';
+            // require './send-message.php';
+            $status = 1;
         } else {
             $status = -1;
         }
@@ -96,12 +100,12 @@ if ($con->query($query) === TRUE) {
         $sql = "UPDATE `orders` SET `orderConfirmationCode`='$generate_order_id' WHERE `orderID`=$last_id";
 
         if ($con->query($sql) === true) {
-            require './send-message.php';
+            // require './send-message.php';
+            $status = 1;
         } else {
             $status = -1;
         }
     }
-   
 } else {
     $status = -1;
 }

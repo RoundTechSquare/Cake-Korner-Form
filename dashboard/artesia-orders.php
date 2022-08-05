@@ -31,17 +31,18 @@ if (isset($_SESSION['admin'])) {
     <style>
         .datatableElements {
             display: flex;
-            border:none !important;
+            border: none !important;
         }
-        .datatableDiv{
-            border:none !important;
+
+        .datatableDiv {
+            border: none !important;
         }
 
         .datatableInformation {
             padding-top: 10px;
             padding-left: 10px;
             padding: 10px;
-            border:none !important;
+            border: none !important;
         }
 
         .datatablePagination {
@@ -49,21 +50,21 @@ if (isset($_SESSION['admin'])) {
             float: right;
         }
 
-        #table_id_paginate  .current {
+        #table_id_paginate .current {
             background: transparent;
             box-shadow: none;
             border: none;
             color: #DE85AD !important;
         }
 
-        #table_id_paginate  .next {
+        #table_id_paginate .next {
             background: transparent;
             box-shadow: none;
             border: none;
             color: #DE85AD !important;
         }
 
-        #table_id_paginate  .previous {
+        #table_id_paginate .previous {
             background: transparent;
             box-shadow: none;
             border: none;
@@ -132,8 +133,98 @@ if (isset($_SESSION['admin'])) {
                             </a>
                         </div>
                     </div>
+                    <div class="page-title has-text-centered">
 
-                    <div class="page-content-inner">
+
+                        <div class="toolbar ml-auto">
+                            <div class="field">
+
+                                <div class="title-wrap  mt-2 pt-1">
+                                    <div class="control has-icon">
+                                        <input id="pickaday-datepicker" value="<?php
+                                                                                if (isset($_SESSION['dateFilterDateLocationOne'])) {
+                                                                                    echo $_SESSION['dateFilterDateLocationOne'];
+                                                                                } else {
+                                                                                    echo 'Select a Date';
+                                                                                }
+                                                                                ?>" class="input">
+                                        <div class="form-icon">
+                                            <i data-feather="calendar"></i>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="title mt-0 pt-0">
+                                <button onclick="setDate()" class="button  h-button is-primary">Apply</button>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="page-content-inner" id="bodyPage">
+
+                        <script>
+                            setTimeout(reloadPage, 1000);
+
+                            function reloadPage() {
+                                document.getElementById("bodyPage").click();
+                                document.getElementById("bodyPage").click();
+                                document.getElementById("bodyPage").click();
+                            }
+
+                            function setDate() {
+                                var datePicked = $("#pickaday-datepicker").val();
+                                const notyf = new Notyf({
+                                    duration: 1500,
+                                    position: {
+                                        x: 'right',
+                                        y: 'top',
+                                    },
+                                });
+                                if (datePicked == '' || datePicked == undefined) {
+                                    notyf.error("Please select date first");
+                                } else {
+                                    var formData = new FormData();
+                                    formData.append("datePicked", datePicked);
+                                    formData.append("locationID", "1");
+
+                                    $.ajax({
+                                        url: "./set-date.php",
+                                        type: 'POST',
+                                        data: formData,
+                                        contentType: false,
+                                        processData: false,
+                                        success: function(data) {
+                                            if (data == "success") {
+                                                notyf.success("Filter applied");
+                                                setTimeout(reloadPage, 1500);
+
+                                                function reloadPage() {
+                                                    window.location.reload();
+                                                }
+
+                                            } else if (data == "error") {
+                                                notyf.error("Failed to apply filter");
+                                            } else {
+                                                notyf.error("Something went wrong!");
+                                            }
+                                        }
+                                    });
+                                }
+                            }
+                            var picker = new Pikaday({
+                                field: document.getElementById('pickaday-datepicker'),
+                                format: 'MM DD YYYY',
+                                onSelect: function() {
+                                    //Do your stuff
+
+                                }
+                            });
+                        </script>
+
 
                         <!-- Datatable -->
                         <div class="table-wrapper" data-simplebar>
@@ -145,12 +236,20 @@ if (isset($_SESSION['admin'])) {
                                         <th>Order Details</th>
                                         <th>Cake Details</th>
                                         <th>Order Date</th>
+                                        <th>Pickup/Delivery Date</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $query = "SELECT * FROM `orders`  WHERE `orders`.`isActive` = 'yes' AND `orders`.`locationID` = '1'";
+                                    if (isset($_SESSION['dateFilterDateLocationOne'])) {
+                                        $filteredDate = $_SESSION['dateFilterDateLocationOne'];
+                                        $query = "SELECT * FROM `orders`  WHERE `orders`.`isActive` = 'yes' AND `dateCreated`='$filteredDate' AND `orders`.`locationID` = '1'";
+                                    } else {
+                                        $query = "SELECT * FROM `orders`  WHERE `orders`.`isActive` = 'yes' AND `orders`.`locationID` = '1'";
+                                    }
+
+
                                     $result = $con->query($query);
                                     if ($result->num_rows > 0) {
                                         $i = 1;
@@ -324,22 +423,30 @@ if (isset($_SESSION['admin'])) {
                                                         }
                                                         ?>
                                                 </td>
-                                                <td style="white-space: nowrap;">
+                                                     <td style="white-space: nowrap;">
                                                     <?= $row['dateCreated'] ?>
                                                 </td>
                                                 <td style="white-space: nowrap;">
+                                                    <?php if ($row['orderType'] == 'Pickup') {
+                                                        echo $row['orderPickupDate'];
+                                                    } else if ($row['orderType'] == 'Delivery') {
+                                                        echo $row['dateCreated'];
+                                                    } ?>
+
+                                                </td>
+                                                <td style="white-space: nowrap;">
                                                     <div class="d-flex" style="justify-content: space-between;">
-                                                        <a target="_blank" href="./edit-detail.php?orderID=<?= $row['orderID'] ?>&locationID=<?= $row['locationID'] ?>" style="border: none;" class="button is-elevated">
+                                                        <a target="_blank" href="./edit-detail.php?orderID=<?= $row['orderID'] ?>&locationID=<?= $row['locationID'] ?>" style="border: none;background:transparent" class="button is-elevated">
                                                             <span class="icon is-small">
                                                                 <i class="fas fa-edit" style="color: #DE85AD;"></i>
                                                             </span>
                                                         </a>
-                                                        <a target="_blank" href="./order-detail.php?orderID=<?= $row['orderID'] ?>&locationID=<?= $row['locationID'] ?>" style="margin-left: 0px;border: none;" class="button   is-elevated">
+                                                        <a target="_blank" href="./order-detail.php?orderID=<?= $row['orderID'] ?>&locationID=<?= $row['locationID'] ?>" style="margin-left: 0px;border: none;background:transparent" class="button   is-elevated">
                                                             <span class="icon is-small">
                                                                 <i class="fas fa-eye"></i>
                                                             </span>
                                                         </a>
-                                                        <a href="./delete-order.php?orderID=<?= $row['orderID'] ?>&locationID=<?= $row['locationID'] ?>" class="button  is-elevated" style="margin-left: 0px;border: none;">
+                                                        <a href="./delete-order.php?orderID=<?= $row['orderID'] ?>&locationID=<?= $row['locationID'] ?>" class="button  is-elevated" style="margin-left: 0px;border: none;background:transparent">
                                                             <span class="icon is-small">
                                                                 <i class="fas fa-trash" style="color: red;"></i>
                                                             </span>
@@ -435,7 +542,7 @@ if (isset($_SESSION['admin'])) {
         }
         ?>
 
-        <!-- jet-international js -->
+        <!-- cake-korner js -->
         <script src="assets/js/functions.js"></script>
 
         <script src="assets/js/components.js" async></script>

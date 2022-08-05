@@ -313,11 +313,7 @@
                                     }
                                     var emailPatternConfirmation = 'valid';
 
-                                    if (emailPattern.test(emailPatternValue) == true) {
-                                        emailPatternConfirmation = 'valid';
-                                    } else {
-                                        emailPatternConfirmation = 'notValid';
-                                    }
+                                
                                     if (email.value == '' || email.value == ' ') {
                                         emailPatternConfirmation = 'valid';
                                     }
@@ -365,8 +361,16 @@
                                             }
                                         }
                                     } else if (orderType == "Delivery") {
-                                        if (fName == "" || lName == "" || phone == "" || deliveryStreetName == "" || deliveryCity == "" || deliveryState == "" || deliveryZip == "") {
-                                            if (fName == "") {
+                                        if (emailPatternConfirmation == 'notValid' || (phonePattern.test(phonePatternValue) != true) || fName == "" || lName == "" || phone == "" || deliveryStreetName == "" || deliveryCity == "" || deliveryState == "" || deliveryZip == "") {
+                                            if (emailPatternConfirmation == 'notValid') {
+                                                notyf.error('Please enter valid email address');
+                                                email.value = "";
+                                                email.focus();
+                                            } else if (phonePattern.test(phonePatternValue) != true) {
+                                                notyf.error('Please enter valid mobile number');
+                                                phone.value = "";
+                                                phone.focus();
+                                            } else if (fName == "") {
                                                 document.getElementById('fName').focus();
                                             } else if (lName == "") {
                                                 document.getElementById('lName').focus();
@@ -731,6 +735,10 @@
                                         <img id="uploadDesign" style="max-width: 100%;">
                                         <input type="hidden" id="inspirationUploadDesignURL">
 
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="input_title" for="lName">Order Amount</label>
+                                        <input type="text" class="form-control" id="orderAmount" placeholder="Enter Order Amount">
                                     </div>
                                     <script>
                                         var globalImages = [];
@@ -1482,6 +1490,8 @@
                                 var specialInstructions = document.getElementById('specialInstructions').value;
                                 console.log(specialInstructions);
 
+                                var orderAmount = $("#orderAmount").val();
+
 
 
                                 // Check file selected or not
@@ -1542,6 +1552,7 @@
                                     specialInstructions: specialInstructions,
                                     inspirationUploadDesign: globalImages,
                                     imagesUploadStatus: imagesUploadStatus,
+                                    orderAmount : orderAmount,
                                     cupcake: cupCakes,
                                     cupCakeSizeOption: cupCakeSize,
                                     cupCakeType: cupCakeType,
@@ -1594,7 +1605,8 @@
             $("#datepicker").datepicker({
                 showOtherMonths: true,
                 selectOtherMonths: true,
-                minDate: 0
+                  minDate: 0,
+                dateFormat: "mm-dd-yy"
             });
         });
     </script>

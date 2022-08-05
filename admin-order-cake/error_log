@@ -46,3 +46,55 @@ Stack trace:
 #3 /home/rounavza/cakekorner.roundtechsquare.com/version-2/admin-order-cake/submit-form.php(99): require('/home/rounavza/...')
 #4 {main}
   thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/vendor/twilio/sdk/src/Twilio/Version.php on line 88
+[01-Aug-2022 21:46:23 America/Los_Angeles] PHP Fatal error:  Uncaught Twilio\Exceptions\RestException: [HTTP 401] Unable to create record: Authenticate in /home/rounavza/cakekorner.roundtechsquare.com/version-2/vendor/twilio/sdk/src/Twilio/Version.php:88
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/vendor/twilio/sdk/src/Twilio/Version.php(223): Twilio\Version->exception()
+#1 /home/rounavza/cakekorner.roundtechsquare.com/version-2/vendor/twilio/sdk/src/Twilio/Rest/Api/V2010/Account/MessageList.php(69): Twilio\Version->create()
+#2 /home/rounavza/cakekorner.roundtechsquare.com/version-2/admin-order-cake/send-message.php(26): Twilio\Rest\Api\V2010\Account\MessageList->create()
+#3 /home/rounavza/cakekorner.roundtechsquare.com/version-2/admin-order-cake/submit-form.php(100): require('/home/rounavza/...')
+#4 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/vendor/twilio/sdk/src/Twilio/Version.php on line 88
+[02-Aug-2022 16:07:10 America/Los_Angeles] PHP Fatal error:  Uncaught Twilio\Exceptions\RestException: [HTTP 401] Unable to create record: Authenticate in /home/rounavza/cakekorner.roundtechsquare.com/version-2/vendor/twilio/sdk/src/Twilio/Version.php:88
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/vendor/twilio/sdk/src/Twilio/Version.php(223): Twilio\Version->exception()
+#1 /home/rounavza/cakekorner.roundtechsquare.com/version-2/vendor/twilio/sdk/src/Twilio/Rest/Api/V2010/Account/MessageList.php(69): Twilio\Version->create()
+#2 /home/rounavza/cakekorner.roundtechsquare.com/version-2/admin-order-cake/send-message.php(26): Twilio\Rest\Api\V2010\Account\MessageList->create()
+#3 /home/rounavza/cakekorner.roundtechsquare.com/version-2/admin-order-cake/submit-form.php(91): require('/home/rounavza/...')
+#4 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/vendor/twilio/sdk/src/Twilio/Version.php on line 88
+[02-Aug-2022 16:07:20 America/Los_Angeles] PHP Fatal error:  Uncaught Twilio\Exceptions\RestException: [HTTP 401] Unable to create record: Authenticate in /home/rounavza/cakekorner.roundtechsquare.com/version-2/vendor/twilio/sdk/src/Twilio/Version.php:88
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/vendor/twilio/sdk/src/Twilio/Version.php(223): Twilio\Version->exception()
+#1 /home/rounavza/cakekorner.roundtechsquare.com/version-2/vendor/twilio/sdk/src/Twilio/Rest/Api/V2010/Account/MessageList.php(69): Twilio\Version->create()
+#2 /home/rounavza/cakekorner.roundtechsquare.com/version-2/admin-order-cake/send-message.php(26): Twilio\Rest\Api\V2010\Account\MessageList->create()
+#3 /home/rounavza/cakekorner.roundtechsquare.com/version-2/admin-order-cake/submit-form.php(91): require('/home/rounavza/...')
+#4 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/vendor/twilio/sdk/src/Twilio/Version.php on line 88
+[02-Aug-2022 16:09:33 America/Los_Angeles] PHP Fatal error:  Uncaught Twilio\Exceptions\RestException: [HTTP 401] Unable to create record: Authenticate in /home/rounavza/cakekorner.roundtechsquare.com/version-2/vendor/twilio/sdk/src/Twilio/Version.php:88
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/vendor/twilio/sdk/src/Twilio/Version.php(223): Twilio\Version->exception()
+#1 /home/rounavza/cakekorner.roundtechsquare.com/version-2/vendor/twilio/sdk/src/Twilio/Rest/Api/V2010/Account/MessageList.php(69): Twilio\Version->create()
+#2 /home/rounavza/cakekorner.roundtechsquare.com/version-2/admin-order-cake/send-message.php(26): Twilio\Rest\Api\V2010\Account\MessageList->create()
+#3 /home/rounavza/cakekorner.roundtechsquare.com/version-2/admin-order-cake/submit-form.php(91): require('/home/rounavza/...')
+#4 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/vendor/twilio/sdk/src/Twilio/Version.php on line 88
+[02-Aug-2022 16:09:46 America/Los_Angeles] PHP Fatal error:  Uncaught Twilio\Exceptions\RestException: [HTTP 401] Unable to create record: Authenticate in /home/rounavza/cakekorner.roundtechsquare.com/version-2/vendor/twilio/sdk/src/Twilio/Version.php:88
+Stack trace:
+#0 /home/rounavza/cakekorner.roundtechsquare.com/version-2/vendor/twilio/sdk/src/Twilio/Version.php(223): Twilio\Version->exception()
+#1 /home/rounavza/cakekorner.roundtechsquare.com/version-2/vendor/twilio/sdk/src/Twilio/Rest/Api/V2010/Account/MessageList.php(69): Twilio\Version->create()
+#2 /home/rounavza/cakekorner.roundtechsquare.com/version-2/admin-order-cake/send-message.php(26): Twilio\Rest\Api\V2010\Account\MessageList->create()
+#3 /home/rounavza/cakekorner.roundtechsquare.com/version-2/admin-order-cake/submit-form.php(91): require('/home/rounavza/...')
+#4 {main}
+  thrown in /home/rounavza/cakekorner.roundtechsquare.com/version-2/vendor/twilio/sdk/src/Twilio/Version.php on line 88
+[03-Aug-2022 10:48:48 America/Los_Angeles] PHP Warning:  Undefined array key "paymentStatus" in /home/rounavza/cakekorner.roundtechsquare.com/version-2/admin-order-cake/submit-form.php on line 33
+[03-Aug-2022 11:36:04 America/Los_Angeles] PHP Warning:  Undefined array key "paymentStatus" in /home/rounavza/cakekorner.roundtechsquare.com/version-2/admin-order-cake/submit-form.php on line 33
+[03-Aug-2022 14:43:29 America/Los_Angeles] PHP Warning:  Undefined array key "paymentStatus" in /home/rounavza/cakekorner.roundtechsquare.com/version-2/admin-order-cake/submit-form.php on line 33
+[03-Aug-2022 16:05:08 America/Los_Angeles] PHP Warning:  Undefined array key "paymentStatus" in /home/rounavza/cakekorner.roundtechsquare.com/version-2/admin-order-cake/submit-form.php on line 33
+[03-Aug-2022 16:12:00 America/Los_Angeles] PHP Warning:  Undefined array key "paymentStatus" in /home/rounavza/cakekorner.roundtechsquare.com/version-2/admin-order-cake/submit-form.php on line 33
+[03-Aug-2022 17:45:01 America/Los_Angeles] PHP Warning:  Undefined array key "paymentStatus" in /home/rounavza/cakekorner.roundtechsquare.com/version-2/admin-order-cake/submit-form.php on line 33
+[03-Aug-2022 19:23:29 America/Los_Angeles] PHP Warning:  Undefined array key "paymentStatus" in /home/rounavza/cakekorner.roundtechsquare.com/version-2/admin-order-cake/submit-form.php on line 33
+[03-Aug-2022 19:23:30 America/Los_Angeles] PHP Warning:  Undefined array key "paymentStatus" in /home/rounavza/cakekorner.roundtechsquare.com/version-2/admin-order-cake/submit-form.php on line 33
+[04-Aug-2022 11:04:27 America/Los_Angeles] PHP Warning:  Undefined array key "paymentStatus" in /home/rounavza/cakekorner.roundtechsquare.com/version-2/admin-order-cake/submit-form.php on line 33
+[04-Aug-2022 13:56:38 America/Los_Angeles] PHP Warning:  Undefined array key "paymentStatus" in /home/rounavza/cakekorner.roundtechsquare.com/version-2/admin-order-cake/submit-form.php on line 33
+[04-Aug-2022 14:32:14 America/Los_Angeles] PHP Warning:  Undefined array key "paymentStatus" in /home/rounavza/cakekorner.roundtechsquare.com/version-2/admin-order-cake/submit-form.php on line 33
+[04-Aug-2022 17:52:51 America/Los_Angeles] PHP Warning:  Undefined array key "paymentStatus" in /home/rounavza/cakekorner.roundtechsquare.com/version-2/admin-order-cake/submit-form.php on line 33
