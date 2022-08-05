@@ -49,9 +49,10 @@
             <video autoplay muted loop>
                <source src="./assets/images/banner-video.mp4" type="video/mp4" />
             </video>
+            <div class="hero-overlay"></div>
             <div class="container">
                <div class="row">
-                  <div class="col-lg-8 offset-lg-2">
+                  <div class="col-lg-8 offset-lg-2" style="z-index: 100;">
                      <div class="banner-content text-center">
                         <div class="sub-title">THE SWEETER SIDE OF THE LIFE</div>
                         <h2 class="banner-title">Happiness starts around the Korner</h2>
@@ -61,8 +62,6 @@
                      </div>
                   </div>
                </div>
-            </div>
-            <div class="overlay">
             </div>
          </section>
          <!-- home banner section html end -->
@@ -81,7 +80,7 @@
                         </div>
                         <div class="about-image">
                            <figure>
-                              <img src="./assets/images/shop-photo.png" alt="Cake Korner San Diego">
+                              <img src="./assets/images/shop-photo.png" style="border-radius: 10px;" alt="Cake Korner San Diego">
                            </figure>
                         </div>
                      </div>
@@ -98,7 +97,7 @@
                         </div>
                         <div class="about-image">
                            <figure>
-                              <img src="./assets/images/shop-photo-2.png" alt="Cake Korner San Diego">
+                              <img src="./assets/images/shop-photo-2.png" style="border-radius: 10px;" alt="Cake Korner San Diego">
                            </figure>
                         </div>
                      </div>
@@ -131,7 +130,7 @@
                      <div class="col-md-3">
                         <article class="course-item about-custom-box">
                            <div class="course-content">
-                              <h4 style="text-transform: uppercase; color: #E283AE; font-weight: 700">Authenticity</h4>
+                              <h4 style="text-transform: uppercase; color: #E283AE; font-weight: 700">Authentic</h4>
                               <p>Try our cakes, food dishes and know it yourselves.</p>
                            </div>
                         </article>
@@ -190,7 +189,7 @@
                            </div>
                            <div class="offer-content">
                               <h3>Desserts</h3>
-                              <a href="./our-menu" class="button-primary">View Menu</a>
+                              <a href="./bakery" class="button-primary">View Menu</a>
                            </div>
                         </div>
                      </div>
@@ -231,7 +230,7 @@
                            <div class="title-divider">
                               <img src="assets/images/title-divider.png" alt="divider">
                            </div>
-                           <p>LFeel the magic that happens to your taste receptors when you eat our cakes and dishes.</p>
+                           <p>Feel the magic that happens to your taste receptors when you eat our cakes and dishes.</p>
                            <a href="./gallery" class="button-primary">VIEW MORE DISHES</a>
                         </div>
                      </div>

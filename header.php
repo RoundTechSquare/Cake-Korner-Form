@@ -39,8 +39,8 @@
     </div>
     <div class="bottom-header">
         <div class="container">
-            <div class="bottom-header-inner d-flex justify-content-between align-items-center">
-                <div class="bottom-header-icon justify-content-lg-end justify-content-between">
+            <div class="bottom-header-inner d-flex justify-content-center align-items-center">
+                <!-- <div class="bottom-header-icon justify-content-lg-end justify-content-between">
                     <div class="header-social social-links">
                         <ul>
                             <li>
@@ -55,7 +55,7 @@
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div> -->
                 <div class="main-navigation">
                     <nav id="navigation" class="navigation d-none d-lg-inline-block">
                         <ul>
@@ -77,9 +77,9 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="header-btn d-inline-block">
+                <!-- <div class="header-btn d-inline-block">
                     <a href="./order-cake/index" class="button-primary">Order Cake</a>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

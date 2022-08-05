@@ -1,9 +1,7 @@
 @charset "UTF-8";
-@font-face {
-  font-family: 'Trade-Gothic-Black';
-  src: url('./fonts/Trade-Gothic-Bold-Extended.ttf');
-  font-weight: 900;
-}
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700&display=swap');
 
 @font-face {
   font-family: 'Trade-Gothic-Bold';
@@ -341,7 +339,8 @@ img {
 --------------------------------------------------------------*/
 h1, h2, h3, h4, h5, h6 {
   color: #060F14;
-  font-family: "Trade-Gothic-Black";
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -353,17 +352,17 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 
 h1 {
-  font-size: 60px;
-  font-weight: 600;
-}
-
-h2 {
   font-size: 50px;
   font-weight: 600;
 }
 
+h2 {
+  font-size: 40px;
+  font-weight: 600;
+}
+
 h3 {
-  font-size: 35px;
+  font-size: 30px;
   font-weight: 600;
 }
 
@@ -2924,6 +2923,16 @@ input[type=submit] {
   z-index: 9;
 }
 
+.hero-overlay {
+  background-color: rgba(0, 0, 0, 0.35);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+}
+
 .home-banner video {
   position: absolute;
   top: 0;
@@ -2932,13 +2941,6 @@ input[type=submit] {
   height: 100%;
   object-fit: cover;
   opacity: 0.8;
-  background-color: rgba(21, 21, 21, 0.55);
-}
-
-.home-banner video .overlay {
-  z-index: 10;
-  width: 100%;
-  height: 100%;
   background-color: rgba(21, 21, 21, 0.55);
 }
 
@@ -7354,8 +7356,8 @@ product checkout css
 }
 
 .menu-column-wrap h3 {
-  font-family: 'Trade-Gothic-Black';
-  font-weight: 900;
+  font-family: 'Playfair Display', sans-serif;
+  font-weight: 700;
   position: relative;
   text-transform: uppercase;
   margin-bottom: 30px;

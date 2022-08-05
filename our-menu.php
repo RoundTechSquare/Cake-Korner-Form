@@ -438,7 +438,7 @@
                                 </div>
                             </div>
                             <div class="col-md-5 col-lg-4 col-sm-12 milkshakes" style="padding-left: 20px;">
-                                <div class="menu-column-wrap" style="height: 465px;">
+                                <div class="menu-column-wrap" style="height: 454px;">
                                     <h3>MILKSHAKES</h3>
                                     <div class="menu-item">
                                         <div class="menu-item-content">
@@ -485,7 +485,7 @@
                                 </div>
                             </div>
                             <div class="col-md-5 col-lg-4 col-sm-12 lassi" style="padding-left: 20px;">
-                                <div class="menu-column-wrap" style="height: 465px;">
+                                <div class="menu-column-wrap" style="height: 454px;">
                                     <h3>LASSI</h3>
                                     <div class="menu-item">
                                         <div class="menu-item-content">

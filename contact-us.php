@@ -84,16 +84,16 @@
                                 </div>
                                 <form class="contact-form" id="contactForm" method="POST" onsubmit="contactForm()" action="">
                                     <p class="width-full">
-                                        <input type="text" id="name" required name="name" placeholder="Enter Name*">
+                                        <input type="text" id="name" required name="name" placeholder="Name*">
                                     </p>
                                     <p>
-                                        <input type="email" id="email" required name="email" placeholder="Enter Email*">
+                                        <input type="email" id="email" required name="email" placeholder="Email*">
                                     </p>
                                     <p>
-                                        <input type="text" id="phone" required name="number" placeholder="Enter Number*">
+                                        <input type="text" id="phone" required name="number" placeholder="Phone Number*">
                                     </p>
                                     <p class="width-full">
-                                        <textarea rows="8" name="message" required id="message" placeholder="Enter Message*"></textarea>
+                                        <textarea rows="8" name="message" required id="message" placeholder="Message*"></textarea>
                                     </p>
                                     <button type="submit" class="sendMessageButton">SEND MESSAGE</button>
                                 </form>

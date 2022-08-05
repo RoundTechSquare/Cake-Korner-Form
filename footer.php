@@ -17,8 +17,8 @@
                             <span class="widget-title-icon">
                                 <i aria-hidden="true" class="icon icon-store"></i>
                             </span>
-                            <h4 class="widget-title">
-                                Artesia
+                            <h4 class="widget-title" style="font-weight: 600;">
+                                1<sup>st</sup> Home of Cake Korner
                             </h4>
                             <ul>
                                 <li>18168 Pioneer Blvd, Artesia, CA 90701</li>
@@ -36,8 +36,8 @@
                             <span class="widget-title-icon">
                                 <i aria-hidden="true" class="icon icon-store"></i>
                             </span>
-                            <h4 class="widget-title">
-                                San Diego
+                            <h4 class="widget-title" style="font-weight: 600;">
+                                2<sup>nd</sup> Home of Cake Korner
                             </h4>
                             <ul>
                                 <li> 9494 Black Mountain Rd, San Diego 92126</li>
