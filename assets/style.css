@@ -5378,10 +5378,9 @@ input[type=submit] {
   clear: both;
 }
 .gallery-inner-wrap .single-gallery {
-  width: 24%;
+  width: 33%;
   float: left;
   padding: 10px;
-  margin-left: 10px;
   margin-top: 10px;
 }
 .gallery-inner-wrap .single-gallery.width-3 {
@@ -5424,6 +5423,7 @@ input[type=submit] {
   top: 0;
   left: 0;
   height: 100%;
+  border-radius: 10px;
   width: 100%;
   opacity: 0;
   -webkit-transition: all 0.4s;
@@ -8000,6 +8000,7 @@ body::-webkit-scrollbar-thumb:active{
 .cake-name {
   border: 1px solid #E283AE;
   text-align: center;
+  border-radius: 5px;
 }
 
 .cake-name h5 {

@@ -218,7 +218,7 @@
                   <div class="col-lg-5 col-md-6">
                      <div class="dist-item">
                         <figure class="dist-image">
-                           <img src="assets/images/home-gallery-01.png" alt="">
+                           <img src="assets/images/home-gallery-01.png" style="border-radius: 10px;" alt="">
                         </figure>
                      </div>
                   </div>
@@ -238,28 +238,21 @@
                   <div class="col-lg-3 col-md-6">
                      <div class="dist-item">
                         <figure class="dist-image">
-                           <img src="assets/images/home-gallery-02.png" alt="">
-                        </figure>
-                     </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6">
-                     <div class="dist-item">
-                        <figure class="dist-image">
-                           <img src="assets/images/home-gallery-03.png" alt="">
-                        </figure>
-                     </div>
-                  </div>
-                  <div class="col-lg-3 col-md-4">
-                     <div class="dist-item">
-                        <figure class="dist-image">
-                           <img src="assets/images/home-gallery-04.png" alt="">
+                           <img src="assets/images/home-gallery-02.png" style="border-radius: 10px;" alt="">
                         </figure>
                      </div>
                   </div>
                   <div class="col-lg-6 col-md-8">
                      <div class="dist-item">
                         <figure class="dist-image">
-                           <img src="assets/images/home-gallery-05.png" alt="">
+                           <img src="assets/images/home-gallery-06.png" style="border-radius: 10px;" alt="">
+                        </figure>
+                     </div>
+                  </div>
+                  <div class="col-lg-6 col-md-8">
+                     <div class="dist-item">
+                        <figure class="dist-image">
+                           <img src="assets/images/home-gallery-05.png" style="border-radius: 10px;" alt="">
                         </figure>
                      </div>
                   </div>
@@ -282,7 +275,7 @@
                      <div class="col-md-4">
                         <article class="course-item">
                            <div class="course-content">
-                              <h4 style="text-transform: uppercase; color: #E283AE; font-weight: 700">Adapt to the Situation</h4>
+                              <h4 style="text-transform: uppercase; color: #E283AE; font-weight: 700">Adapt to Situation</h4>
                               <p>We carry our best to each errand, poring over subtleties and doing nothing most of the way or carelessly.</p>
                            </div>
                         </article>

@@ -68,8 +68,25 @@
                             <li>
                                 <a href="./bakery">Bakery</a>
                             </li>
-                            <li>
-                                <a href="./gallery">Gallery</a>
+                            <li class="menu-item-has-children">
+                                <a href="#">Gallery</a>
+                                <ul>
+                                    <li>
+                                        <a href="./cakes-gallery">Cakes</a>
+                                    </li>
+                                    <li>
+                                        <a href="./pastries-gallery">Pastries</a>
+                                    </li>
+                                    <li>
+                                        <a href="./cupcakes-gallery">Cup Cakes</a>
+                                    </li>
+                                    <li>
+                                        <a href="./food-gallery">Food</a>
+                                    </li>
+                                    <li>
+                                        <a href="./drinks-gallery">Drinks</a>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
                                 <a href="./contact-us">Contact</a>

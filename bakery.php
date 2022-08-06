@@ -65,42 +65,43 @@
                                 <div class="about-content">
                                     <div class="section-heading">
                                         <div class="sub-title">WE ALWAYS BAKE FRESH</div>
-                                        <h2 class="section-title">We do Vegan/Vegetarian (Eggless)/Sugar Free Cakes</h2>
+                                        <h2 class="section-title" style="font-family: 'Playfair Display', sans-serif; font-weight: 700; margin-bottom: 20px">We do Vegan/Vegetarian (Eggless)/Sugar Free Cakes</h2>
                                         <div class="title-divider">
                                             <img src="assets/images/title-divider.png" alt="divider">
                                         </div>
                                     </div>
                                     <div class="row">
+                                        <h3 class="mb-3" style="font-family: 'Playfair Display', sans-serif; font-weight: 700">Glimpse of Our Creation</h3>
                                         <div class="col-lg-4 col-sm-12">
                                             <div class="cake-name">
-                                                <img class="cake-photo" src="./assets/images/white-forest.png" alt="White Forest" />
-                                                <h5>White Forest</h5>
+                                                <img class="cake-photo" src="./assets/images/kids-cakes.png" alt="Kids Cakes" />
+                                                <h5>Kids Cakes</h5>
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-sm-12">
                                             <div class="cake-name">
-                                                <img class="cake-photo" src="./assets/images/chocolate-mocha.png" alt="Chocolate Mocha" />
-                                                <h5>Chocolate Mocha</h5>
+                                                <img class="cake-photo" src="./assets/images/birthday-cakes.png" alt="Birthday Cakes" />
+                                                <h5>Birthday Cakes</h5>
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-sm-12">
                                             <div class="cake-name">
-                                                <img class="cake-photo" src="./assets/images/black-forest.png" alt="Black Forest" />
-                                                <h5>Black Forest</h5>
+                                                <img class="cake-photo" src="./assets/images/gallery-two/wedding-cakes.png" alt="Wedding Cakes" />
+                                                <h5>Wedding Cakes</h5>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col-lg-4 col-sm-12">
                                             <div class="cake-name">
-                                                <img class="cake-photo" src="./assets/images/chocolate-mousse.png" alt="Chocolate Mousse" />
-                                                <h5>Chocolate Mousse</h5>
+                                                <img class="cake-photo" src="./assets/images/special-events-cake.png" alt="Special Events Cake" />
+                                                <h5>Special Events Cake</h5>
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-sm-12">
                                             <div class="cake-name">
-                                                <img class="cake-photo" src="./assets/images/chocolate-truffle.png" alt="Chocolate Truffle" />
-                                                <h5>Chocolate Truffle</h5>
+                                                <img class="cake-photo" src="./assets/images/mango-cakes.png" alt="Mango Cakes" />
+                                                <h5>Mango Cakes</h5>
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-sm-12">
@@ -113,34 +114,20 @@
                                     <div class="row mt-3">
                                         <div class="col-lg-4 col-sm-12">
                                             <div class="cake-name">
-                                                <img class="cake-photo" src="./assets/images/mango-cake.png" alt="Mango Cake" />
-                                                <h5>Mango</h5>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-12">
-                                            <div class="cake-name">
                                                 <img class="cake-photo" src="./assets/images/pineapple-cake.png" alt="Pineapple Cake" />
                                                 <h5>Pineapple</h5>
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-sm-12">
                                             <div class="cake-name">
-                                                <img class="cake-photo" src="./assets/images/strawberry-cake.png" alt="Strawberry Cake" />
+                                                <img class="cake-photo" src="./assets/images/strawberry.png" alt="Strawberry Cake" />
                                                 <h5>Strawberry</h5>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row mt-3">
                                         <div class="col-lg-4 col-sm-12">
                                             <div class="cake-name">
                                                 <img class="cake-photo" src="./assets/images/butterscotch-cake.png" alt="Butterscotch Cake" />
                                                 <h5>Butterscotch</h5>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-12">
-                                            <div class="cake-name">
-                                                <img class="cake-photo" src="./assets/images/pistachio-cake.png" alt="Pistachio Cake" />
-                                                <h5>Pistachio</h5>
                                             </div>
                                         </div>
                                     </div>
