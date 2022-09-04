@@ -29,6 +29,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="./assets/style.css">
     <title>Cup Cakes | Cake Korner</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body class="home">
@@ -67,58 +68,69 @@
                             </div>
                         </div>
                         <div class="gallery-inner-wrap gallery-container grid">
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cupcake-01.JPG" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cupcake-01.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cupcake-02.JPG" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cupcake-02.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cupcake-03.JPG" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cupcake-03.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cupcake-04.JPG" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cupcake-04.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cupcake-06.JPG" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cupcake-06.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
+                            <?php
+                            for ($i = 1; $i < 7; $i++) { ?>
+
+                                <div class="single-gallery grid-item">
+                                    <figure class="gallery-img">
+                                        <a href="./assets/images/gallery-two/CupCake/cupcake-<?= $i ?>.jpg" data-fancybox="gallery">
+                                            <img src="./assets/images/gallery-two/CupCake/cupcake-<?= $i ?>.png" style="border-radius: 10px;" alt="Cake Korner Gallery cupcake-<?= $i ?>.png" />
+                                            <h4 style="border-radius: 10px;">
+                                                <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
+                                            </h4>
+                                        </a>
+                                    </figure>
+                                </div>
+                            <?php }
+
+                            ?>
+                        </div>
+
+                        <!-- <div class="gallery-inner-wrap gallery-container grid">
+                            <?php
+                            for ($i = 7; $i < 12; $i++) { ?>
+                                <div class="single-gallery grid-item hideShwp">
+                                    <figure class="gallery-img">
+                                        <a href="./assets/images/gallery-two/cupcake-<?= $i ?>.png" data-fancybox="gallery">
+                                            <img src="./assets/images/gallery-two/cupcake-<?= $i ?>.jpg" style="border-radius: 10px;" alt="Cake Korner Gallery cupcake-<?= $i ?>.png" />
+                                            <h4 style="border-radius: 10px;">
+                                                <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
+                                            </h4>
+                                        </a>
+                                    </figure>
+                                </div>
+                            <?php }
+
+                            ?>
+                        </div> -->
+                        <div class="view-more-button ">
+                            <button type="button" class="view-more" onclick='loadDiv()'>VIEW MORE</button>
                         </div>
                     </div>
+
+                    <script>
+                        function loadDiv() {
+                            $.ajax({
+                                url: "./view-more-cupcake.php",
+                                type: 'POST',
+                                contentType: false,
+                                processData: false,
+                                success: function(data) {
+                                    if (data != '') {
+                                        console.log(data);
+
+
+                                        $('.gallery-inner-wrap').css("height", "1200px");
+                                        $(".gallery-outer-wrap").replaceWith(data);
+                                    } else {
+                                        alert("NONS");
+                                    }
+                                }
+                            });
+
+                        }
+                    </script>
+
                 </div>
             </div>
         </main>

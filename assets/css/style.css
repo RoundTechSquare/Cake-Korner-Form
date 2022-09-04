@@ -2283,5 +2283,12 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+.view-more-button{
+  align-items: center;
+  text-align: center;
+}
+
+
+
 /*---------------------------------------------------- */
 /*# sourceMappingURL=style.css.map */

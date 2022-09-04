@@ -117,7 +117,13 @@
                                         var phonePatternValue = phone.value;
                                         var emailPatternValue = email.value;
                                         var phonePattern = new RegExp("^((\\(\\d{3}\\))|\\d{3})[- .]?\\d{3}[- .]?\\d{4}$");
-                                        var emailPattern = new RegExp("^[a-z A-Z 0-9]{4,20}@+[a-z A-z]{2,6}[\.]{1}[c C]{1}[A-Z a-z]{1,6}([\.]{1}[A-Z a-z]{2,6})?$");
+                                        var emailPattern = new  RegExp("^[a-z A-Z 0-9]{4,20}@+[a-z A-z]{2,30}[\.]{1}[c C]{1}[A-Z a-z]{1,6}([\.]{1}[A-Z a-z]{2,6})?$");
+                                        
+                                        var emailPatternConfirmation = 'valid';
+                                          if (email.value == '' || email.value == ' ') {
+                                        emailPatternConfirmation = 'valid';
+                                    }
+                                    
                                         if ((emailPattern.test(emailPatternValue) != true) || (phonePattern.test(phonePatternValue) != true)) {
                                             if (emailPattern.test(emailPatternValue) != true) {
                                                 notyf.error('Please enter valid email address');

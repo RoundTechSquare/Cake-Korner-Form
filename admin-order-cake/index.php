@@ -12,12 +12,95 @@
     <link href="./assets/vendors/nice-select/css/nice-select.css" rel="stylesheet">
     <link href="./assets/vendors/elagent-icon/style.css" rel="stylesheet">
     <link href="./assets/css/style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://cakekorner.roundtechsquare.com/version-3/assets/images/favicon.png">
     <link href="./assets/css/responsive.css" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Special Cake Order | Cake Korner</title>
     <style>
+        /* POPUP BOX */
+        .mixwell-popup-2 {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 999;
+            background-color: rgba(0, 0, 0, .5);
+            visibility: hidden;
+            opacity: 0;
+            transition: all 1s ease;
+            overflow: hidden;
+        }
+
+        .mixwell-popup-2.show {
+            visibility: visible;
+            opacity: 1
+        }
+
+        .mixwell-popup-2 .box {
+            border-radius: 5px;
+            background-color: #F7F8F9;
+            width: auto;
+            height: auto;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            padding: 20px;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+        }
+
+        .mixwell-popup-2 #custom-box .form {
+            max-width: 100%;
+            padding: 40px
+        }
+
+        .mixwell-popup-2 .box .form {
+            max-width: 100%;
+            padding: 30px
+        }
+
+        .mixwell-popup-2 .box .form h4 {
+            font-family: 'Pantone-Medium';
+            font-size: 30px;
+            color: white;
+        }
+
+        .mixwell-popup-2 .box .form .close {
+            background-color: #FFF;
+            border-radius: 50%;
+            padding-left: 3px;
+            padding-right: 3px;
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            color: #C10230;
+            font-size: 25px;
+            cursor: pointer
+        }
+
+        @media (max-width:767px) {
+            .mixwell-popup-2 .box {
+                width: calc(100% - 30px);
+                padding: 0px;
+                padding-top: 20px;
+            }
+
+            .mixwell-popup-2 .box .img-area {
+                display: none
+            }
+
+            .mixwell-popup-2 .box .form {
+                flex: 0 0 100%;
+                max-width: 100%
+            }
+        }
+
         #fileSelectLabel {
             background-color: indigo;
             color: white;
@@ -135,12 +218,18 @@
                                                 $('#phoneNumberSelected').html('<?= $row['phoneNumber'] ?>'); 
                                                 locationStartTime = '<?= $startTime ?>';
                                                 locationEndTime = '<?= $endTime ?>';
-                                                $('#workingHourTiming').html(' Working hours : '+locationStartTime+' to '+ locationEndTime);
+                                                
+                                                if(locationEndTime == '19:00'){var locationEndTimeShow = '7:00 PM'}
+                                                else if(locationEndTime == '20:00'){var locationEndTimeShow = '8:00 PM'}
+
+                                                if(locationStartTime == '10:30'){var locationStartTimeShow = '10:30 AM'}
+                                                else if(locationStartTime == '12:00'){var locationStartTimeShow = '12:00 PM'}
+
+                                                $('#workingHourTiming').html(' Working hours : '+locationStartTimeShow+' to '+ locationEndTimeShow);
                                                " name="address" value="<?= $row['id'] ?>">
                                                 <div class="shop-details">
-                                                    <h5>Cake Korner</h5>
-                                                    <p><?= $row['city'] ?>, <?= $row['state'] ?> <?= $row['postalCode'] ?></p>
-                                                    <p><?= $row['streetName'] ?>, <?= $row['city'] ?><br /><?= $row['state'] ?> <?= $row['postalCode'] ?>,<?= $row['country'] ?></p>
+                                                    <h5><?= $row['city'] ?></h5>
+                                                    <p><?= $row['streetName'] ?><br /><?= $row['city'] ?>, <?= $row['state'] ?> <?= $row['postalCode'] ?></p>
                                                     <p>Phone: <?= $row['phoneNumber'] ?></p>
                                                 </div>
                                                 </input>
@@ -190,15 +279,15 @@
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label class="input_title" for="fName">First Name</label>
-                                        <input type="text" class="form-control" id="fName" placeholder="Enter First Name">
+                                        <input type="text" class="form-control" id="fName" placeholder="First Name">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label class="input_title" for="lName">Last Name</label>
-                                        <input type="text" class="form-control" id="lName" placeholder="Enter Last Name">
+                                        <input type="text" class="form-control" id="lName" placeholder="Last Name">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label class="input_title" for="phone">Phone number</label>
-                                        <input type="text" class="form-control" required id="phone" placeholder="12256128602" maxlength="13">
+                                        <input type="text" class="form-control" required id="phone" placeholder="+1" maxlength="13">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label class="input_title" for="cEmail">Email address</label>
@@ -218,11 +307,55 @@
                                     <div class="row ml-0 pickup-toggle" style="width: 100%;">
                                         <div class="form-group col-md-6">
                                             <label class="input_title" for="datepicker">Order Pickup Date</label>
-                                            <input type="text" id="datepicker" class="form-control datepicker-control" placeholder="06/02/2022">
+                                            <input type="text" id="datepicker" class="form-control datepicker-control" placeholder="Pick Date">
                                         </div>
+
+                                        <input type="hidden" id="orderPickupTime">
                                         <div class="form-group col-md-6">
                                             <label class="input_title" for="orderPickupTime">Order Pickup Time</label>
-                                            <input type="time" id="orderPickupTime" class="form-control" style="padding-right: 10px" onchange="console.log(this.value)" placeholder="11:59 PM"></input>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <select id="hours" class="form-control">
+                                                        <option selected disabled>HH</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <select id="minutes" class="form-control">
+                                                        <option selected disabled>MM</option>
+                                                        <option value="5">5</option>
+                                                        <option value="10">10</option>
+                                                        <option value="15">15</option>
+                                                        <option value="20">20</option>
+                                                        <option value="25">25</option>
+                                                        <option value="30">30</option>
+                                                        <option value="35">35</option>
+                                                        <option value="40">40</option>
+                                                        <option value="45">45</option>
+                                                        <option value="50">50</option>
+                                                        <option value="55">55</option>
+                                                        <option value="60">60</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <select id="time" class="form-control">
+                                                        <option value="AM">AM</option>
+                                                        <option value="PM">PM</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <!-- <input type="time" id="orderPickupTime" class="form-control" style="padding-right: 10px" onchange="console.log(this.value)" placeholder="11:59 PM"></input> -->
                                             <p id="workingHourTiming" style="margin-top: 5px"></p>
                                         </div>
                                         <!-- <div class="form-group col-md-12">
@@ -292,6 +425,60 @@
                                     var email = document.getElementById('cEmail');
                                     var phone = document.getElementById('phone');
 
+
+                                    var hour = document.getElementById('hours').value;
+                                    var min = document.getElementById('minutes').value;
+                                    var time = document.getElementById('time').value;
+                                    if (hour == "" || min == "" || time == "") {
+                                        notyf.error("Please select time!");
+                                    } else {
+                                        if (time == 'AM') {
+                                            if (hour == '12') {
+                                                var finalTimePicked = '00:' + min;
+                                            } else if (hour == 'HH') {
+                                                notyf.error("Please select time!");
+                                            } else {
+                                                var finalTimePicked = hour + ':' + min;
+                                            }
+
+                                        } else if (time == 'PM') {
+                                            if (hour == '1') {
+                                                var finalTimePicked = '13:' + min;
+                                            } else if (hour == '2') {
+                                                var finalTimePicked = '14:' + min;
+                                            } else if (hour == '3') {
+                                                var finalTimePicked = '15:' + min;
+                                            } else if (hour == '4') {
+                                                var finalTimePicked = '16:' + min;
+                                            } else if (hour == '5') {
+                                                var finalTimePicked = '17:' + min;
+                                            } else if (hour == '6') {
+                                                var finalTimePicked = '18:' + min;
+                                            } else if (hour == '7') {
+                                                var finalTimePicked = '19:' + min;
+                                            } else if (hour == '8') {
+                                                var finalTimePicked = '20:' + min;
+                                            } else if (hour == '9') {
+                                                var finalTimePicked = '21:' + min;
+                                            } else if (hour == '10') {
+                                                var finalTimePicked = '22:' + min;
+                                            } else if (hour == '11') {
+                                                var finalTimePicked = '23:' + min;
+                                            } else if (hour == '12') {
+                                                var finalTimePicked = '12:' + min;
+                                            } else if (hour == 'MM') {
+                                                notyf.error("Please select time!");
+                                            } else {
+                                                notyf.error("Please select time!");
+                                            }
+
+                                        }
+                                    }
+
+
+                                    $("#orderPickupTime").val(finalTimePicked);
+
+
                                     var phonePatternValue = phone.value;
                                     var emailPatternValue = email.value;
                                     var phonePattern = new RegExp("^((\\(\\d{3}\\))|\\d{3})[- .]?\\d{3}[- .]?\\d{4}$");
@@ -313,7 +500,7 @@
                                     }
                                     var emailPatternConfirmation = 'valid';
 
-                                
+
                                     if (email.value == '' || email.value == ' ') {
                                         emailPatternConfirmation = 'valid';
                                     }
@@ -343,7 +530,7 @@
                                                 } else if (orderPickupDate == "") {
                                                     document.getElementById('datepicker').focus();
                                                 } else if (orderPickupTime == "") {
-                                                    document.getElementById('orderPickupTime').focus();
+                                                    document.getElementById('hours').focus();
                                                 }
                                                 notyf.error('Please fill all the details');
                                             }
@@ -723,36 +910,62 @@
                                         <label class="input_title" for="specialInstructions">Any Special Instructions</label>
                                         <textarea name="custom-message" id="specialInstructions" class="form-control" style="height: 100px;" placeholder="Mention your instructions here..."></textarea>
                                     </div>
-                                    <div class="form-group col-lg-6">
-                                        <label class="input_title" for="inspirationUploadDesign">Upload Design or Inspiration Ideas if any*</label>
+                                    <div class="form-group col-lg-12">
+                                        <label class="input_title" for="inspirationUploadDesign">Upload Design or Inspiration Ideas if any* (You can upload multiple images)</label>
 
                                         <br>
 
                                         <!-- actual upload which is hidden -->
-                                        <input accept="image/*" onchange="loadFile(event)" type="file" id="inspirationUploadDesign" hidden />
+                                        <input accept="image/*" multiple type="file" id="inspirationUploadDesign" hidden />
                                         <label id="fileSelectLabel" for="inspirationUploadDesign">Choose File</label>
                                         <span id="file-chosen">No file chosen</span>
-                                        <img id="uploadDesign" style="max-width: 100%;">
-                                        <input type="hidden" id="inspirationUploadDesignURL">
+                                        <!-- <img id="uploadDesign" style="max-width: 100%;">
+                                        <input type="hidden" id="inspirationUploadDesignURL"> -->
 
+                                        <!-- <input type="file" multiple id="images"> -->
+
+                                        <div class="gallery mt-2" id="preview-image">
+
+                                        </div>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label class="input_title" for="lName">Order Amount</label>
                                         <input type="text" class="form-control" id="orderAmount" placeholder="Enter Order Amount">
                                     </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="input_title" for="paymentStatus">Payment Status</label>
+                                        <select id="paymentStatus" class="form-control">
+                                            <option selected value="Not Paid">Not Paid</option>
+                                            <option value="Paid">Paid</option>
+                                            <option value="E-payment">E-payment</option>
+                                        </select>
+                                    </div>
                                     <script>
                                         var globalImages = [];
                                         var imagesUploadStatus = "No";
-                                        var loadFile = function(event) {
-                                            var reader = new FileReader();
-                                            reader.onload = function() {
-                                                var output = document.getElementById('uploadDesign');
-                                                output.src = reader.result;
-                                                imagesUploadStatus = "Yes";
-                                                globalImages.push(reader.result);
-                                            };
-                                            reader.readAsDataURL(event.target.files[0]);
+
+                                        var imagesPreview = function(input, placeToInsertImagePreview) {
+
+                                            if (input.files) {
+                                                var filesAmount = input.files.length;
+
+                                                for (i = 0; i < filesAmount; i++) {
+                                                    var reader = new FileReader();
+
+                                                    reader.onload = function(event) {
+                                                        $($.parseHTML('<img width="150" style="padding:5px">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                                                        imagesUploadStatus = "Yes";
+                                                        globalImages.push(event.target.result);
+                                                    }
+
+                                                    reader.readAsDataURL(input.files[i]);
+                                                }
+                                            }
+                                            console.log(globalImages);
                                         };
+                                        $('#inspirationUploadDesign').on('change', function() {
+                                            imagesPreview(this, 'div.gallery');
+                                        });
                                         const actualBtn = document.getElementById('inspirationUploadDesign');
 
                                         const fileChosen = document.getElementById('file-chosen');
@@ -760,7 +973,7 @@
                                         actualBtn.addEventListener('change', function() {
                                             fileChosen.textContent = this.files[0].name;
 
-                                        })
+                                        });
                                     </script>
                                     <div class="form-group col-lg-12">
                                         <label class="input_title" for="cupcakesOption">Do you require cup cakes? (Minimum of 12)</label>
@@ -851,8 +1064,8 @@
                                             <div class="mt-3">
                                                 <span class="text-danger" id="errorSignature" style="font-size: 10px;padding-bottom:7px;display:none;font-weight:700">Click
                                                     on Save Button</span>
-                                                <a id="save" style="padding: 10px;border:1px solid #E084AC;padding-top:5px;padding-bottom:5px;font-size:1rem">Save</a>
-                                                <a id="clear" style="padding: 10px;border:1px solid #E084AC;padding-top:5px;padding-bottom:5px;font-size:1rem">Clear</a>
+                                                <a id="save" style="padding: 10px;border:1px solid #E084AC;padding-top:5px;padding-bottom:5px;font-size:1rem;cursor:pointer">Save</a>
+                                                <a id="clear" style="padding: 10px;border:1px solid #E084AC;padding-top:5px;padding-bottom:5px;font-size:1rem;cursor:pointer">Clear</a>
                                             </div>
                                             <img name='canvasImage' style="display: none;" id="canvasImage">
                                         </div>
@@ -860,7 +1073,7 @@
                                     <input type="text" class="form-control" style="display:none" id="canvasImageInput" name="canvasImageInput">
 
                                     <div class="form-group col-lg-12">
-                                        <input type="checkbox" name="disclaimers" id="disclaimers" class="" placeholder="Write occasion" />
+                                        <input type="checkbox" name="disclaimers" id="disclaimers" required class="" placeholder="Write occasion" />
                                         <label class="input_title mx-2" for="disclaimers">I agree to all the above mentioned details. </label><span><span style="color:#E084AC">Disclaimers </span>and <span style="color:#E084AC">Cancellation </span> policies</span>
                                     </div>
                                     <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js'></script>
@@ -1328,7 +1541,7 @@
                                     </script>
                                     <div class="form-group col-lg-12 d-flex align-items-center justify-content-between">
                                         <button type="button" onclick="$('#Cakedetails').show();$('#Otherdetails').hide();" class="btn thm_btn red_btn"><i class="arrow_left"></i> Previous</button>
-                                        <button type="button" onclick="formSubmit()" class="btn thm_btn red_btn">Submit</button>
+                                        <button type="submit" onclick="formSubmit()" class="btn thm_btn red_btn">Submit</button>
                                     </div>
                                 </div>
                             </div>
@@ -1340,7 +1553,7 @@
                                     <h5 class="mb-2" style="font-weight: 800; font-size: 22px;">Your Order has been placed.
                                     </h5>
                                     <p>Thank you for ordering cake from Cake Korner. Contact us if you have any queries.</p>
-                                    <a href="../index" class="btn thm_btn red_btn">Return to Homepage</a>
+                                    <a href="../dashboard/dashboard" class="btn thm_btn red_btn">Return to Dashboard</a>
                                 </div>
                             </div>
                         </div>
@@ -1356,18 +1569,25 @@
                                 if ($('input[name=cupcake]:checked').length > 0) {
                                     var cupCakes = document.querySelector('input[name=cupcake]:checked').value;
                                 }
+                                if ($('input[name=disclaimers]:checked').length > 0) {
+                                    var disclaimers = 'Valid';
+                                } else {
+                                    var disclaimers = 'Not Valid';
+                                }
 
 
 
                                 var formSubmitApproval = '';
                                 if (cupCakes == "No") {
-                                    if (occasion == "" || customMessage == "" || signature == "") {
+                                    if (occasion == "" || customMessage == "" || signature == "" || disclaimers == "") {
                                         if (occasion == "") {
                                             document.getElementById('occasion').focus();
                                         } else if (customMessage == "") {
                                             document.getElementById('customMessage').focus();
                                         } else if (signature == "") {
                                             document.getElementById('canvasImageInput').focus();
+                                        } else if (disclaimers == "") {
+                                            document.getElementById('disclaimers').focus();
                                         }
                                         notyf.error('Please fill all the details');
                                     } else {
@@ -1398,7 +1618,7 @@
                                         var cupCakeSpecialFlavorsFinal = document.querySelector('input[name=cupCakeFlavors]:checked').value;
                                     }
 
-                                    if (occasion == "" || customMessage == "" || signature == "" || cupCakeSize == "" || flavor == "" || cupcakeQuantity == "") {
+                                    if (occasion == "" || customMessage == "" || signature == "" || cupCakeSize == "" || flavor == "" || cupcakeQuantity == "" || disclaimers == "") {
                                         if (occasion == "") {
                                             document.getElementById('occasion').focus();
                                         } else if (customMessage == "") {
@@ -1411,6 +1631,8 @@
                                             document.querySelector('input[name=cupCakeFlavors]').focus();
                                         } else if (cupcakeQuantity == "") {
                                             document.getElementById('quantity').focus();
+                                        } else if (disclaimers == "") {
+                                            document.getElementById('disclaimers').focus();
                                         }
                                         notyf.error('Please fill all the details');
                                     } else {
@@ -1491,7 +1713,7 @@
                                 console.log(specialInstructions);
 
                                 var orderAmount = $("#orderAmount").val();
-
+                                var paymentStatus = $("#paymentStatus").val();
 
 
                                 // Check file selected or not
@@ -1552,15 +1774,17 @@
                                     specialInstructions: specialInstructions,
                                     inspirationUploadDesign: globalImages,
                                     imagesUploadStatus: imagesUploadStatus,
-                                    orderAmount : orderAmount,
+                                    orderAmount: orderAmount,
                                     cupcake: cupCakes,
                                     cupCakeSizeOption: cupCakeSize,
                                     cupCakeType: cupCakeType,
                                     cupCakeFlavors: cupCakeFlavors,
                                     cupCakeQuantity: cupCakeQuantity,
-                                    signature: signature
+                                    signature: signature,
+                                    paymentStatus: paymentStatus
 
                                 }
+                                $("#loadingButton").click();
                                 const jsonString = JSON.stringify(dataSend);
                                 $.ajax({
                                     type: "POST",
@@ -1569,6 +1793,7 @@
                                     contentType: 'application/json',
                                     success: function(response) {
                                         if (response == 'success') {
+                                            $("#popupClose").click();
                                             document.getElementById('successPage').style.display = 'block';
                                             document.getElementById('Otherdetails').style.display = 'none';
                                         } else {
@@ -1605,7 +1830,7 @@
             $("#datepicker").datepicker({
                 showOtherMonths: true,
                 selectOtherMonths: true,
-                  minDate: 0,
+                minDate: 0,
                 dateFormat: "mm-dd-yy"
             });
         });
@@ -1703,6 +1928,30 @@
             } else {
                 $('#vegetarian').hide();
             }
+        })
+    </script>
+    <div class="container-fluid" style="background-color: #ffffffAA;">
+        <div class="mixwell-popup-2" style="background-color: #ffffffAA;">
+            <div class="box bg-transparent" style="display: block;">
+
+                <div class="close d-none" id="popupClose">&times;</div>
+                <img src="../assets/images/loading.gif">
+            </div>
+        </div>
+    </div>
+    <button id="loadingButton" style="display:none" class="d" type="button">paymentButton</button>
+    <script>
+        var onloadPopup = document.querySelector('.mixwell-popup-2');
+
+        const closeBUtton = document.querySelector("#popupClose");
+        const paymenyButton = document.querySelector('#loadingButton');
+
+        paymenyButton.addEventListener("click", function() {
+            onloadPopup.classList.add("show");
+        })
+
+        closeBUtton.addEventListener("click", function() {
+            onloadPopup.classList.remove("show");
         })
     </script>
 </body>

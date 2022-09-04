@@ -142,6 +142,17 @@
                                                 </div>
                                                 <div class="menu-item">
                                                     <div class="menu-item-content">
+                                                        <h5>Veggie Sandwich </h5>
+                                                        <div class="dotted-divider"></div>
+                                                        <div class="menu-price">$4.99</div>
+                                                    </div>
+                                                    <div class="menu-cat">
+                                                        <span>Cucumbers, tomatoes, boiled potatoes, green chutney, ketchup, butter in white
+                                                            bread (not grilled)</span>
+                                                    </div>
+                                                </div>
+                                                <div class="menu-item">
+                                                    <div class="menu-item-content">
                                                         <h5>Grilled Cheese Sandwich</h5>
                                                         <div class="dotted-divider"></div>
                                                         <div class="menu-price">$4.99</div>
@@ -373,6 +384,13 @@
                                                         <div class="menu-price">$3.50</div>
                                                     </div>
                                                 </div>
+                                                <div class="menu-item">
+                                                    <div class="menu-item-content">
+                                                        <h5>Jalapeño Cheese Puff</h5>
+                                                        <div class="dotted-divider"></div>
+                                                        <div class="menu-price">$3.50</div>
+                                                    </div>
+                                                </div>
                                                 <h5 style="text-align: center; font-family: 'Trade-Gothic-Bold'">(Puffs Special: All Puffs 2 for $6)</h5>
                                             </div>
                                         </div>
@@ -433,6 +451,28 @@
                                             <h5>Madras Coffee</h5>
                                             <div class="dotted-divider"></div>
                                             <div class="menu-price">$2.50</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="menu-item">
+                                        <div class="menu-item-content">
+                                            <h5>Thumbs Up/Limca/Fanta </h5>
+                                            <div class="dotted-divider"></div>
+                                            <div class="menu-price">$2.50</div>
+                                        </div>
+                                    </div>
+                                    <div class="menu-item">
+                                        <div class="menu-item-content">
+                                            <h5>Beverage Can </h5>
+                                            <div class="dotted-divider"></div>
+                                            <div class="menu-price">$1.25</div>
+                                        </div>
+                                    </div>
+                                    <div class="menu-item">
+                                        <div class="menu-item-content">
+                                            <h5>Water Bottle </h5>
+                                            <div class="dotted-divider"></div>
+                                            <div class="menu-price">$1.25</div>
                                         </div>
                                     </div>
                                 </div>

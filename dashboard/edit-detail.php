@@ -245,7 +245,7 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                         <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Order Type: </strong><?= $orderType ?></p>
                                                         <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Pickup Date: </strong><?= $orderPickupDate ?></p>
                                                         <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Pickup Time: </strong><?= $orderPickupTime  ?></p>
-                                                        <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Pickup Person Name: </strong><?= $orderPickupPerson ?></p>
+
                                                     </div>
                                                 </div>
                                             <?php
@@ -432,56 +432,37 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                                                 if ($cupcake == "Yes") {
                                                                                 } else { ?> style="border-bottom: 0px;" <?php                                                      }
                                                                                                                         ?>>
-                                                <div class="section-title">
-                                                    <h2 class="has-dark-text dark-inverted " style="font-weight: 700;">CAKE DETAILS</h2>
-                                                </div>
+
                                                 <div class="section-content">
-                                                    <?php
-                                                    $query = "SELECT * FROM `caketype` WHERE `id`=$cakeType";
-                                                    $result = $con->query($query);
-                                                    if ($result->num_rows > 0) {
-                                                        $i = 1;
-                                                        while ($row = $result->fetch_assoc()) {
-                                                    ?>
-                                                            <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Cake Type: </strong><?= $row['typeName'] ?></p>
-                                                        <?php $i++;
-                                                        }
-                                                    } else {
-                                                        ?>
-                                                        <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90">No records found</p>
-                                                    <?php
-                                                    }
-                                                    ?>
-
-                                                    <?php
-                                                    if ($cakeSizeType == 'squareCake') {
 
 
-                                                        $query = "SELECT * FROM `cakesheet` WHERE `id`=$cakeShape";
-                                                        $result = $con->query($query);
-                                                        if ($result->num_rows > 0) {
-                                                            $i = 1;
-                                                            while ($row = $result->fetch_assoc()) {
-                                                    ?>
-                                                                <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Sheet Type: </strong><?= $row['size'] ?></p>
-                                                            <?php $i++;
-                                                            }
-                                                        } else {
-                                                            ?>
-                                                            <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90">No records found</p>
+
+
+                                                    <div class="columns p-0 mt-0">
+                                                        <div class="column is-6">
+                                                            <h2 class="has-dark-text dark-inverted " style="font-weight: 700;float:left ;padding-right:10px;display:grid">CAKE DETAILS</h2>
+                                                        </div>
+                                                        <div class="column is-6">
+                                                            <div class="" style="float:right ;display:grid">
+                                                                <div class="control">
+                                                                    <label class="form-switch is-danger">
+                                                                        <input type="checkbox" onchange="if($('#editCake').is(':checked')){$('.viewCakeDetails').hide();$('.updateCakeDetails').show();}else{$('.viewCakeDetails').show();$('.updateCakeDetails').hide();}" class="is-switch" id="editCake">
+                                                                        <i></i>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <h2 class="has-dark-text dark-inverted " style="font-weight: 700;float:right ;padding-right:10px;display:table">EDIT</h2>
+                                                        </div>
+                                                    </div>
+                                                    <div class="viewCakeDetails" style="display: none;">
                                                         <?php
-                                                        }
-                                                    } else if ($cakeSizeType == 'roundCake') {
-
-                                                        ?>
-                                                        <?php
-                                                        $query = "SELECT * FROM `cakesize` WHERE `id`=$cakeShape";
+                                                        $query = "SELECT * FROM `caketype` WHERE `id`=$cakeType";
                                                         $result = $con->query($query);
                                                         if ($result->num_rows > 0) {
                                                             $i = 1;
                                                             while ($row = $result->fetch_assoc()) {
                                                         ?>
-                                                                <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Size of Cake: </strong><?= $row['cakeSize'] ?></p>
+                                                                <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Cake Type: </strong><?= $row['typeName'] ?></p>
                                                             <?php $i++;
                                                             }
                                                         } else {
@@ -489,66 +470,272 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                             <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90">No records found</p>
                                                         <?php
                                                         }
-                                                    } else   if ($cakeShape == 'other') { ?>
-                                                        <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Custom Cake Type : </strong>
-                                                            <?php echo $cakeShape; ?></p>
-                                                    <?php } ?>
-
-
-                                                    <?php
-                                                    if ($cakeFlavorsType == 'custom') { ?>
-                                                        <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Cake Flavor: </strong><?= $cakeFlavors ?> (custom)</p>
-                                                        <?php } else {
-                                                        if ($cakeType == 1) {
-                                                            if ($cakeFlavorsType == 'regular') {
-                                                                $query = "SELECT * FROM `regularflavors` WHERE `id`=$cakeFlavors";
-                                                            } else if ($cakeFlavorsType == 'special') {
-                                                                $query = "SELECT * FROM `specialflavors` WHERE `id`=$cakeFlavors";
-                                                            }
-                                                        } else if ($cakeType == 2) {
-                                                            $query = "SELECT * FROM `veganflavors` WHERE `id`=$cakeFlavors";
-                                                        } else if ($cakeType == 3) {
-                                                            $query = "SELECT * FROM `sugarfreeflavors` WHERE `id`=$cakeFlavors";
-                                                        }
-
-                                                        $result = $con->query($query);
-                                                        if ($result->num_rows > 0) {
-                                                            $i = 1;
-                                                            while ($rowFlavor = $result->fetch_assoc()) {
                                                         ?>
-                                                                <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Cake Flavor: </strong><?= $rowFlavor['name'] ?> (<?= $cakeFlavorsType ?>)</p>
-                                                            <?php $i++;
+
+                                                        <?php
+                                                        if ($cakeSizeType == 'squareCake') {
+
+
+                                                            $query = "SELECT * FROM `cakesheet` WHERE `id`=$cakeShape";
+                                                            $result = $con->query($query);
+                                                            if ($result->num_rows > 0) {
+                                                                $i = 1;
+                                                                while ($row = $result->fetch_assoc()) {
+                                                        ?>
+                                                                    <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Sheet Type: </strong><?= $row['size'] ?></p>
+                                                                <?php $i++;
+                                                                }
+                                                            } else {
+                                                                ?>
+                                                                <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90">No records found</p>
+                                                            <?php
                                                             }
-                                                        } else {
+                                                        } else if ($cakeSizeType == 'roundCake') {
 
                                                             ?>
-                                                            <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90">No records found</p>
-                                                    <?php
-                                                        }
-                                                    }
+                                                            <?php
+                                                            $query = "SELECT * FROM `cakesize` WHERE `id`=$cakeShape";
+                                                            $result = $con->query($query);
+                                                            if ($result->num_rows > 0) {
+                                                                $i = 1;
+                                                                while ($row = $result->fetch_assoc()) {
+                                                            ?>
+                                                                    <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Size of Cake: </strong><?= $row['cakeSize'] ?></p>
+                                                                <?php $i++;
+                                                                }
+                                                            } else {
+                                                                ?>
+                                                                <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90">No records found</p>
+                                                            <?php
+                                                            }
+                                                        } else   if ($cakeShape == 'other') { ?>
+                                                            <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong>Custom Cake Type : </strong>
+                                                                <?php echo $cakeShape; ?></p>
+                                                        <?php } ?>
 
-                                                    ?>
-                                                    <?php
 
-                                                    if ($themeCake != '-') {
-                                                        $query = "SELECT * FROM `themecake` WHERE `themeCakeID`=$themeCake";
-                                                        $result = $con->query($query);
-                                                        if ($result->num_rows > 0) {
-                                                            $i = 1;
-                                                            while ($rowTheme = $result->fetch_assoc()) {
-                                                    ?>
-                                                                <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90">
-                                                                    <strong class="has-dark-text dark-inverted " style="padding-right: 5px">Theme Cake Type: </strong><?= $rowTheme['themeName'] ?> (#<?= $themeCake ?>)
-                                                                </p>
+                                                        <?php
+                                                        if ($cakeFlavorsType == 'custom') { ?>
+                                                            <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Cake Flavor: </strong><?= $cakeFlavors ?> (custom)</p>
+                                                            <?php } else {
+                                                            if ($cakeType == 1) {
+                                                                if ($cakeFlavorsType == 'regular') {
+                                                                    $query = "SELECT * FROM `regularflavors` WHERE `id`=$cakeFlavors";
+                                                                } else if ($cakeFlavorsType == 'special') {
+                                                                    $query = "SELECT * FROM `specialflavors` WHERE `id`=$cakeFlavors";
+                                                                }
+                                                            } else if ($cakeType == 2) {
+                                                                $query = "SELECT * FROM `veganflavors` WHERE `id`=$cakeFlavors";
+                                                            } else if ($cakeType == 3) {
+                                                                $query = "SELECT * FROM `sugarfreeflavors` WHERE `id`=$cakeFlavors";
+                                                            }
+
+                                                            $result = $con->query($query);
+                                                            if ($result->num_rows > 0) {
+                                                                $i = 1;
+                                                                while ($rowFlavor = $result->fetch_assoc()) {
+                                                            ?>
+                                                                    <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Cake Flavor: </strong><?= $rowFlavor['name'] ?> (<?= $cakeFlavorsType ?>)</p>
+                                                                <?php $i++;
+                                                                }
+                                                            } else {
+
+                                                                ?>
+                                                                <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90">No records found</p>
                                                         <?php
                                                             }
                                                         }
-                                                    } else { ?>
-                                                        <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90">
-                                                            <strong class="has-dark-text dark-inverted " style="padding-right: 5px">Theme Cake Type: </strong>No Theme Cake Selected
-                                                        </p>
-                                                    <?php }
-                                                    ?>
+
+                                                        ?>
+                                                        <?php
+
+                                                        if ($themeCake != '-') {
+                                                            $query = "SELECT * FROM `themecake` WHERE `themeCakeID`=$themeCake";
+                                                            $result = $con->query($query);
+                                                            if ($result->num_rows > 0) {
+                                                                $i = 1;
+                                                                while ($rowTheme = $result->fetch_assoc()) {
+                                                        ?>
+                                                                    <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90">
+                                                                        <strong class="has-dark-text dark-inverted " style="padding-right: 5px">Theme Cake Type: </strong><?= $rowTheme['themeName'] ?> (#<?= $themeCake ?>)
+                                                                    </p>
+                                                            <?php
+                                                                }
+                                                            }
+                                                        } else { ?>
+                                                            <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90">
+                                                                <strong class="has-dark-text dark-inverted " style="padding-right: 5px">Theme Cake Type: </strong>No Theme Cake Selected
+                                                            </p>
+                                                        <?php }
+                                                        ?>
+                                                    </div>
+                                                    <div class="updateCakeDetails" style="display: block;">
+                                                        <div class="columns" style="border-bottom: 1px solid #E3E3E3;">
+                                                            <div class="column is-4">
+                                                                <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Select Cake Type: </strong> </p>
+                                                                <div class="field" style="display: flex;padding-bottom:10px">
+                                                                    <div class="select">
+                                                                        <select>
+                                                                            <option>Select Cake </option>
+                                                                            <?php
+                                                                            $query = "SELECT `id`, `typeName` FROM `caketype` WHERE 1";
+                                                                            $result = $con->query($query);
+                                                                            if ($result->num_rows > 0) {
+                                                                                $i = 1;
+                                                                                while ($row = $result->fetch_assoc()) {
+                                                                                    $cakeType;
+                                                                            ?>
+                                                                                    <option value="<?= $row['id'] ?>"> <?= $row['typeName'] ?></option>
+                                                                            <?php $i++;
+                                                                                }
+                                                                            }
+                                                                            ?>
+
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="column is-4">
+                                                                <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Select Cake Shape: </strong> </p>
+                                                                <div class="field" style="display: flex;padding-bottom:10px">
+                                                                    <div class="select">
+                                                                        <select>
+                                                                            <option>Select Round Cake Size </option>
+                                                                            <?php
+                                                                            $query = "SELECT `id`, `cakeSize`, `servings` FROM `cakesize` WHERE 1";
+                                                                            $result = $con->query($query);
+                                                                            if ($result->num_rows > 0) {
+                                                                                $i = 1;
+                                                                                while ($row = $result->fetch_assoc()) {
+                                                                                    $cakeType;
+                                                                            ?>
+                                                                                    <option value="<?= $row['id'] ?>"> <?= $row['cakeSize'] ?> (<?= $row['servings'] ?>)</option>
+                                                                            <?php $i++;
+                                                                                }
+                                                                            }
+                                                                            ?>
+
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="column is-4">
+                                                                <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Select Cake Type: </strong> </p>
+                                                                <div class="field" style="display: flex;padding-bottom:10px">
+                                                                    <div class="select">
+                                                                        <select>
+                                                                            <option>Select Cake </option>
+                                                                            <?php
+                                                                            $query = "SELECT `id`, `typeName` FROM `caketype` WHERE 1";
+                                                                            $result = $con->query($query);
+                                                                            if ($result->num_rows > 0) {
+                                                                                $i = 1;
+                                                                                while ($row = $result->fetch_assoc()) {
+                                                                                    $cakeType;
+                                                                            ?>
+                                                                                    <option value="<?= $row['id'] ?>"> <?= $row['typeName'] ?></option>
+                                                                            <?php $i++;
+                                                                                }
+                                                                            }
+                                                                            ?>
+
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                        <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90 pt-5"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Select By Sheet: </strong> </p>
+                                                        <div class="field" style="display: flex;border-bottom: 1px solid #E3E3E3;padding-bottom:10px">
+                                                            <div class="select">
+                                                                <select>
+                                                                    <option>Select Cake </option>
+                                                                    <?php
+                                                                    $query = "SELECT `id`, `typeName` FROM `caketype` WHERE 1";
+                                                                    $result = $con->query($query);
+                                                                    if ($result->num_rows > 0) {
+                                                                        $i = 1;
+                                                                        while ($row = $result->fetch_assoc()) {
+                                                                            $cakeType;
+                                                                    ?>
+                                                                            <option value="<?= $row['id'] ?>"> <?= $row['typeName'] ?></option>
+                                                                    <?php $i++;
+                                                                        }
+                                                                    }
+                                                                    ?>
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Select Round Cake Size : </strong> </p>
+                                                        <div style="display: flex;border-bottom: 1px solid #E3E3E3; ">
+                                                            <?php
+                                                            $query = "SELECT `id`, `cakeSize`, `servings`, `sizeImg` FROM `cakesize` WHERE 1";
+                                                            $result = $con->query($query);
+                                                            if ($result->num_rows > 0) {
+                                                                $i = 1;
+                                                                while ($row = $result->fetch_assoc()) {
+                                                            ?>
+
+
+                                                                    <div class="field">
+                                                                        <div class="control">
+                                                                            <label class="radio is-square">
+                                                                                <input type="radio" name="cakeShape" id="cakeShape<?= $row['id'] ?>" value="<?= $row['id'] ?>">
+                                                                                <span></span>
+                                                                                <?= $row['cakeSize'] ?>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                            <?php $i++;
+                                                                }
+                                                            }
+                                                            ?>
+                                                            <div class="field">
+                                                                <div class="control">
+                                                                    <label class="radio is-square">
+                                                                        <input type="radio" name="cakeShape" id="cakeShapeCustom" value="custom">
+                                                                        <span></span>
+                                                                        Customized Size Option
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90 pt-5"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Select Fresh Cream : </strong> </p>
+                                                        <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90 pt-5"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Regular Flavors : </strong> </p>
+                                                        <div style="display:inline-flex;flex-wrap:wrap">
+                                                            <?php
+                                                            $query = "SELECT `id`, `name` FROM `regularflavors` WHERE 1";
+                                                            $result = $con->query($query);
+                                                            if ($result->num_rows > 0) {
+                                                                $i = 1;
+                                                                while ($row = $result->fetch_assoc()) {
+                                                            ?>
+
+
+                                                                    <div class="field">
+                                                                        <div class="control">
+                                                                            <label class="radio is-square">
+                                                                                <input type="radio" name="cakeFlavors" id="cakeFlavors<?= $row['id'] ?>" value="<?= $row['id'] ?>">
+                                                                                <span></span>
+                                                                                <?= $row['name'] ?>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                            <?php $i++;
+                                                                }
+                                                            }
+                                                            ?>
+
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                             </div>
                                             <!-- CAKE DETAILS END -->
@@ -565,16 +752,16 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                     </div>
                                                     <div class="section-content">
                                                         <div class="network-notifications">
-                                                            <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Cupcake Size: </strong><?= $cupCakeType ?></p>
+                                                            <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Cupcake Size: </strong><?= $cupCakeSizeOption ?></p>
                                                             <?php
-                                                            if ($cupcakeRegularFlavors == "-" && $cupcakeSpecialFlavors != "-") {
+                                                            if ($cupCakeType == "special") {
                                                                 $query = "SELECT * FROM `cupcakespecialflavors` WHERE `id`=$cupCakeFlavors";
                                                                 $result = $con->query($query);
                                                                 if ($result->num_rows > 0) {
                                                                     $i = 1;
                                                                     while ($row = $result->fetch_assoc()) {
                                                             ?>
-                                                                        <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Flavor: </strong><?= $row['name'] ?></p>
+                                                                        <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Flavor: </strong><?= $row['name'] ?> (Special)</p>
                                                                     <?php $i++;
                                                                     }
                                                                 } else {
@@ -582,14 +769,14 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                                     <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90">No records found</p>
                                                                     <?php
                                                                 }
-                                                            } else {
+                                                            } else if ($cupCakeType == "regular") {
                                                                 $query = "SELECT * FROM `regularflavors` WHERE `id`=$cupCakeFlavors";
                                                                 $result = $con->query($query);
                                                                 if ($result->num_rows > 0) {
                                                                     $i = 1;
                                                                     while ($row = $result->fetch_assoc()) {
                                                                     ?>
-                                                                        <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Flavor: </strong><?= $row['name'] ?></p>
+                                                                        <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Flavor: </strong><?= $row['name'] ?> (Regular)</p>
                                                                     <?php $i++;
                                                                     }
                                                                 } else {
@@ -599,6 +786,7 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                                 }
                                                             }
                                                             ?>
+                                                            <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Cupcake Quantity: </strong><?= $cupCakeQuantity ?></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -645,13 +833,19 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
 
                                                                                 if ($inspirationUploadDesign == ''  || $inspirationUploadDesign == '- ' || $inspirationUploadDesign == '-') {
                                                                                     echo "<p>No Image Uploaded</p>";
-                                                                                } else { ?>
-                                                        <img src=".<?php echo $inspirationUploadDesign; ?>" style="height: 150px; width: auto" alt="Signature" />
+                                                                                } else {
+                                                                                    $explodedInspirationUploadDesign = explode(",", $inspirationUploadDesign);
+                                                                                    for ($i = 0; $i < count($explodedInspirationUploadDesign); $i++) { ?>
+                                                            <img src=".<?php echo $explodedInspirationUploadDesign[$i]; ?>" style="height: 150px; width: auto;padding: 5px;" class="d-flex" alt="Inspirational Design Image" />
+                                                        <?php }
+                                                        ?>
+
 
 
                                                     <?php }
                                                     ?>
                                                 </div>
+
                                             </div>
                                         </div>
                                         <!-- Image SUGGESTION END -->

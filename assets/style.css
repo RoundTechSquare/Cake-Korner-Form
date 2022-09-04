@@ -8031,9 +8031,22 @@ body::-webkit-scrollbar-thumb:active{
 .about-custom-box .course-content p {
   color: #FFF !important;
 }
+.view-more-button{
+  align-items: center;
+  text-align: center;
+}
 
 .sendMessageButton {
   width: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: none;
+  background-color: #E283AE;
+  color: #FFF;
+}
+.view-more {
+  width: 200px;
+  margin-top: 15px;
   padding-top: 15px;
   padding-bottom: 15px;
   border: none;

@@ -82,7 +82,12 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                 height: 100%;
                 margin: 0 !important;
                 padding: 0 !important;
+                top: 0px;
+                bottom: 0px;
+                position: relative;
+                font-size: 17px;
                 overflow: hidden;
+
             }
 
             .printRemove {
@@ -169,11 +174,10 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                                                                                                 ?><br><span class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Confirmation Code: </strong> #<?= $orderConfirmationCode ?></span></h2>
 
                                 </div>
-                                <div class="columns">
-
-                                    <div class="column is-8">
-                                        <div class="profile-card">
-                                            <!-- CUSTOMER DETAILS START -->
+                                <div class="profile-card">
+                                    <!-- CUSTOMER DETAILS START -->
+                                    <div class="columns" style="border-bottom: 1px solid #E3E3E3;">
+                                        <div class="column is-6">
                                             <div class="profile-card-section">
                                                 <div class="section-title">
                                                     <h2 class="has-dark-text dark-inverted " style="font-weight: 700;">CUSTOMER DETAILS</h2>
@@ -183,12 +187,35 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                     <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Name: </strong><?= $customerName ?></p>
                                                     <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Phone Number: </strong><?= $customerPhone ?></p>
                                                     <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Email Address: </strong><?= $customerEmail ?></p>
-                                                    <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Payment Status: </strong><?php if($paymentStatus == '-'){echo "Not Paid";}else{echo $paymentStatus;} ?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><span class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Order Amount: </strong>$<?php if($orderAmount == '-'){echo "0";}else{echo $orderAmount;} ?></span></span></p>
+                                                    <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90" style="white-space:nowrap"><strong class="has-dark-text dark-inverted " style="padding-right: 5px;white-space:nowrap">Payment Status: </strong><?php if ($paymentStatus == '-') {
+                                                                                                                                                                                                                                                                                echo "Not Paid";
+                                                                                                                                                                                                                                                                            } else {
+                                                                                                                                                                                                                                                                                echo $paymentStatus;
+                                                                                                                                                                                                                                                                            } ?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><span class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px;white-space:nowrap">Order Amount: </strong>$<?php if ($orderAmount == '-') {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                echo "0";
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            } else {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                echo $orderAmount;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            } ?></span></span></p>
                                                 </div>
                                             </div>
-                                            <!-- CUSTOMER DETAILS END -->
+                                        </div>
+                                        <div class="column is-6">
+                                            <div class="profile-card-section no-padding">
+                                                <div class="section-title">
+                                                    <h2 class="has-dark-text dark-inverted " style="font-weight: 700;">SIGNATURE </h2>
+                                                </div>
+                                                <div class="section-content">
+                                                    <img src="<?php echo $signature; ?>" style="height: 50px; width: auto" alt="Signature" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                            <!-- ORDER TYPE DETAILS START -->
+                                    <!-- CUSTOMER DETAILS END -->
+
+                                    <!-- ORDER TYPE DETAILS AND CAKE DETAILS START -->
+                                    <div class="columns" style="border-bottom: 1px solid #E3E3E3;">
+                                        <div class="column is-6">
                                             <?php
                                             if ($orderType == 'Pickup') {
                                             ?>
@@ -202,8 +229,12 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                         <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Pickup Date: </strong><?= $orderPickupDate ?></p>
                                                         <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Pickup Time: </strong><?= $orderPickupTime  ?></p>
                                                         <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Pickup Person Name: </strong><?= $orderPickupPerson ?></p>
+
+
+
                                                     </div>
                                                 </div>
+
                                             <?php
                                             } else if ($orderType == 'Delivery') {
                                             ?>
@@ -219,9 +250,9 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                             <?php
                                             }
                                             ?>
-                                            <!-- ORDER TYPE DETAILS END -->
+                                        </div>
 
-                                            <!-- OTHER DETAILS START -->
+                                        <div class="column is-6">
                                             <div class="profile-card-section">
                                                 <div class="section-title">
                                                     <h2 class="has-dark-text dark-inverted " style="font-weight: 700;">OTHER DETAILS</h2>
@@ -232,34 +263,16 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                     <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Special Instructions : </strong><?= $specialInstructions ?></p>
                                                 </div>
                                             </div>
-                                            <!-- OTHER DETAILS END -->
 
-                                            <!-- SIGNATURE START -->
-                                            <div class="profile-card-section">
-                                                <div class="columns">
-                                                    <div class="column is-6">
-                                                        <div class="section-title">
-                                                            <h2 class="has-dark-text dark-inverted " style="font-weight: 700;">SIGNATURE</h2>
-                                                        </div>
-                                                        <div class="section-content">
-                                                            <img src="<?php echo $signature; ?>" style="height: 50px; width: auto" alt="Signature" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-                                            </div>
-
-                                            <!-- SIGNATURE END -->
                                         </div>
+
                                     </div>
+                                    <!-- ORDER TYPE DETAILS AND CAKE DETAILS END -->
 
-                                    <!-- SIDEBAR -->
-                                    <div class="column is-4">
-
-                                        <!-- CAKE DETAILS START -->
-                                        <div class="profile-card">
-                                            <div class="profile-card-section no-padding">
+                                    <!-- OTHER DETAILS START -->
+                                    <div class="columns" style="border-bottom: 1px solid #E3E3E3;">
+                                        <div class="column is-6">
+                                            <div class="profile-card-section">
                                                 <div class="section-title">
                                                     <h2 class="has-dark-text dark-inverted " style="font-weight: 700;">CAKE DETAILS</h2>
                                                 </div>
@@ -367,43 +380,40 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                                 <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90">
                                                                     <strong class="has-dark-text dark-inverted " style="padding-right: 5px">Theme Cake Type: </strong><?= $rowTheme['themeName'] ?> (#<?= $themeCake ?>)
                                                                 </p>
-                                                    <?php
+                                                        <?php
                                                             }
                                                         }
-                                                    }else{ ?>
+                                                    } else { ?>
                                                         <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90">
-                                                        <strong class="has-dark-text dark-inverted " style="padding-right: 5px">Theme Cake Type: </strong>No Theme Cake Selected
-                                                    </p>
+                                                            <strong class="has-dark-text dark-inverted " style="padding-right: 5px">Theme Cake Type: </strong>No Theme Cake Selected
+                                                        </p>
                                                     <?php }
                                                     ?>
-                                                    
+
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- CAKE DETAILS END -->
+                                        <div class="column is-6">
+                                            <?php
+                                            if ($cupcake == "Yes") {
+                                            ?>
 
-
-                                        <!-- CUPCAKE DETAILS START -->
-                                        <?php
-                                        if ($cupcake == "Yes") {
-                                        ?>
-                                            <div class="profile-card">
                                                 <div class="profile-card-section no-padding">
                                                     <div class="section-title">
                                                         <h2 class="has-dark-text dark-inverted " style="font-weight: 700;">CUPCAKE DETAILS</h2>
                                                     </div>
                                                     <div class="section-content">
                                                         <div class="network-notifications">
-                                                            <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Cupcake Size: </strong><?= $cupCakeType ?></p>
+                                                            <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Cupcake Size: </strong><?= $cupCakeSizeOption ?></p>
                                                             <?php
-                                                            if ($cupcakeRegularFlavors == "-" && $cupcakeSpecialFlavors != "-") {
+                                                            if ($cupCakeType == "special") {
                                                                 $query = "SELECT * FROM `cupcakespecialflavors` WHERE `id`=$cupCakeFlavors";
                                                                 $result = $con->query($query);
                                                                 if ($result->num_rows > 0) {
                                                                     $i = 1;
                                                                     while ($row = $result->fetch_assoc()) {
                                                             ?>
-                                                                        <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Flavor: </strong><?= $row['name'] ?></p>
+                                                                        <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Flavor: </strong><?= $row['name'] ?> (Special)</p>
                                                                     <?php $i++;
                                                                     }
                                                                 } else {
@@ -411,14 +421,14 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                                     <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90">No records found</p>
                                                                     <?php
                                                                 }
-                                                            } else {
+                                                            } else if ($cupCakeType == "regular") {
                                                                 $query = "SELECT * FROM `regularflavors` WHERE `id`=$cupCakeFlavors";
                                                                 $result = $con->query($query);
                                                                 if ($result->num_rows > 0) {
                                                                     $i = 1;
                                                                     while ($row = $result->fetch_assoc()) {
                                                                     ?>
-                                                                        <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Flavor: </strong><?= $row['name'] ?></p>
+                                                                        <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Flavor: </strong><?= $row['name'] ?> (Regular)</p>
                                                                     <?php $i++;
                                                                     }
                                                                 } else {
@@ -428,41 +438,50 @@ if (isset($_SESSION['admin']) && isset($_REQUEST['orderID']) && isset($_REQUEST[
                                                                 }
                                                             }
                                                             ?>
+                                                            <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted " style="padding-right: 5px">Cupcake Quantity: </strong><?= $cupCakeQuantity ?></p>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        <?php
-                                        } else {
-                                        ?>
-                                            <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"></p>
-                                        <?php
-                                        }
-                                        ?>
-                                        <!-- CUPCAKE DETAILS END -->
 
-                                        <!-- Image SUGGESTION START -->
-                                        <div class="profile-card">
-                                            <div class="profile-card-section no-padding">
-                                                <div class="section-title">
-                                                    <h2 class="has-dark-text dark-inverted " style="font-weight: 700;">INSPIRATION UPLOAD DESIGN </h2>
-                                                </div>
-                                                <div class="section-content"> <?php
-
-                                                                                if ($inspirationUploadDesign == ''  || $inspirationUploadDesign == '- ' || $inspirationUploadDesign == '-') {
-                                                                                    echo "<p>No Image Uploaded</p>";
-                                                                                } else { ?>
-                                                        <img src=".<?php echo $inspirationUploadDesign; ?>" style="height: 150px; width: auto" alt="Signature" />
-                                                        
-
-                                                    <?php }
-                                                    ?>
-                                                </div>
-                                            </div>
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <p class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"></p>
+                                            <?php
+                                            }
+                                            ?>
                                         </div>
-                                        <!-- Image SUGGESTION END -->
+                                    </div>
+                                    <!-- OTHER DETAILS END -->
+
+                                    <!-- SIGNATURE START -->
+
+                                    <div class="profile-card-section">
+                                        <div class="section-title">
+                                            <h2 class="has-dark-text dark-inverted " style="font-weight: 700;">INSPIRATION UPLOAD DESIGN </h2>
+                                        </div>
+
+                                        <div class="section-content d-flex" style=" display: flex;flex-wrap: wrap;justify-content: flex-start;"> <?php
+
+                                                                                                                                                    if ($inspirationUploadDesign == ''  || $inspirationUploadDesign == '- ' || $inspirationUploadDesign == '-') {
+                                                                                                                                                        echo "<p>No Image Uploaded</p>";
+                                                                                                                                                    } else {
+                                                                                                                                                        $explodedInspirationUploadDesign = explode(",", $inspirationUploadDesign);
+                                                                                                                                                        for ($i = 0; $i < count($explodedInspirationUploadDesign); $i++) { ?>
+                                                    <img src=".<?php echo $explodedInspirationUploadDesign[$i]; ?>" style="height: 150px; width: auto;padding: 5px;" class="d-flex" alt="Inspirational Design Image" />
+                                                <?php }
+                                                ?>
+
+
+
+                                            <?php }
+                                            ?>
+                                        </div>
+
+
                                     </div>
 
+                                    <!-- SIGNATURE END -->
                                 </div>
 
 

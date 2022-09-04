@@ -35,20 +35,22 @@ if (isset($_SESSION['admin'])) {
             color: #DE85AD !important;
         }
 
-        #table_id_info{
-            color: #DE85AD !important;
-        }
-        select{
+        #table_id_info {
             color: #DE85AD !important;
         }
 
-        #table_id_filter{
+        select {
             color: #DE85AD !important;
         }
 
-        #table_id_length{
+        #table_id_filter {
             color: #DE85AD !important;
         }
+
+        #table_id_length {
+            color: #DE85AD !important;
+        }
+
         .datatableDiv {
             border: none !important;
             color: #DE85AD !important;
@@ -203,7 +205,7 @@ if (isset($_SESSION['admin'])) {
                                 processData: false,
                                 success: function(data) {
                                     if (data == "success") {
-                                        notyf.success("Filter applied");
+                                        notyf.success("Filters removed");
                                         setTimeout(reloadPage, 1500);
 
                                         function reloadPage() {
@@ -371,8 +373,61 @@ if (isset($_SESSION['admin'])) {
                                                 <td style="white-space: nowrap;">
                                                     <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Order Type : </strong><?= $row['orderType'] ?></p>
                                                     <?php
-                                                    if ($row['orderType'] == 'Pickup') { ?>
-                                                        <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Pickup Details : </strong><?= $row['orderPickupDate'] . ', ' . $row['orderPickupTime']  ?></p>
+                                                    if ($row['orderType'] == 'Pickup') {
+                                                        $exploededTime = explode(":", $row['orderPickupTime']);
+                                                        if ($exploededTime[0] == '01') {
+                                                            $finalTime = '1:' . $exploededTime[1] . ' AM';
+                                                        } else if ($exploededTime[0] == '02') {
+                                                            $finalTime = '2:' . $exploededTime[1] . ' AM';
+                                                        } else if ($exploededTime[0] == '03') {
+                                                            $finalTime = '3:' . $exploededTime[1] . ' AM';
+                                                        } else if ($exploededTime[0] == '04') {
+                                                            $finalTime = '4:' . $exploededTime[1] . ' AM';
+                                                        } else if ($exploededTime[0] == '05') {
+                                                            $finalTime = '5:' . $exploededTime[1] . ' AM';
+                                                        } else if ($exploededTime[0] == '06') {
+                                                            $finalTime = '6:' . $exploededTime[1] . ' AM';
+                                                        } else if ($exploededTime[0] == '07') {
+                                                            $finalTime = '7:' . $exploededTime[1] . ' AM';
+                                                        } else if ($exploededTime[0] == '08') {
+                                                            $finalTime = '8:' . $exploededTime[1] . ' AM';
+                                                        } else if ($exploededTime[0] == '09') {
+                                                            $finalTime = '9:' . $exploededTime[1] . ' AM';
+                                                        } else if ($exploededTime[0] == '10') {
+                                                            $finalTime = '10:' . $exploededTime[1] . ' AM';
+                                                        } else if ($exploededTime[0] == '11') {
+                                                            $finalTime = '11:' . $exploededTime[1] . ' AM';
+                                                        } else if ($exploededTime[0] == '12') {
+                                                            $finalTime = '12:' . $exploededTime[1] . ' AM';
+                                                        } else if ($exploededTime[0] == '13') {
+                                                            $finalTime = '1:' . $exploededTime[1] . ' PM';
+                                                        } else if ($exploededTime[0] == '14') {
+                                                            $finalTime = '2:' . $exploededTime[1] . ' PM';
+                                                        } else if ($exploededTime[0] == '15') {
+                                                            $finalTime = '3:' . $exploededTime[1] . ' PM';
+                                                        } else if ($exploededTime[0] == '16') {
+                                                            $finalTime = '4:' . $exploededTime[1] . ' PM';
+                                                        } else if ($exploededTime[0] == '17') {
+                                                            $finalTime = '5:' . $exploededTime[1] . ' PM';
+                                                        } else if ($exploededTime[0] == '18') {
+                                                            $finalTime = '6:' . $exploededTime[1] . ' PM';
+                                                        } else if ($exploededTime[0] == '19') {
+                                                            $finalTime = '7:' . $exploededTime[1] . ' PM';
+                                                        } else if ($exploededTime[0] == '20') {
+                                                            $finalTime = '8:' . $exploededTime[1] . ' PM';
+                                                        } else if ($exploededTime[0] == '21') {
+                                                            $finalTime = '9:' . $exploededTime[1] . ' PM';
+                                                        } else if ($exploededTime[0] == '22') {
+                                                            $finalTime = '10:' . $exploededTime[1] . ' PM';
+                                                        } else if ($exploededTime[0] == '23') {
+                                                            $finalTime = '11:' . $exploededTime[1] . ' PM';
+                                                        } else if ($exploededTime[0] == '00') {
+                                                            $finalTime = '12:' . $exploededTime[1] . ' PM';
+                                                        } else {
+                                                            $finalTime = $row['orderPickupTime'];
+                                                        }
+                                                    ?>
+                                                        <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Pickup Details : </strong><?= $row['orderPickupDate'] . ', ' . $finalTime  ?></p>
                                                         <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Pickup Person : </strong><?= $row['orderPickupPerson'] ?></p>
                                                     <?php } else if ($row['orderType'] == 'Delivery') { ?>
                                                         <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Delivery Address : </strong><br><?= $row['deliveryAddress1'] . ', ' . $row['deliveryAppartmentNumber']  ?></p>
@@ -382,10 +437,10 @@ if (isset($_SESSION['admin'])) {
                                                     ?>
 
                                                     <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Pickup/Delivery Date : </strong> <?php if ($row['orderType'] == 'Pickup') {
-                                                                                                                                                                                                        echo $row['orderPickupDate'];
-                                                                                                                                                                                                    } else if ($row['orderType'] == 'Delivery') {
-                                                                                                                                                                                                        echo $row['dateCreated'];
-                                                                                                                                                                                                    } ?></p>
+                                                                                                                                                                                                                                                        echo $row['orderPickupDate'];
+                                                                                                                                                                                                                                                    } else if ($row['orderType'] == 'Delivery') {
+                                                                                                                                                                                                                                                        echo $row['dateCreated'];
+                                                                                                                                                                                                                                                    } ?></p>
                                                 </td>
                                                 <td style="white-space: nowrap;">
                                                     <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Cake Type : </strong>

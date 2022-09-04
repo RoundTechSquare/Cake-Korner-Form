@@ -203,7 +203,7 @@ if (isset($_SESSION['admin'])) {
                                 processData: false,
                                 success: function(data) {
                                     if (data == "success") {
-                                        notyf.success("Filter applied");
+                                        notyf.success("Filters removed");
                                         setTimeout(reloadPage, 1500);
 
                                         function reloadPage() {

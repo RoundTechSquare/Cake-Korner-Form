@@ -67,340 +67,48 @@
                             </div>
                         </div>
                         <div class="gallery-inner-wrap gallery-container grid">
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-01.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-01.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-02.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-02.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-03.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-03.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-04.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-04.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-05.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-05.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-06.jpeg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-06.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-07.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-07.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-08.jpeg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-08.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-09.jpeg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-09.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
+                            <?php
+                            for ($i = 1; $i < 10; $i++) { ?>
+
+                                <div class="single-gallery grid-item">
+                                    <figure class="gallery-img">
+                                        <a href="./assets/images/gallery-two/Cake/AllPNGS/cake-<?= $i ?>.png" data-fancybox="gallery">
+                                            <img src="./assets/images/gallery-two/Cake/ALLJPG/cake-<?= $i ?>.jpg" style="border-radius: 10px;" alt="Cake Korner Gallery cupcake-<?= $i ?>.png" />
+                                            <h4 style="border-radius: 10px;">
+                                                <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
+                                            </h4>
+                                        </a>
+                                    </figure>
+                                </div>
+                            <?php }
+
+                            ?>
                         </div>
-                        <div class="gallery-inner-wrap gallery-container grid">
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-10.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-10.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-11.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-11.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-12.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-12.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-13.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-13.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-14.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-14.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-15.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-15.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-16.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-16.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-17.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-17.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-18.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-18.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-19.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-19.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-20.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-20.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-21.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-21.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-22.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-22.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-23.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-23.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-24.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-24.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-25.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-25.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-26.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-26.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-27.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-27.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-28.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-28.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-29.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-29.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-30.jpeg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-30.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-31.jpeg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-31.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-32.jpeg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-32.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="single-gallery grid-item">
-                                <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/cake-33.jpg" data-fancybox="gallery">
-                                        <img src="./assets/images/gallery-two/cake-33.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
-                                        <h4 style="border-radius: 10px;">
-                                            <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
-                                        </h4>
-                                    </a>
-                                </figure>
-                            </div>
+                        <div class="view-more-button ">
+                            <button type="button" class="view-more" onclick='loadDiv()'>VIEW MORE</button>
                         </div>
                     </div>
+
+                    <script>
+                        function loadDiv() {
+                            $.ajax({
+                                url: "./view-more-cakes.php",
+                                type: 'POST',
+                                contentType: false,
+                                processData: false,
+                                success: function(data) {
+                                    if (data != '') {
+                                        console.log(data);
+                                        $('.gallery-inner-wrap').css("height", "1200px");
+                                        $(".gallery-outer-wrap").replaceWith(data);
+                                    } else {
+                                        alert("NONS");
+                                    }
+                                }
+                            });
+
+                        }
+                    </script>
                 </div>
             </div>
         </main>
