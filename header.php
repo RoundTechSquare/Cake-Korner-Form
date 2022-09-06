@@ -78,13 +78,10 @@
                                         <a href="./pastries-gallery">Pastries</a>
                                     </li>
                                     <li>
-                                        <a href="./cupcakes-gallery">Cup Cakes</a>
+                                        <a href="./desserts-gallery">Desserts</a>
                                     </li>
                                     <li>
-                                        <a href="./food-gallery">Food</a>
-                                    </li>
-                                    <li>
-                                        <a href="./drinks-gallery">Drinks</a>
+                                        <a href="./food-gallery">Food and Drinks</a>
                                     </li>
                                 </ul>
                             </li>

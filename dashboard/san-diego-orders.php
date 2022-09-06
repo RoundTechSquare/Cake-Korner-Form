@@ -203,7 +203,7 @@ if (isset($_SESSION['admin'])) {
                                 processData: false,
                                 success: function(data) {
                                     if (data == "success") {
-                                        notyf.success("Filters removed");
+                                        notyf.success("Filter applied");
                                         setTimeout(reloadPage, 1500);
 
                                         function reloadPage() {
@@ -337,7 +337,7 @@ if (isset($_SESSION['admin'])) {
                                     if (isset($_SESSION['locationTwoQuery'])) {
                                         $query = $_SESSION['locationTwoQuery'];
                                     } else {
-                                        $query = "SELECT * FROM `orders`  WHERE `orders`.`isActive` = 'yes' AND `orders`.`locationID` = '2' AND `dateCreated`='$dateCreated'";
+                                        $query = "SELECT * FROM `orders`  WHERE `orders`.`isActive` = 'yes' AND `orders`.`locationID` = '2' AND `orderPickupDate`='$dateCreated'";
                                     }
                                     $result = $con->query($query);
                                     if ($result->num_rows > 0) {
@@ -370,9 +370,62 @@ if (isset($_SESSION['admin'])) {
                                                 </td>
                                                 <td style="white-space: nowrap;">
                                                     <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Order Type : </strong><?= $row['orderType'] ?></p>
-                                                    <?php
-                                                    if ($row['orderType'] == 'Pickup') { ?>
-                                                        <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Pickup Details : </strong><?= $row['orderPickupDate'] . ', ' . $row['orderPickupTime']  ?></p>
+                                           <?php
+                                                    if ($row['orderType'] == 'Pickup') {
+                                                        $exploededTime = explode(":", $row['orderPickupTime']);
+                                                        if ($exploededTime[0] == '01') {
+                                                            $finalTime = '1:' . $exploededTime[1] . ' AM';
+                                                        } else if ($exploededTime[0] == '02') {
+                                                            $finalTime = '2:' . $exploededTime[1] . ' AM';
+                                                        } else if ($exploededTime[0] == '03') {
+                                                            $finalTime = '3:' . $exploededTime[1] . ' AM';
+                                                        } else if ($exploededTime[0] == '04') {
+                                                            $finalTime = '4:' . $exploededTime[1] . ' AM';
+                                                        } else if ($exploededTime[0] == '05') {
+                                                            $finalTime = '5:' . $exploededTime[1] . ' AM';
+                                                        } else if ($exploededTime[0] == '06') {
+                                                            $finalTime = '6:' . $exploededTime[1] . ' AM';
+                                                        } else if ($exploededTime[0] == '07') {
+                                                            $finalTime = '7:' . $exploededTime[1] . ' AM';
+                                                        } else if ($exploededTime[0] == '08') {
+                                                            $finalTime = '8:' . $exploededTime[1] . ' AM';
+                                                        } else if ($exploededTime[0] == '09') {
+                                                            $finalTime = '9:' . $exploededTime[1] . ' AM';
+                                                        } else if ($exploededTime[0] == '10') {
+                                                            $finalTime = '10:' . $exploededTime[1] . ' AM';
+                                                        } else if ($exploededTime[0] == '11') {
+                                                            $finalTime = '11:' . $exploededTime[1] . ' AM';
+                                                        } else if ($exploededTime[0] == '12') {
+                                                            $finalTime = '12:' . $exploededTime[1] . ' AM';
+                                                        } else if ($exploededTime[0] == '13') {
+                                                            $finalTime = '1:' . $exploededTime[1] . ' PM';
+                                                        } else if ($exploededTime[0] == '14') {
+                                                            $finalTime = '2:' . $exploededTime[1] . ' PM';
+                                                        } else if ($exploededTime[0] == '15') {
+                                                            $finalTime = '3:' . $exploededTime[1] . ' PM';
+                                                        } else if ($exploededTime[0] == '16') {
+                                                            $finalTime = '4:' . $exploededTime[1] . ' PM';
+                                                        } else if ($exploededTime[0] == '17') {
+                                                            $finalTime = '5:' . $exploededTime[1] . ' PM';
+                                                        } else if ($exploededTime[0] == '18') {
+                                                            $finalTime = '6:' . $exploededTime[1] . ' PM';
+                                                        } else if ($exploededTime[0] == '19') {
+                                                            $finalTime = '7:' . $exploededTime[1] . ' PM';
+                                                        } else if ($exploededTime[0] == '20') {
+                                                            $finalTime = '8:' . $exploededTime[1] . ' PM';
+                                                        } else if ($exploededTime[0] == '21') {
+                                                            $finalTime = '9:' . $exploededTime[1] . ' PM';
+                                                        } else if ($exploededTime[0] == '22') {
+                                                            $finalTime = '10:' . $exploededTime[1] . ' PM';
+                                                        } else if ($exploededTime[0] == '23') {
+                                                            $finalTime = '11:' . $exploededTime[1] . ' PM';
+                                                        } else if ($exploededTime[0] == '00') {
+                                                            $finalTime = '12:' . $exploededTime[1] . ' PM';
+                                                        } else {
+                                                            $finalTime = $row['orderPickupTime'];
+                                                        }
+                                                    ?>
+                                                        <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Pickup Details : </strong><?= $row['orderPickupDate'] . ', ' . $finalTime  ?></p>
                                                         <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Pickup Person : </strong><?= $row['orderPickupPerson'] ?></p>
                                                     <?php } else if ($row['orderType'] == 'Delivery') { ?>
                                                         <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Delivery Address : </strong><br><?= $row['deliveryAddress1'] . ', ' . $row['deliveryAppartmentNumber']  ?></p>
@@ -533,11 +586,17 @@ if (isset($_SESSION['admin'])) {
                                                                 <i class="fas fa-eye"></i>
                                                             </span>
                                                         </a>
-                                                        <a href="./delete-order.php?orderID=<?= $row['orderID'] ?>&locationID=<?= $row['locationID'] ?>" class="button  is-elevated" style="margin-left: 0px;border: none;background:transparent">
+                                                        <a href="javascript:;" onclick="deleteFunction()" class="button  is-elevated" style="margin-left: 0px;border: none;background:transparent">
                                                             <span class="icon is-small">
                                                                 <i class="fas fa-trash" style="color: red;"></i>
                                                             </span>
                                                         </a>
+                                                        <script>
+                                                             function deleteFunction() {
+            console.log("hello");
+             if(confirm("Are you sure you want to delete this?")){window.location.href="./delete-order.php?orderID=<?= $row['orderID'] ?>&locationID=<?= $row['locationID'] ?>";}else{return false;}
+        }
+                                                        </script>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -571,6 +630,7 @@ if (isset($_SESSION['admin'])) {
         <script src="assets/js/touch.js" async></script>
         <script src="assets/js/syntax.js" async></script>
         <script>
+       
             $(document).ready(function() {
                 $('#table_id').DataTable({
                     pageSize: 10,

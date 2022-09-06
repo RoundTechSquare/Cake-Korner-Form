@@ -69,7 +69,7 @@
                         <div class="gallery-inner-wrap gallery-container grid">
                             <div class="single-gallery grid-item">
                                 <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/13.jpg" data-fancybox="gallery">
+                                    <a href="./assets/images/gallery-two/13.png" data-fancybox="gallery">
                                         <img src="./assets/images/gallery-two/13.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
                                         <h4 style="border-radius: 10px;">
                                             <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
@@ -79,7 +79,7 @@
                             </div>
                             <div class="single-gallery grid-item">
                                 <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/14.jpg" data-fancybox="gallery">
+                                    <a href="./assets/images/gallery-two/14.png" data-fancybox="gallery">
                                         <img src="./assets/images/gallery-two/14.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
                                         <h4 style="border-radius: 10px;">
                                             <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
@@ -89,7 +89,7 @@
                             </div>
                             <div class="single-gallery grid-item">
                                 <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/15.jpg" data-fancybox="gallery">
+                                    <a href="./assets/images/gallery-two/15.png" data-fancybox="gallery">
                                         <img src="./assets/images/gallery-two/15.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
                                         <h4 style="border-radius: 10px;">
                                             <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
@@ -99,7 +99,7 @@
                             </div>
                             <div class="single-gallery grid-item">
                                 <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/16.jpg" data-fancybox="gallery">
+                                    <a href="./assets/images/gallery-two/16.png" data-fancybox="gallery">
                                         <img src="./assets/images/gallery-two/16.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
                                         <h4 style="border-radius: 10px;">
                                             <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
@@ -109,7 +109,7 @@
                             </div>
                             <div class="single-gallery grid-item">
                                 <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/17.jpg" data-fancybox="gallery">
+                                    <a href="./assets/images/gallery-two/17.png" data-fancybox="gallery">
                                         <img src="./assets/images/gallery-two/17.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
                                         <h4 style="border-radius: 10px;">
                                             <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
@@ -119,7 +119,7 @@
                             </div>
                             <div class="single-gallery grid-item">
                                 <figure class="gallery-img">
-                                    <a href="./assets/images/gallery-two/18.jpg" data-fancybox="gallery">
+                                    <a href="./assets/images/gallery-two/18.png" data-fancybox="gallery">
                                         <img src="./assets/images/gallery-two/18.png" style="border-radius: 10px;" alt="Cake Korner Gallery" />
                                         <h4 style="border-radius: 10px;">
                                             <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />

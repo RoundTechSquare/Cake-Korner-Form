@@ -81,7 +81,7 @@
                                         });
                                         var newsletterEmail = document.getElementById('newsletterEmail');
                                         var emailPatternValue = newsletterEmail.value;
-                                        var emailPattern = new RegExp("^[a-z A-Z 0-9]{4,20}@+[a-z A-z]{2,6}[\.]{1}[c C]{1}[A-Z a-z]{1,6}([\.]{1}[A-Z a-z]{2,6})?$");
+                                        var emailPattern = new RegExp("^[a-z A-Z 0-9]{4,20}@+[a-z A-z]{2,20}[\.]{1}[c C]{1}[A-Z a-z]{1,6}([\.]{1}[A-Z a-z]{2,6})?$");
                                         if ((emailPattern.test(emailPatternValue) != true)) {
                                             if (emailPattern.test(emailPatternValue) != true) {
                                                 notyf.error('Please enter valid email address');

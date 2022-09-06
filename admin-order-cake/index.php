@@ -334,6 +334,7 @@
                                                 <div class="col-md-4">
                                                     <select id="minutes" class="form-control">
                                                         <option selected disabled>MM</option>
+                                                        <option value="0">0</option>
                                                         <option value="5">5</option>
                                                         <option value="10">10</option>
                                                         <option value="15">15</option>
@@ -429,7 +430,8 @@
                                     var hour = document.getElementById('hours').value;
                                     var min = document.getElementById('minutes').value;
                                     var time = document.getElementById('time').value;
-                                    if (hour == "" || min == "" || time == "") {
+
+                                 if (hour == "" || min == "" || time == "") {
                                         notyf.error("Please select time!");
                                     } else {
                                         if (time == 'AM') {
@@ -474,7 +476,6 @@
 
                                         }
                                     }
-
 
                                     $("#orderPickupTime").val(finalTimePicked);
 
@@ -1631,7 +1632,7 @@
                                             document.querySelector('input[name=cupCakeFlavors]').focus();
                                         } else if (cupcakeQuantity == "") {
                                             document.getElementById('quantity').focus();
-                                        } else if (disclaimers == "") {
+                                        }else if (disclaimers == "") {
                                             document.getElementById('disclaimers').focus();
                                         }
                                         notyf.error('Please fill all the details');
@@ -1830,6 +1831,10 @@
             $("#datepicker").datepicker({
                 showOtherMonths: true,
                 selectOtherMonths: true,
+                 beforeShowDay: function(date) {
+        var day = date.getDay();
+        return [(day != 1), ''];
+    },
                 minDate: 0,
                 dateFormat: "mm-dd-yy"
             });
@@ -1849,6 +1854,7 @@
                 $("#successPage").show();
                 $("#OtherdetailsDiv").hide();
             });
+            
         });
     </script>
     <script>

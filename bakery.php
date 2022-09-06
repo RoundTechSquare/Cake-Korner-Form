@@ -106,8 +106,8 @@
                                         </div>
                                         <div class="col-lg-4 col-sm-12">
                                             <div class="cake-name">
-                                                <img class="cake-photo" src="./assets/images/tiramisu.png" alt="Tiramisu" />
-                                                <h5>Tiramisu</h5>
+                                                <img class="cake-photo" src="./assets/images/falooda-cake.png" alt="Falooda" />
+                                                <h5>Falooda</h5>
                                             </div>
                                         </div>
                                     </div>

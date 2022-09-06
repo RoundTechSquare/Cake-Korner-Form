@@ -35,22 +35,20 @@ if (isset($_SESSION['admin'])) {
             color: #DE85AD !important;
         }
 
-        #table_id_info {
+        #table_id_info{
+            color: #DE85AD !important;
+        }
+        select{
             color: #DE85AD !important;
         }
 
-        select {
+        #table_id_filter{
             color: #DE85AD !important;
         }
 
-        #table_id_filter {
+        #table_id_length{
             color: #DE85AD !important;
         }
-
-        #table_id_length {
-            color: #DE85AD !important;
-        }
-
         .datatableDiv {
             border: none !important;
             color: #DE85AD !important;
@@ -339,7 +337,7 @@ if (isset($_SESSION['admin'])) {
                                     if (isset($_SESSION['locationOneQuery'])) {
                                         $query = $_SESSION['locationOneQuery'];
                                     } else {
-                                        $query = "SELECT * FROM `orders`  WHERE `orders`.`isActive` = 'yes' AND `orders`.`locationID` = '1' AND `dateCreated`='$dateCreated'";
+                                        $query = "SELECT * FROM `orders`  WHERE `orders`.`isActive` = 'yes' AND `orders`.`locationID` = '1' AND `orderPickupDate`='$dateCreated'";
                                     }
                                     $result = $con->query($query);
                                     if ($result->num_rows > 0) {
@@ -372,7 +370,7 @@ if (isset($_SESSION['admin'])) {
                                                 </td>
                                                 <td style="white-space: nowrap;">
                                                     <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Order Type : </strong><?= $row['orderType'] ?></p>
-                                                    <?php
+                                                     <?php
                                                     if ($row['orderType'] == 'Pickup') {
                                                         $exploededTime = explode(":", $row['orderPickupTime']);
                                                         if ($exploededTime[0] == '01') {
@@ -437,10 +435,10 @@ if (isset($_SESSION['admin'])) {
                                                     ?>
 
                                                     <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Pickup/Delivery Date : </strong> <?php if ($row['orderType'] == 'Pickup') {
-                                                                                                                                                                                                                                                        echo $row['orderPickupDate'];
-                                                                                                                                                                                                                                                    } else if ($row['orderType'] == 'Delivery') {
-                                                                                                                                                                                                                                                        echo $row['dateCreated'];
-                                                                                                                                                                                                                                                    } ?></p>
+                                                                                                                                                                                                        echo $row['orderPickupDate'];
+                                                                                                                                                                                                    } else if ($row['orderType'] == 'Delivery') {
+                                                                                                                                                                                                        echo $row['dateCreated'];
+                                                                                                                                                                                                    } ?></p>
                                                 </td>
                                                 <td style="white-space: nowrap;">
                                                     <p style="white-space: nowrap;" class="has-dark-text dark-inverted is-font-alt is-weight-500 rem-90"><strong class="has-dark-text dark-inverted is-font-alt">Cake Type : </strong>
@@ -588,11 +586,23 @@ if (isset($_SESSION['admin'])) {
                                                                 <i class="fas fa-eye"></i>
                                                             </span>
                                                         </a>
-                                                        <a href="./delete-order.php?orderID=<?= $row['orderID'] ?>&locationID=<?= $row['locationID'] ?>" class="button  is-elevated" style="margin-left: 0px;border: none;background:transparent">
+                                                        <!--<a href="./delete-order.php?orderID=<?= $row['orderID'] ?>&locationID=<?= $row['locationID'] ?>" class="button  is-elevated" style="margin-left: 0px;border: none;background:transparent">-->
+                                                        <!--    <span class="icon is-small">-->
+                                                        <!--        <i class="fas fa-trash" style="color: red;"></i>-->
+                                                        <!--    </span>-->
+                                                        <!--</a>-->
+                                                        
+                                                          <a href="javascript:;" onclick="deleteFunction()" class="button  is-elevated" style="margin-left: 0px;border: none;background:transparent">
                                                             <span class="icon is-small">
                                                                 <i class="fas fa-trash" style="color: red;"></i>
                                                             </span>
                                                         </a>
+                                                        <script>
+                                                             function deleteFunction() {
+            console.log("hello");
+             if(confirm("Are you sure you want to delete this?")){window.location.href="./delete-order.php?orderID=<?= $row['orderID'] ?>&locationID=<?= $row['locationID'] ?>";}else{return false;}
+        }
+                                                        </script>
                                                     </div>
                                                 </td>
                                             </tr>

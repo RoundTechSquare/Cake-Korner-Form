@@ -24,7 +24,7 @@ if ($filterOption == 'updateFilters') {
                     $_SESSION['filterDatePickerLocationOne'] = $filterDatePicker;
                     $_SESSION['locationOneStartDate'] = $startDate;
                     $_SESSION['locationOneEndDate'] = $endDate;
-                    $_SESSION['locationOneQuery'] = "SELECT * FROM `orders`  WHERE `orders`.`isActive` = 'yes' AND `dateCreated` BETWEEN '$startDate' AND '$endDate' AND `orders`.`locationID` = '1'";
+                    $_SESSION['locationOneQuery'] = "SELECT * FROM `orders`  WHERE `orders`.`isActive` = 'yes' AND `orderPickupDate` BETWEEN '$startDate' AND '$endDate' AND `orders`.`locationID` = '1'";
                     echo "success";
                 }
             } else {
@@ -34,7 +34,7 @@ if ($filterOption == 'updateFilters') {
                     $_SESSION['filterDatePickerLocationOne'] = $filterDatePicker;
                     $_SESSION['locationOneStartDate'] = $startDate;
                     $_SESSION['locationOneEndDate'] = $endDate;
-                    $_SESSION['locationOneQuery'] = "SELECT * FROM `orders`  WHERE `orders`.`isActive` = 'yes' AND `dateCreated` BETWEEN '$startDate' AND '$endDate' AND `orders`.`locationID` = '1'";
+                    $_SESSION['locationOneQuery'] = "SELECT * FROM `orders`  WHERE `orders`.`isActive` = 'yes' AND `orderPickupDate` BETWEEN '$startDate' AND '$endDate' AND `orders`.`locationID` = '1'";
                     echo "success";
                 }
             }
@@ -51,7 +51,7 @@ if ($filterOption == 'updateFilters') {
                     $_SESSION['filterDatePickerLocationTwo'] = $filterDatePicker;
                     $_SESSION['locationTwoStartDate'] = $startDate;
                     $_SESSION['locationTwoEndDate'] = $endDate;
-                    $_SESSION['locationTwoQuery'] = "SELECT * FROM `orders`  WHERE `orders`.`isActive` = 'yes' AND `dateCreated` BETWEEN '$startDate' AND '$endDate' AND `orders`.`locationID` = '2'";
+                    $_SESSION['locationTwoQuery'] = "SELECT * FROM `orders`  WHERE `orders`.`isActive` = 'yes' AND `orderPickupDate` BETWEEN '$startDate' AND '$endDate' AND `orders`.`locationID` = '2'";
                     echo "success";
                 }
             } else {
@@ -61,7 +61,7 @@ if ($filterOption == 'updateFilters') {
                     $_SESSION['filterDatePickerLocationTwo'] = $filterDatePicker;
                     $_SESSION['locationTwoStartDate'] = $startDate;
                     $_SESSION['locationTwoEndDate'] = $endDate;
-                    $_SESSION['locationTwoQuery'] = "SELECT * FROM `orders`  WHERE `orders`.`isActive` = 'yes' AND `dateCreated` BETWEEN '$startDate' AND '$endDate' AND `orders`.`locationID` = '2'";
+                    $_SESSION['locationTwoQuery'] = "SELECT * FROM `orders`  WHERE `orders`.`isActive` = 'yes' AND `orderPickupDate` BETWEEN '$startDate' AND '$endDate' AND `orders`.`locationID` = '2'";
                     echo "success";
                 }
             }

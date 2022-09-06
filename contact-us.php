@@ -67,7 +67,7 @@
                             <div>
                                 <div class="artesia-map" style="height: 380px; padding-bottom: 10px">
                                     <h5 style="font-family: 'Trade-Gothic-Bold'; font-size: 20px">Artesia, CA</h5>
-                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.921818934656!2d-118.08623753370752!3d33.86590567292237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dd2d094104a813%3A0x88f3afa56f1f0667!2sThe%20Cake%20Korner!5e0!3m2!1sen!2sin!4v1654836246231!5m2!1sen!2sin" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d828.2304541326201!2d-118.08230003705208!3d33.86590573487858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dd2d094104a813%3A0x88f3afa56f1f0667!2sThe%20Cake%20Korner!5e0!3m2!1sen!2sin!4v1661996949156!5m2!1sen!2sin" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                 </div>
                                 <div class="san-diego-map" style="height: 380px; padding-top: 10px">
                                     <h5 style="font-family: 'Trade-Gothic-Bold'; font-size: 20px">San Diego, CA</h5>
@@ -117,13 +117,7 @@
                                         var phonePatternValue = phone.value;
                                         var emailPatternValue = email.value;
                                         var phonePattern = new RegExp("^((\\(\\d{3}\\))|\\d{3})[- .]?\\d{3}[- .]?\\d{4}$");
-                                        var emailPattern = new  RegExp("^[a-z A-Z 0-9]{4,20}@+[a-z A-z]{2,30}[\.]{1}[c C]{1}[A-Z a-z]{1,6}([\.]{1}[A-Z a-z]{2,6})?$");
-                                        
-                                        var emailPatternConfirmation = 'valid';
-                                          if (email.value == '' || email.value == ' ') {
-                                        emailPatternConfirmation = 'valid';
-                                    }
-                                    
+                                        var emailPattern = new RegExp("^[a-z A-Z 0-9]{4,20}@+[a-z A-z]{2,30}[\.]{1}[c C]{1}[A-Z a-z]{1,6}([\.]{1}[A-Z a-z]{2,6})?$");
                                         if ((emailPattern.test(emailPatternValue) != true) || (phonePattern.test(phonePatternValue) != true)) {
                                             if (emailPattern.test(emailPatternValue) != true) {
                                                 notyf.error('Please enter valid email address');

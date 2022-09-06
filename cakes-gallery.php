@@ -29,6 +29,21 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="./assets/style.css">
     <title>Cakes | Cake Korner</title>
+     <style>
+        .view-more-button{
+  align-items: center;
+  text-align: center;
+}
+.view-more {
+  width: 200px;
+  margin-top: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: none;
+  background-color: #E283AE;
+  color: #FFF;
+}
+    </style>
 </head>
 
 <body class="home">
@@ -85,7 +100,7 @@
                             ?>
                         </div>
                         <div class="view-more-button ">
-                            <button type="button" class="view-more" onclick='loadDiv()'>VIEW MORE</button>
+                            <button type="button" class="view-more" onclick='loadDiv()' style="border-radius: 5px">VIEW MORE</button>
                         </div>
                     </div>
 

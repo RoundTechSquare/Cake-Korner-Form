@@ -2907,7 +2907,7 @@ input[type=submit] {
 }
 .home-banner:before {
   content: "";
-  background-image: url(assets/images/section-shape-img1.png);
+  background-image: url(./images/section-shape-img1.png);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -ms-background-size: cover;
@@ -2997,7 +2997,7 @@ input[type=submit] {
   z-index: 2;
 }
 .section-about .section-shape {
-  background-image: url(assets/images/section-shape-img2.png);
+  background-image: url(./images/section-shape-img2.png);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -ms-background-size: cover;
@@ -3242,7 +3242,7 @@ input[type=submit] {
 }
 .offer-section:before {
   content: "";
-  background-image: url(assets/images/section-shape-img2.png);
+  background-image: url(./images/section-shape-img2.png);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -ms-background-size: cover;
@@ -3259,7 +3259,7 @@ input[type=submit] {
 }
 .offer-section:after {
   content: "";
-  background-image: url(assets/images/section-shape-img1.png);
+  background-image: url(./images/section-shape-img1.png);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -ms-background-size: cover;
@@ -3320,7 +3320,7 @@ input[type=submit] {
 }
 .offer-item .offer-content h3:after {
   content: "";
-  background-image: url(assets/images/title-divider1.png);
+  background-image: url(./images/title-divider1.png);
   background-size: contain;
   background-repeat: no-repeat;
   display: block;
@@ -3399,7 +3399,7 @@ input[type=submit] {
 }
 
 .menu-column-wrap {
-  background-image: url(assets/images/img59.jpg);
+  background-image: url(./images/img59.jpg);
   box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.1);
   padding: 40px 35px;
   position: relative;
@@ -3554,7 +3554,7 @@ input[type=submit] {
 }
 .imagebg-callback:before {
   content: "";
-  background-image: url(assets/images/section-shape-img2.png);
+  background-image: url(./images/section-shape-img2.png);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -ms-background-size: cover;
@@ -3571,7 +3571,7 @@ input[type=submit] {
 }
 .imagebg-callback:after {
   content: "";
-  background-image: url(assets/images/section-shape-img1.png);
+  background-image: url(./images/section-shape-img1.png);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -ms-background-size: cover;
@@ -3846,7 +3846,7 @@ input[type=submit] {
 }
 .section-booking:before {
   content: "";
-  background-image: url(assets/images/section-shape-img2.png);
+  background-image: url(./images/section-shape-img2.png);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -ms-background-size: cover;
@@ -3863,7 +3863,7 @@ input[type=submit] {
 }
 .section-booking:after {
   content: "";
-  background-image: url(assets/images/section-shape-img1.png);
+  background-image: url(./images/section-shape-img1.png);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -ms-background-size: cover;
@@ -4069,7 +4069,7 @@ input[type=submit] {
 }
 .site-footer:before {
   content: "";
-  background-image: url(assets/images/section-shape-img2.png);
+  background-image: url(./images/section-shape-img2.png);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -ms-background-size: cover;
@@ -4314,7 +4314,7 @@ input[type=submit] {
 }
 .inner-baner-container:before {
   content: "";
-  background-image: url(assets/images/section-shape-img1.png);
+  background-image: url(./images/section-shape-img1.png);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -ms-background-size: cover;
@@ -4515,7 +4515,7 @@ input[type=submit] {
 }
 .section-counter:before {
   content: "";
-  background-image: url(assets/images/section-shape-img2.png);
+  background-image: url(./images/section-shape-img2.png);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -ms-background-size: cover;
@@ -4532,7 +4532,7 @@ input[type=submit] {
 }
 .section-counter:after {
   content: "";
-  background-image: url(assets/images/section-shape-img1.png);
+  background-image: url(./images/section-shape-img1.png);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -ms-background-size: cover;
@@ -5138,7 +5138,7 @@ input[type=submit] {
   }
 }
 .service-page-inner .service-icon-box {
-  background-image: url(assets/images/img59.jpg);
+  background-image: url(./images/img59.jpg);
   background-repeat: repeat;
   background-position: center center;
   border-left: 4px solid #E283AE;
@@ -6021,7 +6021,7 @@ input[type=submit] {
   background-size: cover;
 }
 .testimonial-page-section .testimonial-item .testimonial-content {
-  background-image: url(assets/images/img59.jpg);
+  background-image: url(./images/img59.jpg);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -7364,7 +7364,7 @@ product checkout css
 }
 .menu-column-wrap h3:after {
   content: "";
-  background-image: url(assets/images/title-divider.png);
+  background-image: url(./images/title-divider.png);
   background-size: contain;
   background-repeat: no-repeat;
   display: block;
@@ -7396,7 +7396,7 @@ product checkout css
 }
 .widget .widget-title:after {
   content: "";
-  background-image: url(assets/images/title-divider.png);
+  background-image: url(./images/title-divider.png);
   background-size: contain;
   background-repeat: no-repeat;
   display: block;

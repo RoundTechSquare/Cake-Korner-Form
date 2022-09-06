@@ -1,5 +1,5 @@
 <div class="section-heading" style="margin-bottom: 20px;">
-    <h2 class="section-title" style="font-family: 'Playfair Display', sans-serif; font-weight: 700;">Cup Cakes</h2>
+    <h2 class="section-title" style="font-family: 'Playfair Display', sans-serif; font-weight: 700;">Desserts</h2>
     <div class="title-divider">
         <img src="assets/images/title-divider.png" alt="divider">
     </div>
@@ -11,7 +11,7 @@
         <div class="single-gallery grid-item">
             <figure class="gallery-img">
                 <a href="./assets/images/gallery-two/CupCake/cupcake-<?= $i ?>.jpg" data-fancybox="gallery">
-                    <img src="./assets/images/gallery-two/CupCake/cupcake-<?= $i ?>.png" style="border-radius: 10px;" alt="Cake Korner Gallery cupcake-<?= $i ?>.png" />
+                    <img src="./assets/images/gallery-two/CupCake/cupcake-<?= $i ?>.png" style="border-radius: 10px;" alt="Cake Korner Gallery Desserts" />
                     <h4 style="border-radius: 10px;">
                         <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
                     </h4>
@@ -29,7 +29,7 @@
         <div class="single-gallery grid-item">
             <figure class="gallery-img">
                 <a href="./assets/images/gallery-two/CupCake/cupcake-<?= $i ?>.jpg" data-fancybox="gallery">
-                    <img src="./assets/images/gallery-two/CupCake/cupcake-<?= $i ?>.png" style="border-radius: 10px;" alt="Cake Korner Gallery cupcake-<?= $i ?>.png" />
+                    <img src="./assets/images/gallery-two/CupCake/cupcake-<?= $i ?>.png" style="border-radius: 10px;" alt="Cake Korner Gallery Desserts" />
                     <h4 style="border-radius: 10px;">
                         <img src="./assets/images/eye.png" style="width: 30px; height: auto;" />
                     </h4>
