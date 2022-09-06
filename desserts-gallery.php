@@ -31,26 +31,27 @@
     <title>Desserts | Cake Korner</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
-        .view-more-button{
-  align-items: center;
-  text-align: center;
-}
-.view-more {
-  width: 200px;
-  margin-top: 15px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  border: none;
-  background-color: #E283AE;
-  color: #FFF;
-}
+        .view-more-button {
+            align-items: center;
+            text-align: center;
+        }
+
+        .view-more {
+            width: 200px;
+            margin-top: 15px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            border: none;
+            background-color: #E283AE;
+            color: #FFF;
+        }
     </style>
 </head>
 
 <body class="home">
     <div id="siteLoader" class="site-loader">
         <div class="preloader-content">
-            <img src="assets/images/loader1.html" alt="">
+            <img src="./assets/images/loader.gif" alt="">
         </div>
     </div>
     <div id="page" class="full-page">
